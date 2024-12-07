@@ -1,0 +1,41 @@
+Enviar les dades a un Excel
+pestanya de raw data país 1 (hidden)
+pestanya de raw data país 2 (hidden)
+...
+pestanya graficotes
+pestanya order paisos
+Assegurar que és REAL-TIME-Data
+
+
+
+Posar el codi de país en el json de participants perque es pugui saber qui és qui ISO3166-3
+
+Corregir les faltes d'ortografia
+
+Posar la bandera en el header
+Posar el nom del país sota de la bandera
+
+
+
+
+
+
+
+Assignar un id a cada usuari
+
+
+
+
+
+
+
+
+
+
+
+
+link a cançó
+
+posició de l'any passat
+
+
