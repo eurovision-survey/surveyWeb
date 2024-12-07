@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eurovisió - Valoració</title>
+  <style>
+    /* Estils bàsics per mostrar la funcionalitat */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #1c1c1c;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+
+    .header img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .header .info {
+      display: flex;
+      align-items: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .content {
+      margin-top: 100px;
+      padding: 20px;
+    }
+
+    .item {
+      margin-bottom: 20px;
+    }
+
+    .item-title {
+      font-weight: bold;
+    }
+
+    .slider-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .slider {
+      margin: 0 10px;
+      flex-grow: 1;
+    }
+
+    .slider-value {
+      width: 40px;
+      text-align: center;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra superior fixa -->
+  <div class="header">
+    <div class="info">
+      <img src="flag_placeholder.png" alt="Bandera" class="country-flag">
+      <div>
+        <h1 class="song-title">Títol de la Cançó</h1>
+        <p class="country-name">País: <span>País Exemple</span></p>
+        <p class="performer-name">Intèrpret: <span>Nom Intèrpret</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contingut del formulari -->
+  <div class="content">
+    <form id="rating-form">
+      <!-- Ítems de valoració (Es generaran dinàmicament) -->
+      <div id="items-container"></div>
+
+      <div class="button-container">
+        <button type="button" id="next-country">Continuar</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Funció per carregar el JSON i actualitzar els ítems
+    async function loadItems() {
+      try {
+        const response = await fetch('questions.json');  // Intentem carregar el fitxer JSON
+        if (!response.ok) {
+          throw new Error('No s\'ha pogut carregar el fitxer JSON');
+        }
+        const data = await response.json();
+
+        const itemsContainer = document.getElementById('items-container');
+        if (data && data.questions && Array.isArray(data.questions)) {
+          // Per cada pregunta dins del JSON
+          data.questions.forEach((question, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('item');
+            itemDiv.setAttribute('data-id', index + 1);
+
+            const itemTitle = document.createElement('p');
+            itemTitle.classList.add('item-title');
+            itemTitle.textContent = question['item-title'];
+
+            const itemDescription = document.createElement('p');
+            itemDescription.classList.add('item-description');
+            itemDescription.textContent = question['item-description'];
+
+            const sliderContainer = document.createElement('div');
+            sliderContainer.classList.add('slider-container');
+
+            const slider = document.createElement('input');
+            slider.type = 'range';
+            slider.classList.add('slider');
+            slider.min = 1;
+            slider.max = 10;
+            slider.step = 0.5;
+            slider.value = 5;
+
+            const sliderValue = document.createElement('span');
+            sliderValue.classList.add('slider-value');
+            sliderValue.textContent = '5';
+
+            slider.addEventListener('input', function () {
+              sliderValue.textContent = slider.value;
+            });
+
+            sliderContainer.appendChild(slider);
+            sliderContainer.appendChild(sliderValue);
+
+            itemDiv.appendChild(itemTitle);
+            itemDiv.appendChild(itemDescription);
+            itemDiv.appendChild(sliderContainer);
+
+            itemsContainer.appendChild(itemDiv);
+          });
+        } else {
+          console.error("Format JSON incorrecte");
+        }
+      } catch (error) {
+        console.error("Error carregant el JSON:", error);
+      }
+    }
+
+    // Carregar els ítems quan es carrega la pàgina
+    window.onload = loadItems;
+
+    // Botó de continuar
+    document.getElementById("next-country").addEventListener("click", function () {
+      // Recollir dades del formulari
+      const ratings = {};
+      document.querySelectorAll(".item").forEach(item => {
+        const id = item.getAttribute("data-id");
+        const value = item.querySelector(".slider").value;
+        ratings[id] = value;
+      });
+
+      // Enviar dades al servidor (JSON)
+      console.log("Dades enviades:", JSON.stringify(ratings));
+      // Actualitzar interfície per al següent país (simulació)
+      document.querySelector(".song-title").textContent = "Nova Cançó";
+      document.querySelector(".country-name span").textContent = "Nou País";
+      document.querySelector(".performer-name span").textContent = "Nou Intèrpret";
+
+      // Reiniciar sliders
+      document.querySelectorAll(".slider").forEach(slider => slider.value = 5);
+      document.querySelectorAll(".slider-value").forEach(value => value.textContent = "5");
+    });
+  </script>
+</body>
+</html>
