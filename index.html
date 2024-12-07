@@ -118,7 +118,7 @@
     // Funció per carregar el JSON i actualitzar els ítems
     async function loadItems() {
       try {
-        const response = await fetch('questions.json');  // Intentem carregar el fitxer JSON
+        const response = await fetch("https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/questions.json");  // Intentem carregar el fitxer JSON
         if (!response.ok) {
           throw new Error('No s\'ha pogut carregar el fitxer JSON');
         }

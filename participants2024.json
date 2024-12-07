@@ -1,0 +1,129 @@
+{
+  "countries": [
+    {
+      "item-country": "Suecia",
+      "item-song": "Unforgettable",
+      "item-singer": "Marcus & Martinus"
+    },
+    {
+      "item-country": "Ucrania",
+      "item-song": "Teresa & Maria",
+      "item-singer": "alyona alyona & Jerry Heil"
+    },
+    {
+      "item-country": "Alemania",
+      "item-song": "Always On The Run",
+      "item-singer": "ISAAK"
+    },
+    {
+      "item-country": "Luxemburgo",
+      "item-song": "Fighter",
+      "item-singer": "TALI"
+    },
+    {
+      "item-country": "Israel",
+      "item-song": "Hurricane",
+      "item-singer": "Eden Golan"
+    },
+    {
+      "item-country": "Lituania",
+      "item-song": "Luktelk",
+      "item-singer": "Silvester Belt"
+    },
+    {
+      "item-country": "España",
+      "item-song": "Zorra",
+      "item-singer": "Nebulossa"
+    },
+    {
+      "item-country": "Estonia",
+      "item-song": "(Nendest) narkootikumidest ei tea me (küll) midagi",
+      "item-singer": "5MIINUST x Puuluup"
+    },
+    {
+      "item-country": "Irlanda",
+      "item-song": "Doomsday Blue",
+      "item-singer": "Bambie Thug"
+    },
+    {
+      "item-country": "Letonia",
+      "item-song": "Hollow",
+      "item-singer": "Dons"
+    },
+    {
+      "item-country": "Grecia",
+      "item-song": "Zari",
+      "item-singer": "Marina Satti"
+    },
+    {
+      "item-country": "Reino Unido",
+      "item-song": "Dizzy",
+      "item-singer": "Olly Alexander"
+    },
+    {
+      "item-country": "Noruega",
+      "item-song": "Ulveham",
+      "item-singer": "Gate"
+    },
+    {
+      "item-country": "Italia",
+      "item-song": "La Noia",
+      "item-singer": "Angelina Mango"
+    },
+    {
+      "item-country": "Serbia",
+      "item-song": "Ramonda",
+      "item-singer": "Teya Dora"
+    },
+    {
+      "item-country": "Finlandia",
+      "item-song": "No Rules!",
+      "item-singer": "Windows95man"
+    },
+    {
+      "item-country": "Portugal",
+      "item-song": "Grito",
+      "item-singer": "Iolanda"
+    },
+    {
+      "item-country": "Armenia",
+      "item-song": "Jako",
+      "item-singer": "Ladaniva"
+    },
+    {
+      "item-country": "Chipre",
+      "item-song": "Liar",
+      "item-singer": "Silia Kapsis"
+    },
+    {
+      "item-country": "Suiza",
+      "item-song": "The Code",
+      "item-singer": "Nemo"
+    },
+    {
+      "item-country": "Eslovenia",
+      "item-song": "Veronika",
+      "item-singer": "Raiven"
+    },
+    {
+      "item-country": "Croacia",
+      "item-song": "Rim Tim Tagi Dim",
+      "item-singer": "Baby Lasagna"
+    },
+    {
+      "item-country": "Georgia",
+      "item-song": "Firefighter",
+      "item-singer": "Nutsa"
+    },
+    {
+      "item-country": "Francia",
+      "item-song": "Mon Amour",
+      "item-singer": "Slimane"
+    },
+    {
+      "item-country": "Austria",
+      "item-song": "We Will Rave",
+      "item-singer": "Kaleen"
+    }
+  ]
+}
