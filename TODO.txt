@@ -6,6 +6,8 @@ pestanya graficotes
 pestanya order paisos
 Assegurar que és REAL-TIME-Data
 
+Que al clicar conitnuar pugi adalt
+
 
 
 Posar el codi de país en el json de participants perque es pugui saber qui és qui ISO3166-3

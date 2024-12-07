@@ -25,40 +25,9 @@
 			[
 				{
 					"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/index.html",
-					"redo_stack":
-					[
-						[
-							675,
-							1,
-							"insert",
-							{
-								"characters": " "
-							},
-							"AQAAAFwYAAAAAAAAXBgAAAAAAAABAAAAIA",
-							"AQAAAAAAAAABAAAAXRgAAAAAAABdGAAAAAAAAAAAAAAAAPC/"
-						],
-						[
-							674,
-							1,
-							"insert",
-							{
-								"characters": ","
-							},
-							"AQAAAFsYAAAAAAAAWxgAAAAAAAABAAAALA",
-							"AQAAAAAAAAABAAAAXBgAAAAAAABcGAAAAAAAAAAAAAAAAPC/"
-						],
-						[
-							668,
-							1,
-							"paste",
-							null,
-							"AQAAAD4YAAAAAAAAPhgAAAAAAAAdAAAAJHtwYXJ0aWNpcGFudFsnaXRlbS1jb3VudHJ5J10",
-							"AQAAAAAAAAABAAAAWxgAAAAAAABbGAAAAAAAAAAAAAAAAPC/"
-						]
-					],
 					"settings":
 					{
-						"buffer_size": 6793,
+						"buffer_size": 6794,
 						"encoding": "UTF-8",
 						"line_ending": "Windows"
 					},
@@ -1669,6 +1638,114 @@
 							null,
 							"AQAAAFkYAAAAAAAAWRgAAAAAAAABAAAACg",
 							"AQAAAAAAAAABAAAAWhgAAAAAAABaGAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							678,
+							1,
+							"left_delete",
+							null,
+							"AQAAALMTAAAAAAAAsxMAAAAAAAABAAAANQ",
+							"AQAAAAAAAAABAAAAtBMAAAAAAAC0EwAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							679,
+							1,
+							"insert",
+							{
+								"characters": "01"
+							},
+							"AgAAALMTAAAAAAAAtBMAAAAAAAAAAAAAtBMAAAAAAAC1EwAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAsxMAAAAAAACzEwAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							680,
+							2,
+							"left_delete",
+							null,
+							"AgAAALQTAAAAAAAAtBMAAAAAAAABAAAAMbMTAAAAAAAAsxMAAAAAAAABAAAAMA",
+							"AQAAAAAAAAABAAAAtRMAAAAAAAC1EwAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							681,
+							1,
+							"insert",
+							{
+								"characters": "25"
+							},
+							"AgAAALMTAAAAAAAAtBMAAAAAAAAAAAAAtBMAAAAAAAC1EwAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAsxMAAAAAAACzEwAAAAAAAAAAAAAAAPC/"
+						]
+					]
+				},
+				{
+					"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/TODO.txt",
+					"settings":
+					{
+						"buffer_size": 505,
+						"encoding": "UTF-8",
+						"line_ending": "Windows"
+					},
+					"undo_stack":
+					[
+						[
+							3,
+							1,
+							"insert",
+							{
+								"characters": "\n\nQue"
+							},
+							"BQAAALMAAAAAAAAAtAAAAAAAAAAAAAAAtAAAAAAAAAC1AAAAAAAAAAAAAAC1AAAAAAAAALYAAAAAAAAAAAAAALYAAAAAAAAAtwAAAAAAAAAAAAAAtwAAAAAAAAC4AAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAswAAAAAAAACzAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							4,
+							1,
+							"insert",
+							{
+								"characters": " al"
+							},
+							"AwAAALgAAAAAAAAAuQAAAAAAAAAAAAAAuQAAAAAAAAC6AAAAAAAAAAAAAAC6AAAAAAAAALsAAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAuAAAAAAAAAC4AAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							5,
+							1,
+							"insert",
+							{
+								"characters": " clicar"
+							},
+							"BwAAALsAAAAAAAAAvAAAAAAAAAAAAAAAvAAAAAAAAAC9AAAAAAAAAAAAAAC9AAAAAAAAAL4AAAAAAAAAAAAAAL4AAAAAAAAAvwAAAAAAAAAAAAAAvwAAAAAAAADAAAAAAAAAAAAAAADAAAAAAAAAAMEAAAAAAAAAAAAAAMEAAAAAAAAAwgAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAuwAAAAAAAAC7AAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							6,
+							1,
+							"insert",
+							{
+								"characters": " conitnuar"
+							},
+							"CgAAAMIAAAAAAAAAwwAAAAAAAAAAAAAAwwAAAAAAAADEAAAAAAAAAAAAAADEAAAAAAAAAMUAAAAAAAAAAAAAAMUAAAAAAAAAxgAAAAAAAAAAAAAAxgAAAAAAAADHAAAAAAAAAAAAAADHAAAAAAAAAMgAAAAAAAAAAAAAAMgAAAAAAAAAyQAAAAAAAAAAAAAAyQAAAAAAAADKAAAAAAAAAAAAAADKAAAAAAAAAMsAAAAAAAAAAAAAAMsAAAAAAAAAzAAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAwgAAAAAAAADCAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							7,
+							1,
+							"insert",
+							{
+								"characters": " pugi"
+							},
+							"BQAAAMwAAAAAAAAAzQAAAAAAAAAAAAAAzQAAAAAAAADOAAAAAAAAAAAAAADOAAAAAAAAAM8AAAAAAAAAAAAAAM8AAAAAAAAA0AAAAAAAAAAAAAAA0AAAAAAAAADRAAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAzAAAAAAAAADMAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							8,
+							1,
+							"insert",
+							{
+								"characters": " adalt"
+							},
+							"BgAAANEAAAAAAAAA0gAAAAAAAAAAAAAA0gAAAAAAAADTAAAAAAAAAAAAAADTAAAAAAAAANQAAAAAAAAAAAAAANQAAAAAAAAA1QAAAAAAAAAAAAAA1QAAAAAAAADWAAAAAAAAAAAAAADWAAAAAAAAANcAAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAA0QAAAAAAAADRAAAAAAAAAAAAAAAAAPC/"
 						]
 					]
 				},
@@ -2619,19 +2696,18 @@
 						{
 							"buffer": 0,
 							"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/index.html",
-							"selected": true,
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 6793,
+								"buffer_size": 6794,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										6206,
-										6206
+										5045,
+										5045
 									]
 								],
 								"settings":
@@ -2641,7 +2717,37 @@
 									"translate_tabs_to_spaces": true
 								},
 								"translation.x": 0.0,
-								"translation.y": 3776.0,
+								"translation.y": 3185.33333333,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"stack_multiselect": false,
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/TODO.txt",
+							"selected": true,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 505,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										215,
+										215
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
 								"zoom_level": 1.0
 							},
 							"stack_index": 0,
@@ -2649,7 +2755,7 @@
 							"type": "text"
 						},
 						{
-							"buffer": 1,
+							"buffer": 2,
 							"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/questions.json",
 							"semi_transient": false,
 							"settings":
@@ -2676,12 +2782,12 @@
 								"translation.y": 0.0,
 								"zoom_level": 1.0
 							},
-							"stack_index": 2,
+							"stack_index": 3,
 							"stack_multiselect": false,
 							"type": "text"
 						},
 						{
-							"buffer": 2,
+							"buffer": 3,
 							"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/participants2024.json",
 							"semi_transient": false,
 							"settings":
@@ -2707,7 +2813,7 @@
 								"translation.y": 1816.0,
 								"zoom_level": 1.0
 							},
-							"stack_index": 1,
+							"stack_index": 2,
 							"stack_multiselect": false,
 							"type": "text"
 						}
