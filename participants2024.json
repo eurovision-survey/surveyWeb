@@ -1,129 +1,154 @@
 {
   "countries": [
     {
-      "item-country": "Suecia",
+      "item-countryName": "Suècia",
       "item-song": "Unforgettable",
-      "item-singer": "Marcus & Martinus"
+      "item-singer": "Marcus & Martinus",
+      "item-countryCode": "SWE"
     },
     {
-      "item-country": "Ucrania",
+      "item-countryName": "Ucraïna",
       "item-song": "Teresa & Maria",
-      "item-singer": "alyona alyona & Jerry Heil"
+      "item-singer": "alyona alyona & Jerry Heil",
+      "item-countryCode": "UKR"
     },
     {
-      "item-country": "Alemania",
+      "item-countryName": "Alemanya",
       "item-song": "Always On The Run",
-      "item-singer": "ISAAK"
+      "item-singer": "ISAAK",
+      "item-countryCode": "DEU"
     },
     {
-      "item-country": "Luxemburgo",
+      "item-countryName": "Luxemburg",
       "item-song": "Fighter",
-      "item-singer": "TALI"
+      "item-singer": "TALI",
+      "item-countryCode": "LUX"
     },
     {
-      "item-country": "Israel",
+      "item-countryName": "Israel",
       "item-song": "Hurricane",
-      "item-singer": "Eden Golan"
+      "item-singer": "Eden Golan",
+      "item-countryCode": "ISR"
     },
     {
-      "item-country": "Lituania",
+      "item-countryName": "Lituània",
       "item-song": "Luktelk",
-      "item-singer": "Silvester Belt"
+      "item-singer": "Silvester Belt",
+      "item-countryCode": "LTU"
     },
     {
-      "item-country": "España",
+      "item-countryName": "Espanya",
       "item-song": "Zorra",
-      "item-singer": "Nebulossa"
+      "item-singer": "Nebulossa",
+      "item-countryCode": "ESP"
     },
     {
-      "item-country": "Estonia",
+      "item-countryName": "Estònia",
       "item-song": "(Nendest) narkootikumidest ei tea me (küll) midagi",
-      "item-singer": "5MIINUST x Puuluup"
+      "item-singer": "5MIINUST x Puuluup",
+      "item-countryCode": "EST"
     },
     {
-      "item-country": "Irlanda",
+      "item-countryName": "Irlanda",
       "item-song": "Doomsday Blue",
-      "item-singer": "Bambie Thug"
+      "item-singer": "Bambie Thug",
+      "item-countryCode": "IRL"
     },
     {
-      "item-country": "Letonia",
+      "item-countryName": "Letònia",
       "item-song": "Hollow",
-      "item-singer": "Dons"
+      "item-singer": "Dons",
+      "item-countryCode": "LVA"
     },
     {
-      "item-country": "Grecia",
+      "item-countryName": "Grècia",
       "item-song": "Zari",
-      "item-singer": "Marina Satti"
+      "item-singer": "Marina Satti",
+      "item-countryCode": "GRC"
     },
     {
-      "item-country": "Reino Unido",
+      "item-countryName": "Regne Unit",
       "item-song": "Dizzy",
-      "item-singer": "Olly Alexander"
+      "item-singer": "Olly Alexander",
+      "item-countryCode": "GBR"
     },
     {
-      "item-country": "Noruega",
+      "item-countryName": "Noruega",
       "item-song": "Ulveham",
-      "item-singer": "Gate"
+      "item-singer": "Gate",
+      "item-countryCode": "NOR"
     },
     {
-      "item-country": "Italia",
+      "item-countryName": "Itàlia",
       "item-song": "La Noia",
-      "item-singer": "Angelina Mango"
+      "item-singer": "Angelina Mango",
+      "item-countryCode": "ITA"
     },
     {
-      "item-country": "Serbia",
+      "item-countryName": "Sèrbia",
       "item-song": "Ramonda",
-      "item-singer": "Teya Dora"
+      "item-singer": "Teya Dora",
+      "item-countryCode": "SRB"
     },
     {
-      "item-country": "Finlandia",
+      "item-countryName": "Finlàndia",
       "item-song": "No Rules!",
-      "item-singer": "Windows95man"
+      "item-singer": "Windows95man",
+      "item-countryCode": "FIN"
     },
     {
-      "item-country": "Portugal",
+      "item-countryName": "Portugal",
       "item-song": "Grito",
-      "item-singer": "Iolanda"
+      "item-singer": "Iolanda",
+      "item-countryCode": "PRT"
     },
     {
-      "item-country": "Armenia",
+      "item-countryName": "Armènia",
       "item-song": "Jako",
-      "item-singer": "Ladaniva"
+      "item-singer": "Ladaniva",
+      "item-countryCode": "ARM"
     },
     {
-      "item-country": "Chipre",
+      "item-countryName": "Xipre",
       "item-song": "Liar",
-      "item-singer": "Silia Kapsis"
+      "item-singer": "Silia Kapsis",
+      "item-countryCode": "CYP"
     },
     {
-      "item-country": "Suiza",
+      "item-countryName": "Suïssa",
       "item-song": "The Code",
-      "item-singer": "Nemo"
+      "item-singer": "Nemo",
+      "item-countryCode": "CHE"
     },
     {
-      "item-country": "Eslovenia",
+      "item-countryName": "Eslovènia",
       "item-song": "Veronika",
-      "item-singer": "Raiven"
+      "item-singer": "Raiven",
+      "item-countryCode": "SVN"
     },
     {
-      "item-country": "Croacia",
+      "item-countryName": "Croàcia",
       "item-song": "Rim Tim Tagi Dim",
-      "item-singer": "Baby Lasagna"
+      "item-singer": "Baby Lasagna",
+      "item-countryCode": "HRV"
     },
     {
-      "item-country": "Georgia",
+      "item-countryName": "Geòrgia",
       "item-song": "Firefighter",
-      "item-singer": "Nutsa"
+      "item-singer": "Nutsa",
+      "item-countryCode": "GEO"
     },
     {
-      "item-country": "Francia",
+      "item-countryName": "França",
       "item-song": "Mon Amour",
-      "item-singer": "Slimane"
+      "item-singer": "Slimane",
+      "item-countryCode": "FRA"
     },
     {
-      "item-country": "Austria",
+      "item-countryName": "Àustria",
       "item-song": "We Will Rave",
-      "item-singer": "Kaleen"
+      "item-singer": "Kaleen",
+      "item-countryCode": "AUT"
     }
   ]
 }

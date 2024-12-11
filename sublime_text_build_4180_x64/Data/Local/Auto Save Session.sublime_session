@@ -8,7 +8,7 @@
 	"last_version": 4180,
 	"last_window_id": 1,
 	"log_indexing": false,
-	"next_update_check": 1733671520,
+	"next_update_check": 1734017120,
 	"settings":
 	{
 	},
@@ -25,6 +25,25 @@
 			[
 				{
 					"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/index.html",
+					"redo_stack":
+					[
+						[
+							695,
+							1,
+							"left_delete",
+							null,
+							"FQAAAOoNAAAAAAAA6w0AAAAAAAAAAAAA6w0AAAAAAADsDQAAAAAAAAAAAADsDQAAAAAAAO0NAAAAAAAAAAAAAO0NAAAAAAAA7g0AAAAAAAAAAAAA7g0AAAAAAADvDQAAAAAAAAAAAADvDQAAAAAAAPANAAAAAAAAAAAAAPANAAAAAAAA8Q0AAAAAAAAAAAAA8Q0AAAAAAADyDQAAAAAAAAAAAADyDQAAAAAAAPMNAAAAAAAAAAAAAPMNAAAAAAAA9A0AAAAAAAAAAAAA9A0AAAAAAAD1DQAAAAAAAAAAAAD1DQAAAAAAAPYNAAAAAAAAAAAAAPYNAAAAAAAA9w0AAAAAAAAAAAAA9w0AAAAAAAD4DQAAAAAAAAAAAAD4DQAAAAAAAPkNAAAAAAAAAAAAAPkNAAAAAAAA+g0AAAAAAAAAAAAA+g0AAAAAAAD7DQAAAAAAAAAAAAD7DQAAAAAAAPwNAAAAAAAAAAAAAPwNAAAAAAAA/Q0AAAAAAAAAAAAA/Q0AAAAAAAD+DQAAAAAAAAAAAAD+DQAAAAAAAP8NAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAA6g0AAAAAAADqDQAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							692,
+							1,
+							"left_delete",
+							null,
+							"AQAAAOoNAAAAAAAA6w0AAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAA6g0AAAAAAADqDQAAAAAAAAAAAAAAAPC/"
+						]
+					],
 					"settings":
 					{
 						"buffer_size": 6794,
@@ -1681,7 +1700,7 @@
 					"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/TODO.txt",
 					"settings":
 					{
-						"buffer_size": 505,
+						"buffer_size": 410,
 						"encoding": "UTF-8",
 						"line_ending": "Windows"
 					},
@@ -1746,6 +1765,22 @@
 							},
 							"BgAAANEAAAAAAAAA0gAAAAAAAAAAAAAA0gAAAAAAAADTAAAAAAAAAAAAAADTAAAAAAAAANQAAAAAAAAAAAAAANQAAAAAAAAA1QAAAAAAAAAAAAAA1QAAAAAAAADWAAAAAAAAAAAAAADWAAAAAAAAANcAAAAAAAAAAAAAAA",
 							"AQAAAAAAAAABAAAA0QAAAAAAAADRAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							25,
+							2,
+							"left_delete",
+							null,
+							"AgAAANkAAAAAAAAA2QAAAAAAAABfAAAACgpQb3NhciBlbCBjb2RpIGRlIHBhw61zIGVuIGVsIGpzb24gZGUgcGFydGljaXBhbnRzIHBlcnF1ZSBlcyBwdWd1aSBzYWJlciBxdWkgw6lzIHF1aSBJU08zMTY2LTPYAAAAAAAAANgAAAAAAAAAAQAAAAo",
+							"AQAAAAAAAAABAAAANgEAAAAAAADZAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							26,
+							1,
+							"left_delete",
+							null,
+							"AQAAANcAAAAAAAAA1wAAAAAAAAABAAAACg",
+							"AQAAAAAAAAABAAAA2AAAAAAAAADYAAAAAAAAAAAAAAAAAPC/"
 						]
 					]
 				},
@@ -1753,7 +1788,7 @@
 					"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/questions.json",
 					"settings":
 					{
-						"buffer_size": 1134,
+						"buffer_size": 1136,
 						"encoding": "UTF-8",
 						"line_ending": "Windows",
 						"name": "{"
@@ -1803,6 +1838,186 @@
 							null,
 							"AQAAAEICAAAAAAAAZwQAAAAAAAAAAAAA",
 							"AQAAAAAAAAABAAAAQgIAAAAAAABCAgAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							33,
+							1,
+							"left_delete",
+							null,
+							"AQAAAGQCAAAAAAAAZAIAAAAAAAABAAAAMQ",
+							"AQAAAAAAAAABAAAAZQIAAAAAAABlAgAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							34,
+							1,
+							"insert",
+							{
+								"characters": "6"
+							},
+							"AQAAAGQCAAAAAAAAZQIAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAZAIAAAAAAABkAgAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							37,
+							1,
+							"left_delete",
+							null,
+							"AQAAANMCAAAAAAAA0wIAAAAAAAABAAAAMg",
+							"AQAAAAAAAAABAAAA1AIAAAAAAADUAgAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							38,
+							1,
+							"insert",
+							{
+								"characters": "7"
+							},
+							"AQAAANMCAAAAAAAA1AIAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAA0wIAAAAAAADTAgAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							41,
+							1,
+							"left_delete",
+							null,
+							"AQAAAEIDAAAAAAAAQgMAAAAAAAABAAAAMw",
+							"AQAAAAAAAAABAAAAQwMAAAAAAABDAwAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							42,
+							1,
+							"insert",
+							{
+								"characters": "8"
+							},
+							"AQAAAEIDAAAAAAAAQwMAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAQgMAAAAAAABCAwAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							44,
+							1,
+							"left_delete",
+							null,
+							"AQAAALEDAAAAAAAAsQMAAAAAAAABAAAANA",
+							"AQAAAAAAAAABAAAAsgMAAAAAAACyAwAAAAAAAAAAAAAAIHJA"
+						],
+						[
+							45,
+							1,
+							"insert",
+							{
+								"characters": "9"
+							},
+							"AQAAALEDAAAAAAAAsgMAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAsQMAAAAAAACxAwAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							47,
+							1,
+							"left_delete",
+							null,
+							"AQAAACAEAAAAAAAAIAQAAAAAAAABAAAANQ",
+							"AQAAAAAAAAABAAAAIQQAAAAAAAAhBAAAAAAAAAAAAAAAIHJA"
+						],
+						[
+							48,
+							1,
+							"insert",
+							{
+								"characters": "10"
+							},
+							"AgAAACAEAAAAAAAAIQQAAAAAAAAAAAAAIQQAAAAAAAAiBAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAIAQAAAAAAAAgBAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							51,
+							1,
+							"left_delete",
+							null,
+							"AQAAAKICAAAAAAAAogIAAAAAAAABAAAAMQ",
+							"AQAAAAAAAAABAAAAowIAAAAAAACjAgAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							52,
+							1,
+							"insert",
+							{
+								"characters": "6"
+							},
+							"AQAAAKICAAAAAAAAowIAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAogIAAAAAAACiAgAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							55,
+							1,
+							"left_delete",
+							null,
+							"AQAAABEDAAAAAAAAEQMAAAAAAAABAAAAMg",
+							"AQAAAAAAAAABAAAAEgMAAAAAAAASAwAAAAAAAAAAAAAAOIBA"
+						],
+						[
+							56,
+							1,
+							"insert",
+							{
+								"characters": "7"
+							},
+							"AQAAABEDAAAAAAAAEgMAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAEQMAAAAAAAARAwAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							58,
+							1,
+							"left_delete",
+							null,
+							"AQAAAIADAAAAAAAAgAMAAAAAAAABAAAAMw",
+							"AQAAAAAAAAABAAAAgQMAAAAAAACBAwAAAAAAAAAAAAAAOIBA"
+						],
+						[
+							59,
+							1,
+							"insert",
+							{
+								"characters": "8"
+							},
+							"AQAAAIADAAAAAAAAgQMAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAgAMAAAAAAACAAwAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							61,
+							1,
+							"left_delete",
+							null,
+							"AQAAAO8DAAAAAAAA7wMAAAAAAAABAAAANA",
+							"AQAAAAAAAAABAAAA8AMAAAAAAADwAwAAAAAAAAAAAAAAOIBA"
+						],
+						[
+							62,
+							1,
+							"insert",
+							{
+								"characters": "9"
+							},
+							"AQAAAO8DAAAAAAAA8AMAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAA7wMAAAAAAADvAwAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							64,
+							1,
+							"left_delete",
+							null,
+							"AQAAAF8EAAAAAAAAXwQAAAAAAAABAAAANQ",
+							"AQAAAAAAAAABAAAAYAQAAAAAAABgBAAAAAAAAAAAAAAAOIBA"
+						],
+						[
+							65,
+							1,
+							"insert",
+							{
+								"characters": "10"
+							},
+							"AgAAAF8EAAAAAAAAYAQAAAAAAAAAAAAAYAQAAAAAAABhBAAAAAAAAAAAAAA",
+							"AQAAAAAAAAABAAAAXwQAAAAAAABfBAAAAAAAAAAAAAAAAPC/"
 						]
 					]
 				},
@@ -1810,7 +2025,7 @@
 					"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/participants2024.json",
 					"settings":
 					{
-						"buffer_size": 2861,
+						"buffer_size": 3784,
 						"encoding": "UTF-8",
 						"line_ending": "Windows"
 					},
@@ -2619,6 +2834,14 @@
 							null,
 							"AgAAAAAAAAAAAAAALQsAAAAAAAAAAAAALQsAAAAAAAAtCwAAAAAAALAAAAB7CiAgImNvdW50cmllcyI6IFsKICAgIHsKICAgICAgIml0ZW0tY291bnRyeSI6ICJOb20gZGVsIHBhw61zIiwKICAgICAgIml0ZW0tc29uZyI6ICJOb20gZGUgbGEgY2Fuw6dvIiwKICAgICAgIml0ZW0tc2luZ2VyIjogIk5vbSBkZWwgYXJ0aXN0YSIKICAgIH0sCiAgICB7CiAgICAgIC4uLgogICAgfQogIF0KfQ",
 							"AQAAAAAAAAABAAAArgAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							180,
+							1,
+							"paste",
+							null,
+							"AgAAAAAAAAAAAAAAyA4AAAAAAAAAAAAAyA4AAAAAAADIDgAAAAAAAC8LAAB7CiAgImNvdW50cmllcyI6IFsKICAgIHsKICAgICAgIml0ZW0tY291bnRyeSI6ICJTdWVjaWEiLAogICAgICAiaXRlbS1zb25nIjogIlVuZm9yZ2V0dGFibGUiLAogICAgICAiaXRlbS1zaW5nZXIiOiAiTWFyY3VzICYgTWFydGludXMiCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIlVjcmFuaWEiLAogICAgICAiaXRlbS1zb25nIjogIlRlcmVzYSAmIE1hcmlhIiwKICAgICAgIml0ZW0tc2luZ2VyIjogImFseW9uYSBhbHlvbmEgJiBKZXJyeSBIZWlsIgogICAgfSwKICAgIHsKICAgICAgIml0ZW0tY291bnRyeSI6ICJBbGVtYW5pYSIsCiAgICAgICJpdGVtLXNvbmciOiAiQWx3YXlzIE9uIFRoZSBSdW4iLAogICAgICAiaXRlbS1zaW5nZXIiOiAiSVNBQUsiCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIkx1eGVtYnVyZ28iLAogICAgICAiaXRlbS1zb25nIjogIkZpZ2h0ZXIiLAogICAgICAiaXRlbS1zaW5nZXIiOiAiVEFMSSIKICAgIH0sCiAgICB7CiAgICAgICJpdGVtLWNvdW50cnkiOiAiSXNyYWVsIiwKICAgICAgIml0ZW0tc29uZyI6ICJIdXJyaWNhbmUiLAogICAgICAiaXRlbS1zaW5nZXIiOiAiRWRlbiBHb2xhbiIKICAgIH0sCiAgICB7CiAgICAgICJpdGVtLWNvdW50cnkiOiAiTGl0dWFuaWEiLAogICAgICAiaXRlbS1zb25nIjogIkx1a3RlbGsiLAogICAgICAiaXRlbS1zaW5nZXIiOiAiU2lsdmVzdGVyIEJlbHQiCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIkVzcGHDsWEiLAogICAgICAiaXRlbS1zb25nIjogIlpvcnJhIiwKICAgICAgIml0ZW0tc2luZ2VyIjogIk5lYnVsb3NzYSIKICAgIH0sCiAgICB7CiAgICAgICJpdGVtLWNvdW50cnkiOiAiRXN0b25pYSIsCiAgICAgICJpdGVtLXNvbmciOiAiKE5lbmRlc3QpIG5hcmtvb3Rpa3VtaWRlc3QgZWkgdGVhIG1lIChrw7xsbCkgbWlkYWdpIiwKICAgICAgIml0ZW0tc2luZ2VyIjogIjVNSUlOVVNUIHggUHV1bHV1cCIKICAgIH0sCiAgICB7CiAgICAgICJpdGVtLWNvdW50cnkiOiAiSXJsYW5kYSIsCiAgICAgICJpdGVtLXNvbmciOiAiRG9vbXNkYXkgQmx1ZSIsCiAgICAgICJpdGVtLXNpbmdlciI6ICJCYW1iaWUgVGh1ZyIKICAgIH0sCiAgICB7CiAgICAgICJpdGVtLWNvdW50cnkiOiAiTGV0b25pYSIsCiAgICAgICJpdGVtLXNvbmciOiAiSG9sbG93IiwKICAgICAgIml0ZW0tc2luZ2VyIjogIkRvbnMiCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIkdyZWNpYSIsCiAgICAgICJpdGVtLXNvbmciOiAiWmFyaSIsCiAgICAgICJpdGVtLXNpbmdlciI6ICJNYXJpbmEgU2F0dGkiCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIlJlaW5vIFVuaWRvIiwKICAgICAgIml0ZW0tc29uZyI6ICJEaXp6eSIsCiAgICAgICJpdGVtLXNpbmdlciI6ICJPbGx5IEFsZXhhbmRlciIKICAgIH0sCiAgICB7CiAgICAgICJpdGVtLWNvdW50cnkiOiAiTm9ydWVnYSIsCiAgICAgICJpdGVtLXNvbmciOiAiVWx2ZWhhbSIsCiAgICAgICJpdGVtLXNpbmdlciI6ICJHYXRlIgogICAgfSwKICAgIHsKICAgICAgIml0ZW0tY291bnRyeSI6ICJJdGFsaWEiLAogICAgICAiaXRlbS1zb25nIjogIkxhIE5vaWEiLAogICAgICAiaXRlbS1zaW5nZXIiOiAiQW5nZWxpbmEgTWFuZ28iCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIlNlcmJpYSIsCiAgICAgICJpdGVtLXNvbmciOiAiUmFtb25kYSIsCiAgICAgICJpdGVtLXNpbmdlciI6ICJUZXlhIERvcmEiCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIkZpbmxhbmRpYSIsCiAgICAgICJpdGVtLXNvbmciOiAiTm8gUnVsZXMhIiwKICAgICAgIml0ZW0tc2luZ2VyIjogIldpbmRvd3M5NW1hbiIKICAgIH0sCiAgICB7CiAgICAgICJpdGVtLWNvdW50cnkiOiAiUG9ydHVnYWwiLAogICAgICAiaXRlbS1zb25nIjogIkdyaXRvIiwKICAgICAgIml0ZW0tc2luZ2VyIjogIklvbGFuZGEiCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIkFybWVuaWEiLAogICAgICAiaXRlbS1zb25nIjogIkpha28iLAogICAgICAiaXRlbS1zaW5nZXIiOiAiTGFkYW5pdmEiCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIkNoaXByZSIsCiAgICAgICJpdGVtLXNvbmciOiAiTGlhciIsCiAgICAgICJpdGVtLXNpbmdlciI6ICJTaWxpYSBLYXBzaXMiCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIlN1aXphIiwKICAgICAgIml0ZW0tc29uZyI6ICJUaGUgQ29kZSIsCiAgICAgICJpdGVtLXNpbmdlciI6ICJOZW1vIgogICAgfSwKICAgIHsKICAgICAgIml0ZW0tY291bnRyeSI6ICJFc2xvdmVuaWEiLAogICAgICAiaXRlbS1zb25nIjogIlZlcm9uaWthIiwKICAgICAgIml0ZW0tc2luZ2VyIjogIlJhaXZlbiIKICAgIH0sCiAgICB7CiAgICAgICJpdGVtLWNvdW50cnkiOiAiQ3JvYWNpYSIsCiAgICAgICJpdGVtLXNvbmciOiAiUmltIFRpbSBUYWdpIERpbSIsCiAgICAgICJpdGVtLXNpbmdlciI6ICJCYWJ5IExhc2FnbmEiCiAgICB9LAogICAgewogICAgICAiaXRlbS1jb3VudHJ5IjogIkdlb3JnaWEiLAogICAgICAiaXRlbS1zb25nIjogIkZpcmVmaWdodGVyIiwKICAgICAgIml0ZW0tc2luZ2VyIjogIk51dHNhIgogICAgfSwKICAgIHsKICAgICAgIml0ZW0tY291bnRyeSI6ICJGcmFuY2lhIiwKICAgICAgIml0ZW0tc29uZyI6ICJNb24gQW1vdXIiLAogICAgICAiaXRlbS1zaW5nZXIiOiAiU2xpbWFuZSIKICAgIH0sCiAgICB7CiAgICAgICJpdGVtLWNvdW50cnkiOiAiQXVzdHJpYSIsCiAgICAgICJpdGVtLXNvbmciOiAiV2UgV2lsbCBSYXZlIiwKICAgICAgIml0ZW0tc2luZ2VyIjogIkthbGVlbiIKICAgIH0KICBdCn0K",
+							"AQAAAAAAAAABAAAAAAAAAAAAAAAtCwAAAAAAAAAAAAAAAPC/"
 						]
 					]
 				}
@@ -2696,6 +2919,7 @@
 						{
 							"buffer": 0,
 							"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/index.html",
+							"selected": true,
 							"semi_transient": false,
 							"settings":
 							{
@@ -2706,8 +2930,8 @@
 								"selection":
 								[
 									[
-										5045,
-										5045
+										0,
+										6794
 									]
 								],
 								"settings":
@@ -2717,29 +2941,28 @@
 									"translate_tabs_to_spaces": true
 								},
 								"translation.x": 0.0,
-								"translation.y": 3185.33333333,
+								"translation.y": 2392.66666667,
 								"zoom_level": 1.0
 							},
-							"stack_index": 1,
+							"stack_index": 0,
 							"stack_multiselect": false,
 							"type": "text"
 						},
 						{
 							"buffer": 1,
 							"file": "/C/Users/Laura/Documents/GitHub/surveyWeb/TODO.txt",
-							"selected": true,
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 505,
+								"buffer_size": 410,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										215,
-										215
+										280,
+										280
 									]
 								],
 								"settings":
@@ -2750,7 +2973,7 @@
 								"translation.y": 0.0,
 								"zoom_level": 1.0
 							},
-							"stack_index": 0,
+							"stack_index": 1,
 							"stack_multiselect": false,
 							"type": "text"
 						},
@@ -2760,15 +2983,15 @@
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 1134,
+								"buffer_size": 1136,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										129,
-										0
+										1121,
+										1121
 									]
 								],
 								"settings":
@@ -2792,15 +3015,15 @@
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 2861,
+								"buffer_size": 3784,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										0,
-										2861
+										3036,
+										3041
 									]
 								],
 								"settings":
@@ -2810,7 +3033,7 @@
 									"translate_tabs_to_spaces": true
 								},
 								"translation.x": 0.0,
-								"translation.y": 1816.0,
+								"translation.y": 0.0,
 								"zoom_level": 1.0
 							},
 							"stack_index": 2,
