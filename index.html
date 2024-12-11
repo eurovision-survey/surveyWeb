@@ -5,88 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eurovisió - Valoració</title>
   <style>
-    /* Estils bàsics per mostrar la funcionalitat */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+/* Estils bàsics per mostrar la funcionalitat */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: #1c1c1c;
-      color: #fff;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-    }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #1c1c1c;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  align-items: center; /* Centrar verticalment la imatge i el text */
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
 
-    .header img {
-      height: 30px;
-      margin-right: 10px;
-    }
+.header .info {
+  display: flex;
+  align-items: center; /* Centrar verticalment la imatge i el text */
+}
 
-    .header .info {
-      display: flex;
-      align-items: center;
-    }
+.header .info img {
+  height: 106px; /* Altura fixa per la imatge */
+  margin-right: 20px; /* Separar la imatge del text */
+}
 
-    .header h1 {
-      margin: 0;
-      font-size: 18px;
-    }
+.header h1 {
+  margin: 0;
+  font-size: 18px;
+}
 
-    .content {
-      margin-top: 100px;
-      padding: 20px;
-    }
+.country-name {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+.performer-name {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
 
-    .item {
-      margin-bottom: 20px;
-    }
+.content {
+  margin-top: 100px;
+  padding: 20px;
+}
 
-    .item-title {
-      font-weight: bold;
-    }
+.item {
+  margin-bottom: 20px;
+}
 
-    .slider-container {
-      display: flex;
-      align-items: center;
-    }
+.item-title {
+  font-weight: bold;
+}
 
-    .slider {
-      margin: 0 10px;
-      flex-grow: 1;
-    }
+.slider-container {
+  display: flex;
+  align-items: center;
+}
 
-    .slider-value {
-      width: 40px;
-      text-align: center;
-    }
+.slider {
+  margin: 0 10px;
+  flex-grow: 1;
+}
 
-    .button-container {
-      text-align: center;
-      margin-top: 20px;
-    }
+.slider-value {
+  width: 40px;
+  text-align: center;
+}
 
-    button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
 
-    button:hover {
-      background-color: #45a049;
-    }
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
   </style>
 </head>
 <body>
@@ -142,12 +152,15 @@
       const participant = participantsData.countries[index];
       const infoContainer = document.getElementById('info'); // Obtener contenedor de la info
 
+      // Construir l'URL de la bandera utilitzant el codi del país (ex: SWE)
+      const flagUrl = `https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/flags/${participant['item-countryCode']}.svg`;
+
       // Crear la estructura HTML
       infoContainer.innerHTML = `
-        <img src="flag_placeholder.png" alt="Bandera" class="country-flag">
-        <div>
-          <h1 class="song-title">${participant['item-song']}</h1>
-          <p class="country-name">País: <span>${participant['item-country']}</span></p>
+        <img src="${flagUrl}" alt="Bandera de ${participant['item-countryName']}" class="country-flag">
+        <div id="participant">
+          <h  class="song-title">${participant['item-song']}</h1>
+          <p class="country-name">País: <span>${participant['item-countryName']}</span></p>
           <p class="performer-name">Intérprete: <span>${participant['item-singer']}</span></p>
         </div>
       `;
@@ -215,8 +228,6 @@
       });
       // Enviar dades al servidor (JSON)
       console.log("Dades enviades:", JSON.stringify(ratings));
-
-
 
       // Incrementar el índice para el siguiente participante
       currentIndex = (currentIndex + 1) % participantsData.countries.length;
