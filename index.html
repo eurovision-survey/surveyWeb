@@ -6,6 +6,7 @@
   <title>Eurovisió - Valoració</title>
   <style>
 /* Estils bàsics per mostrar la funcionalitat */
+/* Estils bàsics per mostrar la funcionalitat */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -49,6 +50,11 @@ body {
 .performer-name {
     margin-block-start: 0.5em;
     margin-block-end: 0.5em;
+}
+.song-name{
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    font-size: 20px;
 }
 
 .content {
@@ -159,9 +165,9 @@ button:hover {
       infoContainer.innerHTML = `
         <img src="${flagUrl}" alt="Bandera de ${participant['item-countryName']}" class="country-flag">
         <div id="participant">
-          <h  class="song-title">${participant['item-song']}</h1>
-          <p class="country-name">País: <span>${participant['item-countryName']}</span></p>
+          <p class="song-name"><h1 class="song-title">${participant['item-song']}</h1></p>
           <p class="performer-name">Intérprete: <span>${participant['item-singer']}</span></p>
+          <p class="country-name">País: <span>${participant['item-countryName']}</span></p>
         </div>
       `;
     }
@@ -242,6 +248,7 @@ button:hover {
 
     // Cargar datos al cargar la página
     window.onload = loadData;
+
   </script>
 </body>
 </html>
