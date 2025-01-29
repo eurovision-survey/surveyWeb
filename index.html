@@ -244,10 +244,41 @@ button:hover {
       // Reiniciar sliders
       document.querySelectorAll(".slider").forEach(slider => slider.value = 5);
       document.querySelectorAll(".slider-value").forEach(value => value.textContent = "5");
+      
+      // Volver al inicio de la página con efecto suave
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Recoger datos del formulario
+      document.querySelectorAll(".item").forEach(item => {
+        const id = item.getAttribute("data-id");
+        const value = item.querySelector(".slider").value;
+        ratings["rating_" + id] = value;
+      });
+
+      // Datos del participante actual
+      const currentParticipant = participantsData.countries[currentIndex];
+      const postData = {
+        country: currentParticipant["item-countryName"],
+        song: currentParticipant["item-song"],
+        singer: currentParticipant["item-singer"],
+        ...ratings
+      };
+
+      // Enviar datos a Google Sheets
+      fetch("https://script.google.com/macros/s/AKfycbw4aOdJrhyY_3frJoygqvw_euPAZzNgxgxatsuUXLFEkXauhmmC6v1n8hQ0M_eJfXhMBQ/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(postData)
+      })
+        .then(response => response.text())
+        .then(data => console.log("Dades enviades a Google Sheets:", data))
+        .catch(error => console.error("Error enviant dades:", error));
+
     });
 
     // Cargar datos al cargar la página
     window.onload = loadData;
+
 
   </script>
 </body>
