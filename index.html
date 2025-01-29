@@ -264,15 +264,17 @@ button:hover {
         ...ratings
       };
 
-      // Enviar datos a Google Sheets
-      fetch("https://script.google.com/macros/s/AKfycbzEX6jdAvDlIlU9Fl7uMz31M1i_jV9p0D8LA_VzZ-fin-d0QR7ndYUEAr-D9qrgND2NMw/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbzMmDJCLqy9-UqVXwJz_GiY6GGIO55jls5NeEBCd_X1AJlif_xCS0cDnGRKV1I4WK_yPA/exec", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(postData)
       })
-        .then(response => response.text())
-        .then(data => console.log("Dades enviades a Google Sheets:", data))
-        .catch(error => console.error("Error enviant dades:", error));
+      .then(response => response.json()) // Convertir la respuesta a JSON
+      .then(data => console.log("Dades enviades a Google Sheets:", data))
+      .catch(error => console.error("Error enviant dades:", error));
+
 
     });
 
