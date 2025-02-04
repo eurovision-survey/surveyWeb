@@ -1,43 +1,43 @@
 {
   "questions": [
     {
-      "item-title": "Títol Ítem 1",
+      "item-title": "Originalitat",
       "item-description": "Descripció detallada de l'ítem 1."
     },
     {
-      "item-title": "Títol Ítem 2",
+      "item-title": "Lletra",
       "item-description": "Descripció detallada de l'ítem 2."
     },
     {
-      "item-title": "Títol Ítem 3",
+      "item-title": "Veus",
       "item-description": "Descripció detallada de l'ítem 3."
     },
     {
-      "item-title": "Títol Ítem 4",
+      "item-title": "Ritme",
       "item-description": "Descripció detallada de l'ítem 4."
     },
     {
-      "item-title": "Títol Ítem 5",
+      "item-title": "Vestuari",
       "item-description": "Descripció detallada de l'ítem 5."
     },
     {
-      "item-title": "Títol Ítem 6",
+      "item-title": "Escenografia",
       "item-description": "Descripció detallada de l'ítem 6."
     },
     {
-      "item-title": "Títol Ítem 7",
+      "item-title": "Interpretació",
       "item-description": "Descripció detallada de l'ítem 7."
     },
     {
-      "item-title": "Títol Ítem 8",
+      "item-title": "Coherència Cultural",
       "item-description": "Descripció detallada de l'ítem 8."
     },
     {
-      "item-title": "Títol Ítem 9",
+      "item-title": "Connexió emocional",
       "item-description": "Descripció detallada de l'ítem 9."
     },
     {
-      "item-title": "Títol Ítem 10",
+      "item-title": "General",
       "item-description": "Descripció detallada de l'ítem 10."
     }
   ]

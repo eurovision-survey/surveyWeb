@@ -1,32 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eurovisió - Valoració</title>
-  <link rel="stylesheet" href="index.css"/>
-</head>
-<body>
-  <!-- Barra superior fixa -->
-  <div class="header">
-    <div class="info" id="info">
-      <!-- Aquí se generará la información del participante -->
-    </div>
-  </div>
 
-  <!-- Contingut del formulari -->
-  <div class="content">
-    <form id="rating-form">
-      <!-- Ítems de valoració (Es generaran dinàmicament) -->
-      <div id="items-container"></div>
-
-      <div class="button-container">
-        <button type="button" id="next-country">Continuar</button>
-      </div>
-    </form>
-  </div>
-
-  <script>
     // Variables
     let participantsData = [];
     let currentIndex = 0;
@@ -123,37 +95,47 @@
       }
     }
 
+    // Evento para el botón "Continuar"
+    document.getElementById("next-country").addEventListener("click", async function () {
+      const currentParticipant = participantsData.countries[currentIndex];
 
-
-    // Cargar datos al cargar la página
-    window.onload = loadData;
-
-
-    //Clicar Continuar
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwDFLDPsSQ6NQUGD5lUpaUPiaonqulxKgTU9MknIudMKBz1wwe_88B75JVwf8uAAcemww/exec'
-    const form = document.getElementById("next-country");
-
-    form.addEventListener("click", e => {
-      e.preventDefault();
       // Recollir dades dels sliders
       const ratings = {};
       document.querySelectorAll(".item").forEach(item => {
         const id = item.getAttribute("data-id");
         const value = item.querySelector(".slider").value;
-        const questionTitle = item.querySelector(".item-title").textContent.trim();
-        ratings["pais"] = participantsData.countries[currentIndex].["item-countryName"];
-        ratings[questionTitle] = parseFloat(value);
+        ratings["criteri" + id] = parseFloat(value);
+      });
 
+      // Objecte de dades a enviar
+      const postData = {
+        country: currentParticipant["item-countryName"],
+        song: currentParticipant["item-song"],
+        singer: currentParticipant["item-singer"],
+        ratings
+      };
+
+      try {
+        // Enviar dades al Google Apps Script
+
+        console.log("Dades:", JSON.stringify(postData));
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwDFLDPsSQ6NQUGD5lUpaUPiaonqulxKgTU9MknIudMKBz1wwe_88B75JVwf8uAAcemww/exec", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(postData)
+        });
+
+        const result = await response.text();
+        console.log("Resposta de Google Sheets:", result);
+
+        // Passar al següent participant
+        currentIndex = (currentIndex + 1) % participantsData.countries.length;
+        displayParticipant(currentIndex);
+      } catch (error) {
+        console.error("Error enviant dades:", error);
+      }
     });
-      console.log("Enviant: ", ratings)
-      //Enviar al Excel
-      fetch(scriptURL, { method: 'POST', body: ratings})
-        .then(response => alert("Thank you! Form is submitted" ))
-        .then(() => { window.location.reload(); })
-        .catch(error => console.error('Error!', error.message))
-      })
-    
+*/
 
-  </script>
-</body>
-</html>
+    // Cargar datos al cargar la página
+    window.onload = loadData;
