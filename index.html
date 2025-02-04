@@ -141,7 +141,7 @@
         const id = item.getAttribute("data-id");
         const value = item.querySelector(".slider").value;
         const questionTitle = item.querySelector(".item-title").textContent.trim();
-        ratings["pais"] = participantsData.countries[currentIndex].["item-countryName"];
+        ratings["pais"] = participantsData.countries[currentIndex]["item-countryName"];
         ratings[questionTitle] = parseFloat(value);
 
     });
