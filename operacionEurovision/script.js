@@ -1,7 +1,7 @@
 // Constants
 const contestantsURL = 'https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/participants2024.json'; // Replace with the actual path to your contestants JSON file
 const questionsURL = 'https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/questions.json';
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzMmDJCLqy9-UqVXwJz_GiY6GGIO55jls5NeEBCd_X1AJlif_xCS0cDnGRKV1I4WK_yPA/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwVHUqg_NeshxWzly_5Rwg2QyrZL5wdq0nYIpUu_LFD_5Ba2_InXcS_W4_HQkiTQAFr/exec';
 
 // DOM Elements
 const topBar = document.getElementById('top-bar');
@@ -105,13 +105,12 @@ form.addEventListener('submit', async (e) => {
     comment: comment,
   };
 
-  // Send Data to Google Sheets
   try {
-    await fetch(scriptURL, {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
+    fetch(scriptURL, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
       },
     });
     alert('Thank you! Your response has been submitted.');
