@@ -1,6 +1,7 @@
 // Constants
-const jsonURL = 'https://github.com/eurovision-survey/surveyWeb/blob/main/participants2024.json'; // Replace with the actual path to your JSON file
-const scriptURL = 'https://script.google.com/macros/s/AKfycby1xhFxDOqvCE9Ksha90_vHR9HDLY3R376WP3NbkSMM21bSHoop5SR_bCeAioSk3wPX/exec';
+const contestantsURL = 'https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/participants2024.json'; // Replace with the actual path to your contestants JSON file
+const questionsURL = 'https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/questions.json';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzMmDJCLqy9-UqVXwJz_GiY6GGIO55jls5NeEBCd_X1AJlif_xCS0cDnGRKV1I4WK_yPA/exec';
 
 // DOM Elements
 const topBar = document.getElementById('top-bar');
@@ -14,26 +15,37 @@ const form = document.getElementById('survey-form');
 
 // Global Variables
 let contestants = [];
+let questions = [];
 let currentContestantIndex = 0;
 
 // Fetch Contestant Data
 async function fetchContestants() {
   try {
-    const response = await fetch(jsonURL);
+    const response = await fetch(contestantsURL);
     const data = await response.json();
     contestants = data.countries;
     displayContestant(currentContestantIndex);
-    generateSliders();
   } catch (error) {
     console.error('Error fetching contestant data:', error);
+  }
+}
+
+// Fetch Questions Data
+async function fetchQuestions() {
+  try {
+    const response = await fetch(questionsURL);
+    const data = await response.json();
+    questions = data.questions;
+    generateSliders();
+  } catch (error) {
+    console.error('Error fetching questions data:', error);
   }
 }
 
 // Display Contestant Information
 function displayContestant(index) {
   const contestant = contestants[index];
-  console.log(contestant)
-  flagImage.src = `https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/flags/${contestant["countryCode"]}.svg`;
+  flagImage.src = `https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/flags/${contestant['item-countryCode']}.svg`;
   countryName.textContent = contestant['item-countryName'];
   singer.textContent = `Singer: ${contestant['item-singer']}`;
   song.textContent = `Song: ${contestant['item-song']}`;
@@ -42,12 +54,13 @@ function displayContestant(index) {
 // Generate Sliders
 function generateSliders() {
   slidersContainer.innerHTML = ''; // Clear existing sliders
-  for (let i = 1; i <= 10; i++) {
+  questions.forEach((question, index) => {
     const sliderContainer = document.createElement('div');
     sliderContainer.className = 'slider-container';
 
     const label = document.createElement('label');
-    label.textContent = `Topic ${i}:`;
+    label.textContent = `${question['item-title']}:`;
+    label.title = question['item-description']; // Tooltip for description
     sliderContainer.appendChild(label);
 
     const slider = document.createElement('input');
@@ -70,7 +83,7 @@ function generateSliders() {
     });
 
     slidersContainer.appendChild(sliderContainer);
-  }
+  });
 }
 
 // Handle Form Submission
@@ -115,3 +128,4 @@ form.addEventListener('submit', async (e) => {
 
 // Initialize
 fetchContestants();
+fetchQuestions();
