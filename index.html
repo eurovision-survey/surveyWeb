@@ -223,60 +223,45 @@ button:hover {
     }
 
     // Evento para el botón "Continuar"
-    document.getElementById("next-country").addEventListener("click", function () {
+    document.getElementById("next-country").addEventListener("click", async function () {
+      const currentParticipant = participantsData.countries[currentIndex];
 
-      // Recollir dades del formulari
+      // Recollir dades dels sliders
       const ratings = {};
       document.querySelectorAll(".item").forEach(item => {
         const id = item.getAttribute("data-id");
         const value = item.querySelector(".slider").value;
-        ratings[id] = value;
-      });
-      // Enviar dades al servidor (JSON)
-      console.log("Dades enviades:", JSON.stringify(ratings));
-
-      // Incrementar el índice para el siguiente participante
-      currentIndex = (currentIndex + 1) % participantsData.countries.length;
-
-      // Actualizar la información con el siguiente participante
-      displayParticipant(currentIndex);
-      
-      // Reiniciar sliders
-      document.querySelectorAll(".slider").forEach(slider => slider.value = 5);
-      document.querySelectorAll(".slider-value").forEach(value => value.textContent = "5");
-      
-      // Volver al inicio de la página con efecto suave
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      // Recoger datos del formulario
-      document.querySelectorAll(".item").forEach(item => {
-        const id = item.getAttribute("data-id");
-        const value = item.querySelector(".slider").value;
-        ratings["rating_" + id] = value;
+        ratings["criteri" + id] = parseFloat(value);
       });
 
-      // Datos del participante actual
-      const currentParticipant = participantsData.countries[currentIndex];
+      // Objecte de dades a enviar
       const postData = {
         country: currentParticipant["item-countryName"],
         song: currentParticipant["item-song"],
         singer: currentParticipant["item-singer"],
+        video: currentParticipant["item-video"], // Si tens vídeos
         ...ratings
       };
 
-      fetch("https://script.google.com/macros/s/AKfycbzMmDJCLqy9-UqVXwJz_GiY6GGIO55jls5NeEBCd_X1AJlif_xCS0cDnGRKV1I4WK_yPA/exec", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(postData)
-      })
-      .then(response => response.json()) // Convertir la respuesta a JSON
-      .then(data => console.log("Dades enviades a Google Sheets:", data))
-      .catch(error => console.error("Error enviant dades:", error));
+      try {
+        // Enviar dades al Google Apps Script
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwDFLDPsSQ6NQUGD5lUpaUPiaonqulxKgTU9MknIudMKBz1wwe_88B75JVwf8uAAcemww/exec", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(postData)
+        });
 
+        const result = await response.text();
+        console.log("Resposta de Google Sheets:", result);
 
+        // Passar al següent participant
+        currentIndex = (currentIndex + 1) % participantsData.countries.length;
+        displayParticipant(currentIndex);
+      } catch (error) {
+        console.error("Error enviant dades:", error);
+      }
     });
+
 
     // Cargar datos al cargar la página
     window.onload = loadData;
