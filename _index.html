@@ -96,6 +96,7 @@
           const slider = document.createElement('input');
           slider.type = 'range';
           slider.classList.add('slider');
+          slider.name = question['item-title']+'Slider'
           slider.min = 1;
           slider.max = 10;
           slider.step = 0.25;
