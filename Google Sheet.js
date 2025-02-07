@@ -3,44 +3,36 @@ const form = document.forms['contact-form'];
 
 // Function to generate a unique ID
 function generateUniqueId() {
-  const random = Math.random().toString(36).substring(2); // Random string
-  const timestamp = Date.now().toString(36); // Timestamp
-  return `${random}-${timestamp}`; // Combine random string and timestamp
+  return `${Math.random().toString(36).substring(2)}-${Date.now().toString(36)}`;
 }
 
 // Function to set a cookie
 function setCookie(name, value, days) {
   const date = new Date();
-  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Expiration time
-  const expires = `expires=${date.toUTCString()}`;
-  document.cookie = `${name}=${value};${expires};path=/`;
-  console.log(`Cookie set: ${name}=${value}`); // Debugging
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+  document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
 }
 
 // Function to get a cookie
 function getCookie(name) {
-  const cookieName = `${name}=`;
-  const cookies = document.cookie.split(';');
-  for (let i = 0; i < cookies.length; i++) {
-    let cookie = cookies[i].trim();
-    if (cookie.startsWith(cookieName)) {
-      console.log(`Cookie found: ${cookie}`); // Debugging
-      return cookie.substring(cookieName.length, cookie.length);
-    }
+  const cookies = document.cookie.split('; ');
+  for (const cookie of cookies) {
+    const [key, value] = cookie.split('=');
+    if (key === name) return value;
   }
-  console.log(`Cookie not found: ${name}`); // Debugging
   return null;
 }
 
-// Assign a unique ID to the user (or retrieve it from the cookie if it exists)
+// Assign or retrieve user ID
 let userId = getCookie('userId');
 if (!userId) {
   userId = generateUniqueId();
-  setCookie('userId', userId, 365); // Store the ID in a cookie for 1 year
-  console.log(`New userId generated: ${userId}`); // Debugging
+  setCookie('userId', userId, 365);
+  console.log(`New userId generated: ${userId}`);
 } else {
-  console.log(`Existing userId retrieved: ${userId}`); // Debugging
+  console.log(`Existing userId retrieved: ${userId}`);
 }
+
 
 form.addEventListener('submit', e => {
   e.preventDefault();
