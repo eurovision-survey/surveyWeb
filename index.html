@@ -3,34 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eurovision Survey</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Eurovisió - Valoració</title>
+  <link rel="stylesheet" href="Google Sheet.css"/>
 </head>
 <body>
-  <!-- Top Bar -->
-  <div id="top-bar">
-    <img id="flag" src="" alt="Country Flag" class="flag-image">
-    <div id="contestant-info">
-      <h2 id="country-name"></h2>
-      <p id="singer"></p>
-      <p id="song"></p>
+  <!-- Barra superior fixa -->
+  <div class="header">
+    <div class="info" id="info">
+      <!-- Aquí se generará la información del participante -->
     </div>
   </div>
-
-  <!-- Survey Form -->
   <div class="container">
-    <form id="survey-form">
-      <!-- Sliders will be dynamically generated here -->
-      <div id="sliders-container"></div>
-
-      <!-- Comment Box -->
-      <textarea id="comment" placeholder="Optional: Add your comments here..." rows="4"></textarea>
-
-      <!-- Submit Button -->
-      <button type="submit" id="submit">Continue</button>
+    <form method="post" action="" name="contact-form" id="contact-form">
+      <div id="sliders"></div>
+      <input type="text" name="your-name" placeholder="Name">
+      <input type="email" name="your-email" placeholder="Email">
+      <textarea name="message" rows="7" placeholder="Your Message"></textarea>
+      <input type="submit" value="Submit" id="submit">
     </form>
   </div>
-
-  <script src="script.js"></script>
+  <script type="text/javascript" src="Google Sheet.js"></script>
 </body>
 </html>
