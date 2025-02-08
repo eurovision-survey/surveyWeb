@@ -73,6 +73,7 @@ form.addEventListener('submit', async e => {
     
     if (currentIndex < participantsData.countries.length) {
       displayParticipant(currentIndex);
+      generateRatingItems(questionsData); // Reload sliders
       form.reset();
     } else {
       console.log('Survey completed. Redirecting to thank you page.');
@@ -86,6 +87,7 @@ form.addEventListener('submit', async e => {
 
 // Variables
 let participantsData = [];
+let questionsData = [];
 
 // Mostrar informació del participant actual
 function displayParticipant(index) {
@@ -116,21 +118,71 @@ function displayParticipant(index) {
   `;
 }
 
-// Carregar els ítems de valoració i participants des dels fitxers JSON
-async function loadData() {
-  try {
-    console.log('Loading participants data');
-    const participantResponse = await fetch("https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/participants2024.json");
-    if (!participantResponse.ok) {
-      throw new Error('No s\'ha pogut carregar el fitxer de participants');
-    }
-    participantsData = await participantResponse.json();
-    console.log('Participants data loaded', participantsData);
-    displayParticipant(currentIndex);
-  } catch (error) {
-    console.error("Error carregant dades:", error);
+// Crear els sliders
+function generateRatingItems(data) {
+  const formContainer = document.getElementById('sliders');
+  formContainer.innerHTML = '';
+  
+  if (data && data.questions && Array.isArray(data.questions)) {
+    data.questions.forEach((question, index) => {
+      const itemDiv = document.createElement('div');
+      itemDiv.classList.add('item');
+      itemDiv.setAttribute('data-id', index + 1);
+
+      const itemTitle = document.createElement('p');
+      itemTitle.classList.add('item-title');
+      itemTitle.textContent = question['item-title'];
+
+      const itemDescription = document.createElement('p');
+      itemDescription.classList.add('item-description');
+      itemDescription.textContent = question['item-description'];
+
+      const sliderContainer = document.createElement('div');
+      sliderContainer.classList.add('slider-container');
+
+      const slider = document.createElement('input');
+      slider.type = 'range';
+      slider.classList.add('slider');
+      slider.name = question['item-name'];
+      slider.min = 1;
+      slider.max = 10;
+      slider.step = 0.25;
+      slider.value = 5;
+
+      const sliderValue = document.createElement('span');
+      sliderValue.classList.add('slider-value');
+      sliderValue.textContent = '5';
+
+      slider.addEventListener('input', function () {
+        sliderValue.textContent = slider.value;
+      });
+
+      sliderContainer.appendChild(slider);
+      sliderContainer.appendChild(sliderValue);
+
+      itemDiv.appendChild(itemTitle);
+      itemDiv.appendChild(itemDescription);
+      itemDiv.appendChild(sliderContainer);
+
+      formContainer.appendChild(itemDiv);
+    });
+  } else {
+    console.error("Format JSON incorrecte");
   }
 }
 
 // Cargar datos al cargar la página
+async function loadData() {
+  try {
+    console.log('Loading participants and questions data');
+    const participantResponse = await fetch("https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/participants2024.json");
+    const questionResponse = await fetch("https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/questions.json");
+    participantsData = await participantResponse.json();
+    questionsData = await questionResponse.json();
+    displayParticipant(currentIndex);
+    generateRatingItems(questionsData);
+  } catch (error) {
+    console.error("Error carregant dades:", error);
+  }
+}
 window.onload = loadData;
