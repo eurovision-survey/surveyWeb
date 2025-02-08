@@ -33,8 +33,10 @@ if (!userId) {
   console.log(`Existing userId retrieved: ${userId}`);
 }
 
+// Retrieve last viewed participant index
+let currentIndex = parseInt(getCookie('participantIndex')) || 0;
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async e => {
   e.preventDefault();
 
   // Get the country name from the header
@@ -52,16 +54,27 @@ form.addEventListener('submit', e => {
     formData.append(key, value);
   }
 
-  // Send the form data to the server
-  fetch(scriptURL, { method: 'POST', body: formData })
-    .then(response => alert("Thank you! Form is submitted"))
-    .then(() => { window.location.reload(); })
-    .catch(error => console.error('Error!', error.message));
+  try {
+    await fetch(scriptURL, { method: 'POST', body: formData });
+    
+    // Move to the next participant or finish the survey
+    currentIndex++;
+    setCookie('participantIndex', currentIndex, 365); // Store progress in cookie
+    
+    if (currentIndex < participantsData.countries.length) {
+      displayParticipant(currentIndex);
+      form.reset();
+    } else {
+      setCookie('participantIndex', 0, 365); // Reset progress when finished
+      window.location.href = 'thankyou.html'; // Redirect to Thank You page
+    }
+  } catch (error) {
+    console.error('Error!', error.message);
+  }
 });
 
 // Variables
 let participantsData = [];
-let currentIndex = 0;
 
 // Mostrar informació del participant actual
 function displayParticipant(index) {
@@ -91,7 +104,7 @@ async function loadData() {
       throw new Error('No s\'ha pogut carregar el fitxer de participants');
     }
     participantsData = await participantResponse.json();
-    displayParticipant(currentIndex); // Mostrar primer participant
+    displayParticipant(currentIndex); // Mostrar el participant guardat
 
     // Carregar dades dels ítems de valoració
     const response = await fetch("https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/questions.json");
@@ -105,9 +118,11 @@ async function loadData() {
   }
 }
 
-//Crear els sliders
+// Crear els sliders
 function generateRatingItems(data) {
   const formContainer = document.getElementById('sliders');
+  formContainer.innerHTML = ''; // Clear previous sliders
+  
   if (data && data.questions && Array.isArray(data.questions)) {
     data.questions.forEach((question, index) => {
       const itemDiv = document.createElement('div');
@@ -151,7 +166,6 @@ function generateRatingItems(data) {
 
       formContainer.appendChild(itemDiv);
     });
-
   } else {
     console.error("Format JSON incorrecte");
   }
