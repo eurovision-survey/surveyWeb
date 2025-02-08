@@ -27,7 +27,7 @@ function getCookie(name) {
 let userId = getCookie('userId');
 if (!userId) {
   userId = generateUniqueId();
-  setCookie('userId', userId, 365);
+  setCookie('userId', userId, 1); //1 day cookie
   console.log(`New userId generated: ${userId}`);
 } else {
   console.log(`Existing userId retrieved: ${userId}`);
