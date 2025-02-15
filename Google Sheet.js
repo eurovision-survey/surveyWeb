@@ -43,15 +43,22 @@ form.addEventListener('submit', async e => {
 
   // Disable the submit button to prevent multiple clicks
   const submitButton = document.getElementById('submit');
-  submitButton.disabled = true;
-  submitButton.value = 'Submitting...'; // Optional: Change button text to indicate processing
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = 'Submitting...'; // Change button text to indicate processing
+  } else {
+    console.error('Submit button not found!');
+    return;
+  }
 
   // Get the country name from the header
   const countryNameElement = document.querySelector('.country-name span');
   if (!countryNameElement) {
     console.error('Country name element not found!');
-    submitButton.disabled = false; // Re-enable the button if there's an error
-    submitButton.value = 'Submit'; // Reset button text
+    if (submitButton) {
+      submitButton.disabled = false; // Re-enable the button if there's an error
+      submitButton.textContent = 'Submit'; // Reset button text
+    }
     return;
   }
   const countryName = countryNameElement.textContent;
@@ -92,8 +99,10 @@ form.addEventListener('submit', async e => {
     console.error('Error submitting form!', error.message);
   } finally {
     // Re-enable the submit button after the function completes
-    submitButton.disabled = false;
-    submitButton.value = 'Submit'; // Reset button text
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Submit'; // Reset button text
+    }
   }
 });
 
