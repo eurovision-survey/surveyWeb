@@ -44,7 +44,7 @@ form.addEventListener('submit', async e => {
   // Disable the submit button to prevent multiple clicks
   const submitButton = document.getElementById('submit');
   if (submitButton) {
-    submitButton.disabled = true;
+    submitButton.classList.add('disabled'); // Add CSS class to disable the button
     submitButton.textContent = 'Submitting...'; // Change button text to indicate processing
   } else {
     console.error('Submit button not found!');
@@ -56,7 +56,7 @@ form.addEventListener('submit', async e => {
   if (!countryNameElement) {
     console.error('Country name element not found!');
     if (submitButton) {
-      submitButton.disabled = false; // Re-enable the button if there's an error
+      submitButton.classList.remove('disabled'); // Re-enable the button if there's an error
       submitButton.textContent = 'Submit'; // Reset button text
     }
     return;
@@ -100,7 +100,7 @@ form.addEventListener('submit', async e => {
   } finally {
     // Re-enable the submit button after the function completes
     if (submitButton) {
-      submitButton.disabled = false;
+      submitButton.classList.remove('disabled'); // Remove CSS class to re-enable the button
       submitButton.textContent = 'Submit'; // Reset button text
     }
   }

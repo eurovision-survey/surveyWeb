@@ -200,4 +200,10 @@ textarea {
   .item-description {
     font-size: 0.75rem; /* Further reduce font size for very small screens */
   }
+
+  #submit.disabled {
+  background-color: #ccc; /* Gray out the button */
+  cursor: not-allowed; /* Show not-allowed cursor */
+  pointer-events: none; /* Prevent clicks */
+}
 }
