@@ -41,10 +41,17 @@ form.addEventListener('submit', async e => {
   e.preventDefault();
   console.log('Form submitted');
 
+  // Disable the submit button to prevent multiple clicks
+  const submitButton = document.getElementById('submit');
+  submitButton.disabled = true;
+  submitButton.value = 'Submitting...'; // Optional: Change button text to indicate processing
+
   // Get the country name from the header
   const countryNameElement = document.querySelector('.country-name span');
   if (!countryNameElement) {
     console.error('Country name element not found!');
+    submitButton.disabled = false; // Re-enable the button if there's an error
+    submitButton.value = 'Submit'; // Reset button text
     return;
   }
   const countryName = countryNameElement.textContent;
@@ -69,19 +76,24 @@ form.addEventListener('submit', async e => {
     // Move to the next participant or finish the survey
     currentIndex++;
     console.log(`Moving to next participant: ${currentIndex}`);
-    setCookie('participantIndex', currentIndex, 365); // Store progress in cookie
+    setCookie('participantIndex', currentIndex, 3); // Store progress in cookie
     
     if (currentIndex < participantsData.countries.length) {
       displayParticipant(currentIndex);
       generateRatingItems(questionsData); // Reload sliders
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       form.reset();
     } else {
       console.log('Survey completed. Redirecting to thank you page.');
-      setCookie('participantIndex', 0, 365); // Reset progress when finished
+      setCookie('participantIndex', 0, 1); // Reset progress when finished
       window.location.href = 'thankyou.html'; // Redirect to Thank You page
     }
   } catch (error) {
     console.error('Error submitting form!', error.message);
+  } finally {
+    // Re-enable the submit button after the function completes
+    submitButton.disabled = false;
+    submitButton.value = 'Submit'; // Reset button text
   }
 });
 
