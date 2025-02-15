@@ -24,7 +24,7 @@ body {
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 15vh; /* Keep using vh for height */
   color: #fff;
 }
@@ -81,7 +81,7 @@ input, textarea {
   border: 1px solid #ccc;
   border-radius: 0.3125rem; /* Use rem for border radius */
   font-size: 1rem; /* Use rem for font size */
-  padding: 0.5rem; /* Added padding for better touch interaction */
+   /*padding: 0.5rem; Added padding for better touch interaction */
 }
 
 textarea {
