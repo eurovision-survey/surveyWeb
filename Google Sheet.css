@@ -1,9 +1,22 @@
+/* Define Font Size Variables */
+:root {
+  --base-font-size: 1.5rem;
+  --title-font-size: 3rem;
+  --subtitle-font-size: 2rem;
+  --input-font-size: 1.5rem;
+  --button-font-size: 1.8rem;
+  --slider-value-font-size: 1.8rem;
+  --item-title-font-size: 2rem;
+  --item-description-font-size: 1.5rem;
+}
+
+/* General Styles */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  font-size: 1rem; /* Use rem for font size */
+  font-size: var(--base-font-size);
 }
 
 body {
@@ -14,31 +27,32 @@ body {
   color: #333;
 }
 
+/* Header Styles */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #333;
-  padding: 1rem; /* Use rem for padding */
+  padding: 1.5rem;
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  height: 15vh; /* Keep using vh for height */
+  justify-content: center;
+  height: 15vh;
   color: #fff;
 }
 
 .info {
   display: flex;
   align-items: center;
-  gap: 1rem; /* Use rem for gap */
+  gap: 1.5rem;
 }
 
 .country-flag {
   height: 100%;
   width: auto;
-  max-height: 13vh; /* Keep using vh for height */
+  max-height: 13vh;
 }
 
 #participant {
@@ -48,40 +62,40 @@ body {
 }
 
 .song-title {
-  font-size: 1.5rem; /* Reduced font size for mobile */
+  font-size: var(--title-font-size);
   font-weight: bold;
-  margin-bottom: 0.5rem; /* Use rem for margin */
+  margin-bottom: 1rem;
   color: #fff;
 }
 
 .performer-name, .country-name {
-  font-size: 1rem; /* Reduced font size for mobile */
-  margin-bottom: 0.25rem; /* Use rem for margin */
+  font-size: var(--subtitle-font-size);
+  margin-bottom: 0.75rem;
   color: #fff;
 }
 
 .container {
   width: 100%;
   flex: 1;
-  padding: 1rem; /* Reduced padding for mobile */
+  padding: 2rem;
   background-color: #fff;
   margin-top: 15vh;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 h4 {
-  margin-bottom: 0.625rem; /* Use rem for margin */
-  font-size: 1.25rem; /* Reduced font size for mobile */
+  margin-bottom: 1.5rem;
+  font-size: var(--subtitle-font-size);
   color: #333;
 }
 
 input, textarea {
   width: 100%;
-  margin-bottom: 0.625rem; /* Use rem for margin */
+  padding: 1rem;
+  margin-bottom: 1rem;
   border: 1px solid #ccc;
-  border-radius: 0.3125rem; /* Use rem for border radius */
-  font-size: 1rem; /* Use rem for font size */
-   /*padding: 0.5rem; Added padding for better touch interaction */
+  border-radius: 0.5rem;
+  font-size: var(--input-font-size);
 }
 
 textarea {
@@ -92,39 +106,34 @@ textarea {
   border: none;
   background-color: #333;
   color: #fff;
-  width: 100%; /* Full width for mobile */
-  margin-top: 0.625rem; /* Use rem for margin */
-  border-radius: 0.3125rem; /* Use rem for border radius */
-  font-size: 1rem; /* Use rem for font size */
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  font-size: var(--button-font-size);
   cursor: pointer;
   transition: background-color 0.3s ease;
-  padding: 0.75rem; /* Added padding for better touch interaction */
+  padding: 1rem;
 }
 
-#submit:disabled {
-  background-color: #ccc; /* Gray out the button when disabled */
-  cursor: not-allowed; /* Show not-allowed cursor when disabled */
-}
-
-#submit:hover:not(:disabled) {
-  background-color: #555; /* Hover effect only when not disabled */
+#submit:hover {
+  background-color: #555;
 }
 
 .slider-container {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem; /* Use rem for margin */
+  margin-bottom: 1.5rem;
 }
 
 .slider {
   flex: 1;
-  margin-right: 0.625rem; /* Use rem for margin */
-  -webkit-appearance: none; /* Remove default styling */
+  margin-right: 1rem;
+  -webkit-appearance: none;
   appearance: none;
-  height: 0.5rem; /* Use rem for height */
+  height: 0.75rem;
   background: #ddd;
   outline: none;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: opacity 0.2s;
 }
 
@@ -135,75 +144,65 @@ textarea {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 1.25rem; /* Use rem for width */
-  height: 1.25rem; /* Use rem for height */
+  width: 1.75rem;
+  height: 1.75rem;
   background: #333;
   cursor: pointer;
   border-radius: 50%;
 }
 
 .slider::-moz-range-thumb {
-  width: 1.25rem; /* Use rem for width */
-  height: 1.25rem; /* Use rem for height */
+  width: 1.75rem;
+  height: 1.75rem;
   background: #333;
   cursor: pointer;
   border-radius: 50%;
 }
 
 .slider-value {
-  width: 2.5rem; /* Use rem for width */
+  width: 3rem;
   text-align: center;
-  font-size: 1rem; /* Use rem for font size */
+  font-size: var(--slider-value-font-size);
   color: #333;
 }
 
 .item-title {
   font-weight: bold;
-  font-size: 1.125rem; /* Reduced font size for mobile */
-  margin-bottom: 0.3125rem; /* Use rem for margin */
+  font-size: var(--item-title-font-size);
+  margin-bottom: 0.5rem;
   color: #333;
 }
 
 .item-description {
-  font-size: 0.875rem; /* Reduced font size for mobile */
+  font-size: var(--item-description-font-size);
   color: #555;
-  margin-bottom: 1rem; /* Use rem for margin */
+  margin-bottom: 1.5rem;
 }
 
-/* Media Query for smaller screens */
 @media (max-width: 600px) {
   .song-title {
-    font-size: 1.25rem; /* Further reduce font size for very small screens */
+    font-size: calc(var(--title-font-size) * 0.8);
   }
-
   .performer-name, .country-name {
-    font-size: 0.875rem; /* Further reduce font size for very small screens */
+    font-size: calc(var(--subtitle-font-size) * 0.8);
   }
-
   .container {
-    padding: 0.75rem; /* Further reduce padding for very small screens */
+    padding: 1.5rem;
   }
-
   h4 {
-    font-size: 1rem; /* Further reduce font size for very small screens */
+    font-size: calc(var(--subtitle-font-size) * 0.8);
   }
-
   #submit {
-    font-size: 0.875rem; /* Further reduce font size for very small screens */
-    padding: 0.5rem; /* Adjust padding for very small screens */
+    font-size: calc(var(--button-font-size) * 0.8);
+    padding: 1rem;
   }
-
   .item-title {
-    font-size: 1rem; /* Further reduce font size for very small screens */
+    font-size: calc(var(--item-title-font-size) * 0.8);
   }
-
   .item-description {
-    font-size: 0.75rem; /* Further reduce font size for very small screens */
+    font-size: calc(var(--item-description-font-size) * 0.8);
   }
-}
-
-#submit.disabled {
-  background-color: #ccc; /* Gray out the button */
-  cursor: not-allowed; /* Show not-allowed cursor */
-  pointer-events: none; /* Prevent clicks */
+  .slider-value {
+    font-size: calc(var(--slider-value-font-size) * 0.8);
+  }
 }
