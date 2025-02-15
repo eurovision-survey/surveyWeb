@@ -165,7 +165,7 @@ function generateRatingItems(data) {
       slider.type = 'range';
       slider.classList.add('slider');
       slider.name = question['item-name'];
-      slider.min = 1;
+      slider.min = 0;
       slider.max = 10;
       slider.step = 0.25;
       slider.value = 5;
