@@ -120,6 +120,12 @@ textarea {
   padding: 1rem;
 }
 
+#submit.disabled {
+  background-color: #ccc; /* Gray out the button */
+  cursor: not-allowed; /* Show not-allowed cursor */
+  pointer-events: none; /* Prevent clicks */
+}
+
 #submit:hover {
   background-color: #555;
 }
