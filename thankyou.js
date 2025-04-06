@@ -45,20 +45,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function copiar() {
   const userId = document.getElementById("user-id-display").textContent;
-  navigator.clipboard.writeText(userId).then(() => {
-    const copyBtn = document.getElementById("copy-btn");
-    const originalTitle = copyBtn.title;
-    // Feedback visual al usuario
-    copyBtn.title = "¡Copiado!";
-    copyBtn.innerHTML = "✅";
-    setTimeout(() => {
-      copyBtn.title = originalTitle;
-      copyBtn.innerHTML = "📋";
-    }, 2000);
-  }).catch(err => {
-    console.error("Error al copiar:", err);
-  });
+  const copyBtn = document.getElementById("copy-btn");
+
+  // Intentar usar Clipboard API moderna
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(userId).then(() => {
+      mostrarFeedback(copyBtn);
+    }).catch(err => {
+      console.error("Error al copiar con Clipboard API:", err);
+      copiarAlternativo(userId, copyBtn);
+    });
+  } else {
+    // Fallback para entornos no seguros o navegadores sin soporte
+    copiarAlternativo(userId, copyBtn);
+  }
 }
+
+function copiarAlternativo(texto, copyBtn) {
+  const input = document.createElement("input");
+  input.value = texto;
+  document.body.appendChild(input);
+  input.select();
+  try {
+    const exito = document.execCommand("copy");
+    if (exito) {
+      mostrarFeedback(copyBtn);
+    } else {
+      console.warn("execCommand falló");
+    }
+  } catch (err) {
+    console.error("Error al usar execCommand:", err);
+  }
+  document.body.removeChild(input);
+}
+
+function mostrarFeedback(boton) {
+  const originalTitle = boton.title;
+  boton.title = "¡Copiado!";
+  boton.innerHTML = "✅";
+  setTimeout(() => {
+    boton.title = originalTitle;
+    boton.innerHTML = "📋";
+  }, 4000);
+}
+
 
 function getCookie(name) {
   const cookies = document.cookie.split("; ");
