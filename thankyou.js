@@ -13,10 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const inlineSpan = document.getElementById("user-id-inline");
 
   if (userId) {
-    displayBlock.textContent = `Tu código identificador es: ${userId}`;
+    displayBlock.textContent = userId;
     inlineSpan.textContent = userId;
   } else {
-    displayBlock.textContent = "No se encontró el código del usuario.";
+    displayBlock.textContent = "Ha habido un error con el código";
     inlineSpan.textContent = "desconocido";
   }
 });
