@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     displayBlock.textContent = userId;
     inlineSpan.textContent = userId;
   } else {
-    displayBlock.textContent = "Ha habido un error con el código";
+    displayBlock.textContent = "desconocido";
     inlineSpan.textContent = "desconocido";
   }
 });
