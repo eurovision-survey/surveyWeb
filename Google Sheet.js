@@ -1,5 +1,25 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycby1xhFxDOqvCE9Ksha90_vHR9HDLY3R376WP3NbkSMM21bSHoop5SR_bCeAioSk3wPX/exec';
 const form = document.forms['contact-form'];
+const urlText = "https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/texts_cat.json"
+let TEXTS = {}; // Objeto global
+
+fetch(urlText)
+  .then((res) => res.json())
+  .then((data) => {
+    TEXTS = data;
+    applyTexts(); // Llamamos a esta función para poblar la UI
+  })
+  .catch((err) => console.error("Error carregant texts:", err));
+
+function applyTexts() {
+  document.getElementById("form-version").textContent = TEXTS.form_version;
+  document.getElementById("comment").placeholder = TEXTS.comment_placeholder;
+  document.getElementById("submit").value = TEXTS.submit_button;
+  document.getElementById("label_performer").value = TEXTS.label_performer;
+  document.getElementById("label_country").value = TEXTS.label_country;
+  // puedes seguir con más traducciones si agregas más IDs o clases
+}
+
 
 // Function to generate a unique ID
 function generateUniqueId() {
@@ -133,8 +153,8 @@ function displayParticipant(index) {
     <img src="${flagUrl}" alt="Bandera de ${participant['item-countryName']}" class="country-flag">
     <div id="participant">
       <p class="song-name"><h1 class="song-title">${participant['item-song']}</h1></p>
-      <p class="performer-name">Intérprete: <span>${participant['item-singer']}</span></p>
-      <p class="country-name">País: <span>${participant['item-countryName']}</span></p>
+      <p class="performer-name">${TEXTS.label_performer}: <span>${participant['item-singer']}</span></p>
+      <p class="country-name">${TEXTS.label_country}: <span>${participant['item-countryName']}</span></p>
     </div>
   `;
 }
@@ -197,7 +217,14 @@ async function loadData() {
   try {
     console.log('Loading participants and questions data');
     const participantResponse = await fetch("https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/participants2024.json");
-    const questionResponse = await fetch("https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/questions.json");
+    const questionResponse = await fetch(urlText);
+  .then((res) => res.json())
+  .then((data) => {
+    TEXTS = data;
+    renderQuestions(TEXTS.questions); // <- Reutilizas esto igual que antes
+    applyTexts();
+  });
+
     participantsData = await participantResponse.json();
     questionsData = await questionResponse.json();
     displayParticipant(currentIndex);

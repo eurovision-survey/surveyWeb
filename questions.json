@@ -2,52 +2,52 @@
   "questions": [
     {
       "item-title": "Originalitat",
-      "item-description": "DescripciÃ³ detallada de l'Ã­tem 1.",
+      "item-description": "Descripció detallada de l'ítem 1.",
       "item-name": "Originalitat"
     },
     {
       "item-title": "Lletra",
-      "item-description": "DescripciÃ³ detallada de l'Ã­tem 2.",
+      "item-description": "Descripció detallada de l'ítem 2.",
       "item-name": "Lletra"
     },
     {
       "item-title": "Veus",
-      "item-description": "DescripciÃ³ detallada de l'Ã­tem 3.",
+      "item-description": "Descripció detallada de l'ítem 3.",
       "item-name": "Veus"
     },
     {
       "item-title": "Ritme",
-      "item-description": "DescripciÃ³ detallada de l'Ã­tem 4.",
+      "item-description": "Descripció detallada de l'ítem 4.",
       "item-name": "Ritme"
     },
     {
       "item-title": "Vestuari",
-      "item-description": "DescripciÃ³ detallada de l'Ã­tem 5.",
+      "item-description": "Descripció detallada de l'ítem 5.",
       "item-name": "Vestuari"
     },
     {
       "item-title": "Escenografia",
-      "item-description": "DescripciÃ³ detallada de l'Ã­tem 6.",
+      "item-description": "Descripció detallada de l'ítem 6.",
       "item-name": "Escenografia"
     },
     {
-      "item-title": "InterpretaciÃ³",
-      "item-description": "DescripciÃ³ detallada de l'Ã­tem 7.",
-      "item-name": "InterpretaciÃ³"
+      "item-title": "Interpretació",
+      "item-description": "Descripció detallada de l'ítem 7.",
+      "item-name": "Interpretació"
     },
     {
-      "item-title": "CoherÃ¨ncia Cultural",
-      "item-description": "DescripciÃ³ detallada de l'Ã­tem 8.",
+      "item-title": "Coherència Cultural",
+      "item-description": "Descripció detallada de l'ítem 8.",
       "item-name": "Cultural"
     },
     {
-      "item-title": "ConnexiÃ³ emocional",
-      "item-description": "DescripciÃ³ detallada de l'Ã­tem 9.",
+      "item-title": "Connexió emocional",
+      "item-description": "Descripció detallada de l'ítem 9.",
       "item-name": "Emocional"
     },
     {
       "item-title": "General",
-      "item-description": "DescripciÃ³ detallada de l'Ã­tem 10.",
+      "item-description": "Descripció detallada de l'ítem 10.",
       "item-name": "General"
     }
   ]

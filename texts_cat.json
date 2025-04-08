@@ -1,0 +1,63 @@
+{
+  "form_version": "Versió 0.2.4",
+  "comment_placeholder": "Comentari",
+  "submit_button": "Enviar",
+  "header_loading": "Carregant participant...",
+  "slider_default_label": "Valoració",
+  "error_loading_data": "Error en carregar les dades.",
+  "loading_questions": "Carregant preguntes...",
+  "label_performer": "Intèrpret",
+  "label_country": "País",
+  "questions": [
+    {
+      "name": "Originalitat",
+      "title": "Originalitat",
+      "description": "Descripció detallada de l'ítem 1."
+    },
+    {
+      "name": "Lletra",
+      "title": "Lletra",
+      "description": "Descripció detallada de l'ítem 2."
+    },
+    {
+      "name": "Veus",
+      "title": "Veus",
+      "description": "Descripció detallada de l'ítem 3."
+    },
+    {
+      "name": "Ritme",
+      "title": "Ritme",
+      "description": "Descripció detallada de l'ítem 4."
+    },
+    {
+      "name": "Vestuari",
+      "title": "Vestuari",
+      "description": "Descripció detallada de l'ítem 5."
+    },
+    {
+      "name": "Escenografia",
+      "title": "Escenografia",
+      "description": "Descripció detallada de l'ítem 6."
+    },
+    {
+      "name": "Interpretació",
+      "title": "Interpretació",
+      "description": "Descripció detallada de l'ítem 7."
+    },
+    {
+      "name": "Cultural",
+      "title": "Coherència Cultural",
+      "description": "Descripció detallada de l'ítem 8."
+    },
+    {
+      "name": "Emocional",
+      "title": "Connexió emocional",
+      "description": "Descripció detallada de l'ítem 9."
+    },
+    {
+      "name": "General",
+      "title": "General",
+      "description": "Descripció detallada de l'ítem 10."
+    }
+  ]
+}
