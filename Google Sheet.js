@@ -15,8 +15,6 @@ function applyTexts() {
   document.getElementById("form-version").textContent = TEXTS.form_version;
   document.getElementById("comment").placeholder = TEXTS.comment_placeholder;
   document.getElementById("submit").value = TEXTS.submit_button;
-  document.getElementById("label_performer").value = TEXTS.label_performer;
-  document.getElementById("label_country").value = TEXTS.label_country;
   // puedes seguir con más traducciones si agregas más IDs o clases
 }
 
@@ -164,19 +162,19 @@ function generateRatingItems(data) {
   const formContainer = document.getElementById('sliders');
   formContainer.innerHTML = '';
   
-  if (data && data.questions && Array.isArray(data.questions)) {
-    data.questions.forEach((question, index) => {
+  if (data && Array.isArray(data)) {
+    data.forEach((question, index) => {
       const itemDiv = document.createElement('div');
       itemDiv.classList.add('item');
       itemDiv.setAttribute('data-id', index + 1);
 
       const itemTitle = document.createElement('p');
       itemTitle.classList.add('item-title');
-      itemTitle.textContent = question['item-title'];
+      itemTitle.textContent = question.title;
 
       const itemDescription = document.createElement('p');
       itemDescription.classList.add('item-description');
-      itemDescription.textContent = question['item-description'];
+      itemDescription.textContent = question.description;
 
       const sliderContainer = document.createElement('div');
       sliderContainer.classList.add('slider-container');
@@ -184,7 +182,7 @@ function generateRatingItems(data) {
       const slider = document.createElement('input');
       slider.type = 'range';
       slider.classList.add('slider');
-      slider.name = question['item-name'];
+      slider.name = question.name;
       slider.min = 0;
       slider.max = 10;
       slider.step = 0.25;
@@ -217,16 +215,17 @@ async function loadData() {
   try {
     console.log('Loading participants and questions data');
     const participantResponse = await fetch("https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/participants2024.json");
-    const questionResponse = await fetch(urlText);
+    /*const questionResponse = await fetch(urlText)
   .then((res) => res.json())
   .then((data) => {
     TEXTS = data;
-    renderQuestions(TEXTS.questions); // <- Reutilizas esto igual que antes
+    generateRatingItems(TEXTS.questions); // <- Reutilizas esto igual que antes
     applyTexts();
-  });
+  });*/
 
     participantsData = await participantResponse.json();
-    questionsData = await questionResponse.json();
+    questionsData = TEXTS.questions;
+    console.log(questionsData);
     displayParticipant(currentIndex);
     generateRatingItems(questionsData);
   } catch (error) {
