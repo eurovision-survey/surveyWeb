@@ -59,5 +59,21 @@
       "title": "General",
       "description": "Descripció detallada de l'ítem 10."
     }
-  ]
+  ],
+
+  "thankyou_title": "🎉Gràcies per completar el formulari d'Eurovisió!🎉",
+  "thankyou_code_label": "El teu codi identificador és:",
+  "thankyou_copy_button": "Copiar 📋",
+  "thankyou_copy_success": "¡Copiat!",
+  "thankyou_copy_icon": "📋",
+  "thankyou_copy_icon_done": "✅",
+  "thankyou_spreadsheet_button": "Veure les meves respostes a Google Sheets",
+  "thankyou_instructions_title": "Com veure les meves respostes?",
+  "thankyou_instruction_1": "Haz clic en el botón \"Ver mis respuestas en Google Sheets\".",
+  "thankyou_instruction_2": "En la hoja que se abre, busca la columna llamada \"user-id\".",
+  "thankyou_instruction_3": "En la barra superior de Google Sheets, ve a Datos → Crear un filtro.",
+  "thankyou_instruction_4": "Haz clic en el ícono de filtro (🔽) en la cabecera de \"user-id\".",
+  "thankyou_instruction_5": "Desmarca todo y marca solo tu código:",
+  "thankyou_instruction_6": "¡Listo! Solo verás tus propias respuestas."
+
 }

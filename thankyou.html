@@ -9,32 +9,30 @@
 </head>
 
 <body>
-<div class="thankyou-container">
-  <div class="thankyou-message">🎉¡Gracias por completar el formulario de Eurovisión!🎉</div>
+  <div class="thankyou-container">
+    <div class="thankyou-message" id="thankyou-title"></div>
 
-<div class="code-label">Tu código identificador es:</div>
-<div class="user-id">
-  <span id="user-id-display">cargando...</span>
-  <!-- Botón de copiar -->
-  <button id="copy-btn" class="copy-btn" title="Copiar al portapapeles">Copiar 📋</button>
-</div>
+    <div class="code-label" id="thankyou-code-label"></div>
+    <div class="user-id">
+      <span id="user-id-display">cargando...</span>
+      <button id="copy-btn" class="copy-btn" title="">📋</button>
+    </div>
 
-  <a class="excel-button" href="https://docs.google.com/spreadsheets/d/your_excel_id_here/edit" target="_blank">
-    Ver mis respuestas en Google Sheets
-  </a>
+    <a class="excel-button" id="spreadsheet-button" href="https://docs.google.com/spreadsheets/d/your_excel_id_here/edit" target="_blank">
+      <!-- Texto dinámico -->
+    </a>
 
-  <div class="instructions">
-    <p><strong>¿Cómo ver tus respuestas?</strong></p>
-    <ol>
-      <li>Haz clic en el botón <strong>"Ver mis respuestas en Google Sheets"</strong>.</li>
-      <li>En la hoja que se abre, busca la columna llamada <strong>"user-id"</strong>.</li>
-      <li>En la barra superior de Google Sheets, ve a <strong>Datos → Crear un filtro</strong>.</li>
-      <li>Haz clic en el ícono de filtro (🔽) en la cabecera de "user-id".</li>
-      <li>Desmarca todo y marca solo tu código: <strong><span id="user-id-inline">[cargando]</span></strong>.</li>
-      <li>¡Listo! Solo verás tus propias respuestas.</li>
-    </ol>
+    <div class="instructions">
+      <p id="instructions-title"></p>
+      <ol>
+        <li id="step-1"></li>
+        <li id="step-2"></li>
+        <li id="step-3"></li>
+        <li id="step-4"></li>
+        <li id="step-5"></li>
+        <li id="step-6"></li>
+      </ol>
+    </div>
   </div>
-</div>
-
 </body>
 </html>
