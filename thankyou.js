@@ -1,3 +1,14 @@
+const urlText = "https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/texts_cat.json";
+let TEXTS = {}; // Objeto global
+
+fetch(urlText)
+  .then((res) => res.json())
+  .then((data) => {
+    TEXTS = data;
+    applyTexts();
+  })
+  .catch((err) => console.error("Error carregant texts:", err));
+
 function getCookie(name) {
   const cookies = document.cookie.split("; ");
   for (const cookie of cookies) {
@@ -7,42 +18,39 @@ function getCookie(name) {
   return null;
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const userId = getCookie("userId") || "desconocido";
-  const displayBlock = document.getElementById("user-id-display");
-  const inlineSpan = document.getElementById("user-id-inline");
-  const copyBtn = document.getElementById("copy-btn");
+function requireElement(id) {
+  const el = document.getElementById(id);
+  if (!el) {
+    throw new Error(`Elemento con ID "${id}" no encontrado en el DOM.`);
+  }
+  return el;
+}
 
-  if (displayBlock) displayBlock.textContent = userId;
+function applyTexts() {
+  const userId = getCookie("userId") || "desconocido";
+
+  const displayBlock = requireElement("user-id-display");
+  displayBlock.textContent = userId;
+
+  const inlineSpan = document.getElementById("user-id-inline");
   if (inlineSpan) inlineSpan.textContent = userId;
 
-  // Cargar textos desde JSON
-  try {
-    const res = await fetch("texts_cat.json");
-    const TEXTS = await res.json();
-
-    // Insertar textos dinámicos
-    document.getElementById("thankyou-title").textContent = TEXTS.thankyou_title;
-    document.getElementById("thankyou-code-label").textContent = TEXTS.thankyou_code_label;
-    copyBtn.innerHTML = TEXTS.thankyou_copy_icon;
-    copyBtn.title = TEXTS.thankyou_copy_button;
-    document.getElementById("spreadsheet-button").textContent = TEXTS.thankyou_spreadsheet_button;
-
-    document.getElementById("instructions-title").textContent = TEXTS.thankyou_instructions_title;
-    document.getElementById("step-1").textContent = TEXTS.thankyou_instruction_1;
-    document.getElementById("step-2").textContent = TEXTS.thankyou_instruction_2;
-    document.getElementById("step-3").textContent = TEXTS.thankyou_instruction_3;
-    document.getElementById("step-4").textContent = TEXTS.thankyou_instruction_4;
-    document.getElementById("step-5").innerHTML = `${TEXTS.thankyou_instruction_5} <strong><span id="user-id-inline">${userId}</span></strong>.`;
-    document.getElementById("step-6").textContent = TEXTS.thankyou_instruction_6;
-
-  } catch (error) {
-    console.error("Error cargando textos:", error);
-  }
-
-  // Evento de copiar
+  const copyBtn = requireElement("copy-btn");
+  copyBtn.innerHTML = TEXTS.thankyou_copy_icon;
+  copyBtn.title = TEXTS.thankyou_copy_button;
   copyBtn.addEventListener("click", () => copiar(userId, copyBtn));
-});
+
+  requireElement("thankyou-title").textContent = TEXTS.thankyou_title;
+  requireElement("thankyou-code-label").textContent = TEXTS.thankyou_code_label;
+  requireElement("spreadsheet-button").textContent = TEXTS.thankyou_spreadsheet_button;
+  requireElement("instructions-title").textContent = TEXTS.thankyou_instructions_title;
+  requireElement("step-1").textContent = TEXTS.thankyou_instruction_1;
+  requireElement("step-2").textContent = TEXTS.thankyou_instruction_2;
+  requireElement("step-3").textContent = TEXTS.thankyou_instruction_3;
+  requireElement("step-4").textContent = TEXTS.thankyou_instruction_4;
+  requireElement("step-5").innerHTML = `${TEXTS.thankyou_instruction_5} <strong><span id="user-id-inline">${userId}</span></strong>.`;
+  requireElement("step-6").textContent = TEXTS.thankyou_instruction_6;
+}
 
 function copiar(userId, copyBtn) {
   if (navigator.clipboard && window.isSecureContext) {
@@ -71,13 +79,11 @@ function copiarAlternativo(texto, copyBtn) {
 }
 
 function mostrarFeedback(boton) {
-  const originalIcon = "📋";
-  const doneIcon = "✅";
   const originalTitle = boton.title;
   boton.title = "¡Copiado!";
-  boton.innerHTML = doneIcon;
+  boton.innerHTML = "✅";
   setTimeout(() => {
     boton.title = originalTitle;
-    boton.innerHTML = originalIcon;
+    boton.innerHTML = "📋";
   }, 4000);
 }
