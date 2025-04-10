@@ -74,6 +74,8 @@
   "thankyou_instruction_3": "En la barra superior de Google Sheets, ve a Datos → Crear un filtro.",
   "thankyou_instruction_4": "Haz clic en el ícono de filtro (🔽) en la cabecera de \"user-id\".",
   "thankyou_instruction_5": "Desmarca todo y marca solo tu código:",
-  "thankyou_instruction_6": "¡Listo! Solo verás tus propias respuestas."
+  "thankyou_instruction_6": "¡Listo! Solo verás tus propias respuestas.",
+  "greeting": "Benvingut a l'enquesta!",
+  "start_button": "Començar"
 
 }

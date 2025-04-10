@@ -1,26 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eurovisió - Valoració</title>
-  <link rel="stylesheet" href="Google Sheet.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poll Landing</title>
+  <link rel="stylesheet" href="Google Sheet.css" />
+  <style>
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    select#language {
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+    }
+
+    .flag-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .flag-icon {
+      width: 20px;
+      height: 15px;
+    }
+
+    .greeting {
+      font-size: var(--title-font-size);
+      margin-bottom: 1rem;
+    }
+
+    #start {
+      border: none;
+      background-color: #333;
+      color: #fff;
+      font-size: var(--button-font-size);
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #start:hover {
+      background-color: #555;
+    }
+  </style>
 </head>
 <body>
-  <!-- Barra superior fixa -->
-  <div class="header">
-    <div class="info" id="info">
-      <!-- Aquí se generará la información del participante -->
+  <header class="header">
+    <div class="container">
+      <div class="greeting" id="greeting"></div>
+
+      <div class="language-selector">
+        <label for="language" id="lang-label">🌐</label>
+        <select id="language"></select>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <button id="start">Go</button>
+      </div>
     </div>
-  </div>
-  <div class="container">
-    <h4 id="form-version"></h4>
-    <form method="post" action="" name="contact-form" id="contact-form">
-      <div id="sliders"></div>
-      <textarea name="message" rows="7" id="comment" placeholder="Comment"></textarea>
-      <input type="submit" value="Submit" id="submit">
-    </form>
-  </div>
-  <script type="text/javascript" src="Google Sheet.js"></script>
+  </header>
+
+  <script src="index.js"></script>
 </body>
 </html>
