@@ -1,83 +1,90 @@
 {
-  "form_version": "Versió 0.2.6",
-  "comment_placeholder": "Comentari",
-  "submit_button": "Enviar",
-  "header_loading": "Carregant participant...",
-  "slider_default_label": "Valoració",
-  "error_loading_data": "Error en carregar les dades.",
-  "loading_questions": "Carregant preguntes...",
-  "label_performer": "Intèrpret",
-  "label_country": "País",
-  "questions": [
-    {
-      "name": "Originalitat",
-      "title": "Originalitat",
-      "description_0": "Descripció detallada de l'ítem 1.",
-      "description_10": "Descripció detallada de l'ítem 1."
-    },
-    {
-      "name": "Lletra",
-      "title": "Lletra",
-      "description": "Descripció detallada de l'ítem 2."
-    },
-    {
-      "name": "Veus",
-      "title": "Veus",
-      "description": "Descripció detallada de l'ítem 3."
-    },
-    {
-      "name": "Ritme",
-      "title": "Ritme",
-      "description": "Descripció detallada de l'ítem 4."
-    },
-    {
-      "name": "Vestuari",
-      "title": "Vestuari",
-      "description": "Descripció detallada de l'ítem 5."
-    },
-    {
-      "name": "Escenografia",
-      "title": "Escenografia",
-      "description": "Descripció detallada de l'ítem 6."
-    },
-    {
-      "name": "Interpretació",
-      "title": "Interpretació",
-      "description": "Descripció detallada de l'ítem 7."
-    },
-    {
-      "name": "Cultural",
-      "title": "Coherència Cultural",
-      "description": "Descripció detallada de l'ítem 8."
-    },
-    {
-      "name": "Emocional",
-      "title": "Connexió emocional",
-      "description": "Descripció detallada de l'ítem 9."
-    },
-    {
-      "name": "General",
-      "title": "General",
-      "description": "Descripció detallada de l'ítem 10."
-    }
-  ],
-
-  "thankyou_title": "🎉Gràcies per completar el formulari d'Eurovisió!🎉",
-  "thankyou_code_label": "El teu codi identificador és:",
-  "thankyou_copy_button": "Copiar 📋",
-  "thankyou_copy_success": "¡Copiat!",
-  "thankyou_copy_icon": "📋",
-  "thankyou_copy_icon_done": "✅",
-  "thankyou_spreadsheet_button": "Veure les meves respostes a Google Sheets",
-  "thankyou_instructions_title": "Com veure les meves respostes?",
-  "thankyou_instruction_1": "Haz clic en el botón \"Ver mis respuestas en Google Sheets\".",
-  "thankyou_instruction_2": "En la hoja que se abre, busca la columna llamada \"user-id\".",
-  "thankyou_instruction_3": "En la barra superior de Google Sheets, ve a Datos → Crear un filtro.",
-  "thankyou_instruction_4": "Haz clic en el ícono de filtro (🔽) en la cabecera de \"user-id\".",
-  "thankyou_instruction_5": "Desmarca todo y marca solo tu código:",
-  "thankyou_instruction_6": "¡Listo! Solo verás tus propias respuestas.",
-  "greeting": "Benvingut a l'enquesta!",
-  "start_button": "Començar",
-  "greeting_title": "Eurovisió"
-
+    "form_version": "Versió 0.2.6",
+    "comment_placeholder": "Comentari",
+    "submit_button": "Enviar",
+    "header_loading": "Carregant participant...",
+    "slider_default_label": "Valoració",
+    "error_loading_data": "Error en carregar les dades.",
+    "loading_questions": "Carregant preguntes...",
+    "label_performer": "Intèrpret",
+    "label_country": "País",
+    "questions": [
+        {
+            "name": "Originalitat",
+            "title": "Originalitat",
+            "description_0": "0->Això és una còpia d’una falsificació",
+            "description_10": "10->Mai havia escoltat res igual"
+        },
+        {
+            "name": "Lletra",
+            "title": "Lletra",
+            "description_0": "0-> Algú ha triturat un llibre i està cantant el que surt / Només coneix una paraula",
+            "description_10": "10-> Molt original, triomfaràs a la vida"
+        },
+        {
+            "name": "Veus",
+            "title": "Veus",
+            "description_0": "0->Sona com si haguessin atropellat algú",
+            "description_10": "10->Canta com els àngels"
+        },
+        {
+            "name": "Ritme",
+            "title": "Ritme",
+            "description_0": "0->Sona com si els hi hagués caigut una capsa de maraques",
+            "description_10": "10->L’àvia, que no pot caminar, s’ha aixecat per ballar"
+        },
+        {
+            "name": "Vestuari",
+            "title": "Vestuari",
+            "description_0": "0->L’emperador nuu anava més ben vestit",
+            "description_10": "10->No he vist mai res igual, i m’encanta"
+        },
+        {
+            "name": "Escenografia",
+            "title": "Escenografia",
+            "description_0": "0->Com sempre, està buit i posen focs artificials",
+            "description_10": "10->Està tant ben muntat que sembla un videoclip"
+        },
+        {
+            "name": "Interpretació",
+            "title": "Interpretació",
+            "description_0": "0->No he vingut a veure un recital escolar",
+            "description_10": "10->Es noten les hores de preparació. Espectacular"
+        },
+        {
+            "name": "Cultural",
+            "title": "Coherència Cultural",
+            "description_0": "0->Amb aquesta cançó no sé de quin país ets",
+            "description_10": "10->Tots els estereotips, check"
+        },
+        {
+            "name": "Emocional",
+            "title": "Connexió emocional",
+            "description_0": "0->És l’arròs blanc de la música",
+            "description_10": "10->Des del principi he connectat"
+        },
+        {
+            "name": "General",
+            "title": "General",
+            "description_0": "0->Mentre ho estic valorant, ja m’he oblidat de la cançó",
+            "description_10": "10->Passarà a la història del concurs"
+        }
+    ],
+    "thankyou_title": "🎉Gràcies per completar el formulari d'Eurovisió!🎉",
+    "thankyou_code_label": "El teu codi identificador és:",
+    "thankyou_copy_button": "Copiar 📋",
+    "thankyou_copy_success": "¡Copiat!",
+    "thankyou_copy_icon": "📋",
+    "thankyou_copy_icon_done": "✅",
+    "thankyou_spreadsheet_button": "Veure les meves respostes a Google Sheets",
+    "thankyou_instructions_title": "Com veure les meves respostes?",
+    "thankyou_instruction_1": "Haz clic en el botón \"Ver mis respuestas en Google Sheets\".",
+    "thankyou_instruction_2": "En la hoja que se abre, busca la columna llamada \"user-id\".",
+    "thankyou_instruction_3": "En la barra superior de Google Sheets, ve a Datos → Crear un filtro.",
+    "thankyou_instruction_4": "Haz clic en el ícono de filtro (🔽) en la cabecera de \"user-id\".",
+    "thankyou_instruction_5": "Desmarca todo y marca solo tu código:",
+    "thankyou_instruction_6": "¡Listo! Solo verás tus propias respuestas.",
+    "greeting": "Benvingut a l'enquesta!",
+    "start_button": "Començar",
+    "greeting_title": "Eurovisió"
 }
