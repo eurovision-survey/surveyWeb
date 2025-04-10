@@ -1,0 +1,90 @@
+{
+    "form_version": "Versio 0.2.6",
+    "comment_placeholder": "Komento",
+    "submit_button": "Sendi",
+    "header_loading": "Ŝargante partoprenanton...",
+    "slider_default_label": "Taksado",
+    "error_loading_data": "Eraro dum ŝargado de datumoj.",
+    "loading_questions": "Ŝargante demandojn...",
+    "label_performer": "Prezentanto",
+    "label_country": "Lando",
+    "questions": [
+        {
+            "name": "Originalitat",
+            "title": "Originaleco",
+            "description_0": "0->Ĉi tio estas kopio de falsaĵo",
+            "description_10": "10->Mi neniam aŭdis ion similan"
+        },
+        {
+            "name": "Lletra",
+            "title": "Teksto",
+            "description_0": "0->Iu muelis libron kaj kantas la pecojn / Nur scias unu vorton",
+            "description_10": "10->Tre originala, vi sukcesos en la vivo"
+        },
+        {
+            "name": "Veus",
+            "title": "Voĉoj",
+            "description_0": "0->Sonas kvazaŭ iu estis trafita de aŭto",
+            "description_10": "10->Kantas kiel anĝeloj"
+        },
+        {
+            "name": "Ritme",
+            "title": "Ritmo",
+            "description_0": "0->Sonas kvazaŭ ili faligis skatolon da marakoj",
+            "description_10": "10->La avino, kiu ne povas marŝi, leviĝis por danci"
+        },
+        {
+            "name": "Vestuari",
+            "title": "Kostumoj",
+            "description_0": "0->La nuda imperiestro estis pli bone vestita",
+            "description_10": "10->Mi neniam vidis ion similan, kaj mi amas ĝin"
+        },
+        {
+            "name": "Escenografia",
+            "title": "Scenografio",
+            "description_0": "0->Kiel ĉiam, ĝi estas malplena kun kelkaj artfajraĵoj",
+            "description_10": "10->Tiel bone aranĝita ke ĝi aspektas kiel muzikfilmeto"
+        },
+        {
+            "name": "Interpretació",
+            "title": "Interpreto",
+            "description_0": "0->Mi ne venis por vidi lernejan prezentadon",
+            "description_10": "10->Oni rimarkas la horojn da preparado. Spektakla"
+        },
+        {
+            "name": "Cultural",
+            "title": "Kultura Kohero",
+            "description_0": "0->Kun ĉi tiu kanto mi ne scias el kiu lando vi estas",
+            "description_10": "10->Ĉiuj stereotipoj, kontrolite"
+        },
+        {
+            "name": "Emocional",
+            "title": "Emocia Konekto",
+            "description_0": "0->Ĝi estas la blanka rizo de muziko",
+            "description_10": "10->Mi konektiĝis ekde la komenco"
+        },
+        {
+            "name": "General",
+            "title": "Ĝenerala",
+            "description_0": "0->Dum mi taksas ĝin, mi jam forgesis la kanton",
+            "description_10": "10->Ĝi eniros la historion de la konkurso"
+        }
+    ],
+    "thankyou_title": "🎉Dankon pro kompletigo de la Eŭrovido-formularo!🎉",
+    "thankyou_code_label": "Via identiga kodo estas:",
+    "thankyou_copy_button": "Kopii 📋",
+    "thankyou_copy_success": "Kopiita!",
+    "thankyou_copy_icon": "📋",
+    "thankyou_copy_icon_done": "✅",
+    "thankyou_spreadsheet_button": "Vidi miajn respondojn en Google Sheets",
+    "thankyou_instructions_title": "Kiel vidi miajn respondojn?",
+    "thankyou_instruction_1": "Alklaku la butonon \"Vidi miajn respondojn en Google Sheets\".",
+    "thankyou_instruction_2": "En la aperinta folio, serĉu la kolumnon nomatan \"user-id\".",
+    "thankyou_instruction_3": "En la supra menuo de Google Sheets, iru al Datumoj → Krei filtrilon.",
+    "thankyou_instruction_4": "Alklaku la filtrilan ikonon (🔽) en la kaplinio de \"user-id\".",
+    "thankyou_instruction_5": "Malmarku ĉion kaj marku nur vian kodon:",
+    "thankyou_instruction_6": "Preta! Vi vidos nur viajn respondojn.",
+    "greeting": "Bonvenon al la enketo!",
+    "start_button": "Komenci",
+    "greeting_title": "Eŭrovido"
+}

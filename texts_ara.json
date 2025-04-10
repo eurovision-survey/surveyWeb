@@ -1,0 +1,90 @@
+{
+    "form_version": "Version 0.2.6",
+    "comment_placeholder": "Comentari",
+    "submit_button": "Envia",
+    "header_loading": "Cargando participant...",
+    "slider_default_label": "Valoracion",
+    "error_loading_data": "Error en cargar es donades.",
+    "loading_questions": "Cargando preguntas...",
+    "label_performer": "Interprete",
+    "label_country": "País",
+    "questions": [
+        {
+            "name": "Originalitat",
+            "title": "Originalitat",
+            "description_0": "0->Açò es una còpia d’una falsificacion",
+            "description_10": "10->Jamèi he escuchat quauquarren tant original"
+        },
+        {
+            "name": "Letra",
+            "title": "Letra",
+            "description_0": "0->Algu ha triturat un libre e canta çò qu’es sortir / Solament coneish una paraula",
+            "description_10": "10->Molt originala, aniras a la victòria"
+        },
+        {
+            "name": "Vòces",
+            "title": "Vòces",
+            "description_0": "0->Sona com se anessin de passar a algú",
+            "description_10": "10->Canta com los angèls"
+        },
+        {
+            "name": "Ritme",
+            "title": "Ritme",
+            "description_0": "0->Sona com se aneth arribat una caisha de maraques",
+            "description_10": "10->L’avia, qu’èra a caminhar pas, se debanèt a dançar"
+        },
+        {
+            "name": "Vestit",
+            "title": "Vestit",
+            "description_0": "0->L’emperador nus èra mai ben vestit",
+            "description_10": "10->Jamèi he vist quauquarren tant bèth, e m’agrada"
+        },
+        {
+            "name": "Escenografia",
+            "title": "Escenografia",
+            "description_0": "0->Com sempre, es vuèit e meton de fuòc artificials",
+            "description_10": "10->Es tan ben montat qu’es un videoclip"
+        },
+        {
+            "name": "Interpretacion",
+            "title": "Interpretacion",
+            "description_0": "0->N’ai pas vengut per veire un recital escolar",
+            "description_10": "10->Es notan las oras de preparacion. Espectacular"
+        },
+        {
+            "name": "Cultura",
+            "title": "Coeréncia culturala",
+            "description_0": "0->Amb aquesta cançon, sabi pas de quin país vens",
+            "description_10": "10->Totas las estereotipas, check"
+        },
+        {
+            "name": "Emocionau",
+            "title": "Connexió emocionau",
+            "description_0": "0->Es lo ris blanc de la musica",
+            "description_10": "10->Dempuei lo començament, ai connectat"
+        },
+        {
+            "name": "Generau",
+            "title": "Generau",
+            "description_0": "0->Mentretant que vau valorar, ja m’oblidi de la cançon",
+            "description_10": "10->Passarà a l’istòria del concors"
+        }
+    ],
+    "thankyou_title": "🎉Mercés per completar lo formulari d’Eurovision!🎉",
+    "thankyou_code_label": "Ton còde identificator es:",
+    "thankyou_copy_button": "Copiar 📋",
+    "thankyou_copy_success": "¡Copiat!",
+    "thankyou_copy_icon": "📋",
+    "thankyou_copy_icon_done": "✅",
+    "thankyou_spreadsheet_button": "Ves las minhas responsas a Google Sheets",
+    "thankyou_instructions_title": "Coma veire las minhas responsas?",
+    "thankyou_instruction_1": "Clica sus lo boton \"Ves las minhas responsas a Google Sheets\".",
+    "thankyou_instruction_2": "Dins la fulla que se dubrís, cerca la columna apelada \"user-id\".",
+    "thankyou_instruction_3": "Sus la barra superior de Google Sheets, ves a Dades → Crear un filtrar.",
+    "thankyou_instruction_4": "Clica sus l’icono de filtrar (🔽) sus la capèla de \"user-id\".",
+    "thankyou_instruction_5": "Desmarcar tot e marcar solament ton còde:",
+    "thankyou_instruction_6": "¡Prèst! Solament veiràs las vòstras pròprias responsas.",
+    "greeting": "Benvenguts a l’enquèsta!",
+    "start_button": "Començar",
+    "greeting_title": "Eurovision"
+}

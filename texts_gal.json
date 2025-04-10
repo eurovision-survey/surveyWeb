@@ -1,0 +1,90 @@
+{
+    "form_version": "Versión 0.2.6",
+    "comment_placeholder": "Comentario",
+    "submit_button": "Enviar",
+    "header_loading": "Cargando participante...",
+    "slider_default_label": "Valoración",
+    "error_loading_data": "Erro ao cargar os datos.",
+    "loading_questions": "Cargando preguntas...",
+    "label_performer": "Intérprete",
+    "label_country": "País",
+    "questions": [
+        {
+            "name": "Orixinalidade",
+            "title": "Orixinalidade",
+            "description_0": "0->Isto é unha copia dunha falsificación",
+            "description_10": "10->Nunca oín nada igual"
+        },
+        {
+            "name": "Letra",
+            "title": "Letra",
+            "description_0": "0->Alguén triturou un libro e está a cantar o que sae / Só coñece unha palabra",
+            "description_10": "10->Moi orixinal, triunfarás na vida"
+        },
+        {
+            "name": "Voces",
+            "title": "Voces",
+            "description_0": "0->Parece que atropelaron a alguén",
+            "description_10": "10->Canta como os anxos"
+        },
+        {
+            "name": "Ritmo",
+            "title": "Ritmo",
+            "description_0": "0->Parece que caeron unha caixa de maracas",
+            "description_10": "10->A avoa, que non pode andar, levantouse a bailar"
+        },
+        {
+            "name": "Vestiario",
+            "title": "Vestiario",
+            "description_0": "0->O emperador sen roupa ía mellor vestido",
+            "description_10": "10->Nunca vin nada igual, e encántame"
+        },
+        {
+            "name": "Escenografía",
+            "title": "Escenografía",
+            "description_0": "0->Como sempre, está baleiro e poñen fogos artificiais",
+            "description_10": "10->Está tan ben montado que parece un videoclip"
+        },
+        {
+            "name": "Interpretación",
+            "title": "Interpretación",
+            "description_0": "0->Non vin a ver un recital escolar",
+            "description_10": "10->Notanse as horas de preparación. Espectacular"
+        },
+        {
+            "name": "Cultural",
+            "title": "Coherencia Cultural",
+            "description_0": "0->Con esta canción non sei de que país es",
+            "description_10": "10->Todos os estereotipos, marcados"
+        },
+        {
+            "name": "Emocional",
+            "title": "Conexión emocional",
+            "description_0": "0->É o arroz branco da música",
+            "description_10": "10->Desde o principio conectei"
+        },
+        {
+            "name": "Xeral",
+            "title": "Xeral",
+            "description_0": "0->Mentres estou valorando, xa esquecín a canción",
+            "description_10": "10->Pasará á historia do concurso"
+        }
+    ],
+    "thankyou_title": "🎉Grazas por completar o formulario de Eurovisión!🎉",
+    "thankyou_code_label": "O teu código identificador é:",
+    "thankyou_copy_button": "Copiar 📋",
+    "thankyou_copy_success": "¡Copiado!",
+    "thankyou_copy_icon": "📋",
+    "thankyou_copy_icon_done": "✅",
+    "thankyou_spreadsheet_button": "Ver as miñas respostas en Google Sheets",
+    "thankyou_instructions_title": "Como ver as miñas respostas?",
+    "thankyou_instruction_1": "Fai clic no botón \"Ver as miñas respostas en Google Sheets\".",
+    "thankyou_instruction_2": "Na folla que se abre, busca a columna chamada \"user-id\".",
+    "thankyou_instruction_3": "Na barra superior de Google Sheets, vai a Datos → Crear un filtro.",
+    "thankyou_instruction_4": "Fai clic na icona de filtro (🔽) na cabeceira de \"user-id\".",
+    "thankyou_instruction_5": "Desmarca todo e marca só o teu código:",
+    "thankyou_instruction_6": "¡Listo! Só verás as túas propias respostas.",
+    "greeting": "Benvido á enquisa!",
+    "start_button": "Comezar",
+    "greeting_title": "Eurovisión"
+}

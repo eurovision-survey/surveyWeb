@@ -1,0 +1,90 @@
+{
+    "form_version": "Version 0.2.6",
+    "comment_placeholder": "Comment",
+    "submit_button": "Submit",
+    "header_loading": "Loading participant...",
+    "slider_default_label": "Rating",
+    "error_loading_data": "Error loading data.",
+    "loading_questions": "Loading questions...",
+    "label_performer": "Performer",
+    "label_country": "Country",
+    "questions": [
+        {
+            "name": "Originality",
+            "title": "Originality",
+            "description_0": "0->This is a copy of a counterfeit",
+            "description_10": "10->I have never heard anything like this"
+        },
+        {
+            "name": "Lyrics",
+            "title": "Lyrics",
+            "description_0": "0->Someone shredded a book and is singing what came out / Only knows one word",
+            "description_10": "10->Very original, you'll succeed in life"
+        },
+        {
+            "name": "Vocals",
+            "title": "Vocals",
+            "description_0": "0->Sounds like someone was run over",
+            "description_10": "10->Sings like angels"
+        },
+        {
+            "name": "Rhythm",
+            "title": "Rhythm",
+            "description_0": "0->Sounds like a box of maracas fell down",
+            "description_10": "10->The grandma, who can't walk, got up to dance"
+        },
+        {
+            "name": "Costume",
+            "title": "Costume",
+            "description_0": "0->The emperor in his birthday suit was better dressed",
+            "description_10": "10->I've never seen anything like this, and I love it"
+        },
+        {
+            "name": "Set Design",
+            "title": "Set Design",
+            "description_0": "0->As usual, it's empty and they put on fireworks",
+            "description_10": "10->It's so well put together it looks like a music video"
+        },
+        {
+            "name": "Performance",
+            "title": "Performance",
+            "description_0": "0->I didn't come to watch a school recital",
+            "description_10": "10->You can tell the hours of preparation. Amazing"
+        },
+        {
+            "name": "Cultural",
+            "title": "Cultural Coherence",
+            "description_0": "0->With this song, I don't know which country you're from",
+            "description_10": "10->All the stereotypes, check"
+        },
+        {
+            "name": "Emotional",
+            "title": "Emotional Connection",
+            "description_0": "0->It's the plain white rice of music",
+            "description_10": "10->I connected from the very beginning"
+        },
+        {
+            "name": "General",
+            "title": "General",
+            "description_0": "0->While I'm rating it, I've already forgotten the song",
+            "description_10": "10->It will go down in the history of the contest"
+        }
+    ],
+    "thankyou_title": "🎉Thank you for completing the Eurovision form!🎉",
+    "thankyou_code_label": "Your identifier code is:",
+    "thankyou_copy_button": "Copy 📋",
+    "thankyou_copy_success": "Copied!",
+    "thankyou_copy_icon": "📋",
+    "thankyou_copy_icon_done": "✅",
+    "thankyou_spreadsheet_button": "View my responses on Google Sheets",
+    "thankyou_instructions_title": "How to view my responses?",
+    "thankyou_instruction_1": "Click the button \"View my responses on Google Sheets\".",
+    "thankyou_instruction_2": "In the sheet that opens, look for the column called \"user-id\".",
+    "thankyou_instruction_3": "In the top Google Sheets menu, go to Data → Create a filter.",
+    "thankyou_instruction_4": "Click the filter icon (🔽) in the \"user-id\" header.",
+    "thankyou_instruction_5": "Uncheck everything and check only your code:",
+    "thankyou_instruction_6": "Done! You will only see your own responses.",
+    "greeting": "Welcome to the survey!",
+    "start_button": "Start",
+    "greeting_title": "Eurovision"
+}

@@ -1,28 +1,8 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycby1xhFxDOqvCE9Ksha90_vHR9HDLY3R376WP3NbkSMM21bSHoop5SR_bCeAioSk3wPX/exec';
 const form = document.forms['contact-form'];
-const urlText = "https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/texts_cat.json"
+const urlText = "https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/texts"
 let TEXTS = {}; // Objeto global
 
-fetch(urlText)
-  .then((res) => res.json())
-  .then((data) => {
-    TEXTS = data;
-    applyTexts(); // Llamamos a esta función para poblar la UI
-  })
-  .catch((err) => console.error("Error carregant texts:", err));
-
-function applyTexts() {
-  document.getElementById("form-version").textContent = TEXTS.form_version;
-  document.getElementById("comment").placeholder = TEXTS.comment_placeholder;
-  document.getElementById("submit").value = TEXTS.submit_button;
-  // puedes seguir con más traducciones si agregas más IDs o clases
-}
-
-
-// Function to generate a unique ID
-function generateUniqueId() {
-  return `${Math.random().toString(36).substring(2)}-${Date.now().toString(36)}`;
-}
 
 // Function to set a cookie
 function setCookie(name, value, days) {
@@ -39,6 +19,29 @@ function getCookie(name) {
     if (key === name) return value;
   }
   return null;
+}
+
+//Get the data from github
+fetch(urlText+"_"+getCookie("lang")?getCookie("lang"):"cat"+".json")
+  .then((res) => res.json())
+  .then((data) => {
+    TEXTS = data;
+    console.log("language is :"+getCookie("lang"))
+    applyTexts(); // Llamamos a esta función para poblar la UI
+  })
+  .catch((err) => console.error("Error carregant texts:", err));
+
+function applyTexts() {
+  document.getElementById("form-version").textContent = TEXTS.form_version;
+  document.getElementById("comment").placeholder = TEXTS.comment_placeholder;
+  document.getElementById("submit").value = TEXTS.submit_button;
+  // puedes seguir con más traducciones si agregas más IDs o clases
+}
+
+
+// Function to generate a unique ID
+function generateUniqueId() {
+  return `${Math.random().toString(36).substring(2)}-${Date.now().toString(36)}`;
 }
 
 // Assign or retrieve user ID

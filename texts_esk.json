@@ -1,0 +1,90 @@
+{
+    "form_version": "Bertsio 0.2.6",
+    "comment_placeholder": "Iruzkina",
+    "submit_button": "Bidali",
+    "header_loading": "Parte-hartzailea kargatzen...",
+    "slider_default_label": "Balorazioa",
+    "error_loading_data": "Datuak kargatzerakoan errorea.",
+    "loading_questions": "Galderak kargatzen...",
+    "label_performer": "Interprete",
+    "label_country": "Herrialdea",
+    "questions": [
+        {
+            "name": "Originalitatea",
+            "title": "Originalitatea",
+            "description_0": "0->Hau faltsifikazio baten kopia da",
+            "description_10": "10->Inoiz entzun ez dudan zerbait da"
+        },
+        {
+            "name": "Letra",
+            "title": "Letra",
+            "description_0": "0->Norbaitek liburu bat zurrupatu du eta ateratzen dena abesten ari da / Hitz bat bakarrik ezagutzen du",
+            "description_10": "10->Oso originala da, bizitza arrakastatsua izango duzu"
+        },
+        {
+            "name": "Ahotsak",
+            "title": "Ahotsak",
+            "description_0": "0->Norbaitek autoa harrapatu duela ematen du",
+            "description_10": "10->Aingeruek abesten dute bezala"
+        },
+        {
+            "name": "Erritmoa",
+            "title": "Erritmoa",
+            "description_0": "0->Maraoka kutxa bat erori zaiela ematen du",
+            "description_10": "10->Amona, oinez ibiltzen ez dena, dantzatzeko altxatu da"
+        },
+        {
+            "name": "Jantziak",
+            "title": "Jantziak",
+            "description_0": "0->Enperadore biluzia hobeto jantzi zen",
+            "description_10": "10->Inoiz ikusi dudan zerbait da, eta maite dut"
+        },
+        {
+            "name": "Eszenografia",
+            "title": "Eszenografia",
+            "description_0": "0->Betiko bezala, hutsik dago eta su artifizialak jartzen dituzte",
+            "description_10": "10->Hain ondo muntatuta dago, bideoklip bat dirudi"
+        },
+        {
+            "name": "Interpretazioa",
+            "title": "Interpretazioa",
+            "description_0": "0->Ez naiz eskolako recital bat ikustera etorri",
+            "description_10": "10->Prestakuntza orduak igarri dira. Ikusgarria"
+        },
+        {
+            "name": "Kultura",
+            "title": "Kultura Koherentea",
+            "description_0": "0->Abesti honekin ez dakit zein herrialdetakoa zaren",
+            "description_10": "10->Estereotipo guztiak, markatuta"
+        },
+        {
+            "name": "Emozionala",
+            "title": "Emozio-konexioa",
+            "description_0": "0->Musika zuriaren arrozaren modukoa da",
+            "description_10": "10->Hasieratik konektatu dut"
+        },
+        {
+            "name": "Orokorra",
+            "title": "Orokorra",
+            "description_0": "0->Baloratzen ari naizela, jada abestia ahaztu dut",
+            "description_10": "10->Lehiaketaren historiara pasako da"
+        }
+    ],
+    "thankyou_title": "🎉Eskerrik asko Eurovisio galdetegia betetzeagatik!🎉",
+    "thankyou_code_label": "Zure identifikazio kodea da:",
+    "thankyou_copy_button": "Kopiatu 📋",
+    "thankyou_copy_success": "¡Kopiatu da!",
+    "thankyou_copy_icon": "📋",
+    "thankyou_copy_icon_done": "✅",
+    "thankyou_spreadsheet_button": "Ikusi nire erantzunak Google Sheets-en",
+    "thankyou_instructions_title": "Nola ikusi nire erantzunak?",
+    "thankyou_instruction_1": "Klikatu \"Ikusi nire erantzunak Google Sheets-en\" botoian.",
+    "thankyou_instruction_2": "Irekiko den orrian, bilatu \"user-id\" izeneko zutabea.",
+    "thankyou_instruction_3": "Google Sheets-en goiko barra batean, joan Datuak → Iragazki bat sortu.",
+    "thankyou_instruction_4": "Klikatu \"user-id\"-en goiburuko iragazki ikonoa (🔽).",
+    "thankyou_instruction_5": "Desmarkatu dena eta bakarrik zure kodea markatu:",
+    "thankyou_instruction_6": "Prest! Zure erantzun propioak bakarrik ikusiko dituzu.",
+    "greeting": "Ongi etorri galdetegira!",
+    "start_button": "Hasteko",
+    "greeting_title": "Eurovisio"
+}

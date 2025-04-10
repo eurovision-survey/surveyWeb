@@ -1,7 +1,13 @@
 // 🌐 Language definitions
 const languages = [
   { lang: "cat", label: "Català", flag: "flags/cat.svg" },
-  { lang: "eng", label: "English", flag: "flags/uk.svg" }
+  { lang: "ara", label: "Aranés", flag: "flags/ara.svg" },
+  { lang: "spa", label: "Castellano", flag: "flags/es.svg" },
+  { lang: "eng", label: "English", flag: "flags/uk.svg" },
+  { lang: "esp", label: "Esperanto", flag: "flags/esp.svg" },
+  { lang: "esk", label: "Euskara", flag: "flags/esk.svg" },
+  { lang: "gal", label: "Galego", flag: "flags/gal.svg" },
+  { lang: "ptg", label: "Português", flag: "flags/ptg.svg" }
 ];
 
 let currentTexts = {};
