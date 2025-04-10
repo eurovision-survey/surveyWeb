@@ -172,9 +172,13 @@ function generateRatingItems(data) {
       itemTitle.classList.add('item-title');
       itemTitle.textContent = question.title;
 
-      const itemDescription = document.createElement('p');
-      itemDescription.classList.add('item-description');
-      itemDescription.textContent = question.description;
+      const itemDescription0 = document.createElement('p');
+      itemDescription0.classList.add('item-description');
+      itemDescription0.textContent = question.description_0;
+
+      const itemDescription10 = document.createElement('p');
+      itemDescription10.classList.add('item-description');
+      itemDescription10.textContent = question.description_10;
 
       const sliderContainer = document.createElement('div');
       sliderContainer.classList.add('slider-container');
@@ -200,7 +204,8 @@ function generateRatingItems(data) {
       sliderContainer.appendChild(sliderValue);
 
       itemDiv.appendChild(itemTitle);
-      itemDiv.appendChild(itemDescription);
+      itemDiv.appendChild(itemDescription0);
+      itemDiv.appendChild(itemDescription10);
       itemDiv.appendChild(sliderContainer);
 
       formContainer.appendChild(itemDiv);
