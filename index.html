@@ -3,70 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Poll Landing</title>
-  <link rel="stylesheet" href="Google Sheet.css" />
+  <title>Eurovisió - Inici</title>
+  <link rel="stylesheet" href="GoogleSheet.css" />
   <style>
-    .language-selector {
-      display: flex;
+    body {
+      margin: 0;
+      padding: 0;
+      background: url("https://media.giphy.com/media/F1H2zBdKrR4ZRJpBQB/giphy.gif") center center / cover no-repeat fixed;
+      color: white;
+    }
+
+    .header {
+      background-color: rgba(0, 0, 0, 0); /* dark translucent background */
+      font-size: 2rem;
+    }
+
+    .title {
+      color: white; 
+      -webkit-text-stroke: 1px black;
+      font-size: 2.5rem;
+    }
+
+    .centered-container {
+      flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    select#language {
-      font-size: 1rem;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      border: 1px solid #ccc;
-    }
-
-    .flag-option {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .flag-icon {
-      width: 20px;
-      height: 15px;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
     }
 
     .greeting {
       font-size: var(--title-font-size);
-      margin-bottom: 1rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      margin-top: 9rem;
+      text-shadow: 2px 2px 4px black;
+      -webkit-text-stroke: 1px black;
+    }
+
+    .language-selector {
+      margin-bottom: 2rem;
+    }
+
+    select#language {
+      font-size: 1rem;
+      padding: 0.6rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
     }
 
     #start {
       border: none;
-      background-color: #333;
+      background-color: rgba(0, 0, 0, 0.8);
       color: #fff;
       font-size: var(--button-font-size);
       padding: 1rem 2rem;
       border-radius: 0.5rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      text-shadow: 1px 1px 2px black;
+      -webkit-text-stroke: 0.5px black;
     }
 
     #start:hover {
-      background-color: #555;
+      background-color: rgba(30, 30, 30, 0.9);
     }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="greeting" id="greeting"></div>
-
-      <div class="language-selector">
-        <label for="language" id="lang-label">🌐</label>
-        <select id="language"></select>
-      </div>
-
-      <div style="margin-top: 2rem;">
-        <button id="start">Go</button>
-      </div>
+  <!-- Header -->
+  <div class="header">
+    <div class="info">
+      <h1 class= "title" id="title"></h1>
     </div>
-  </header>
+  </div>
+
+  <!-- Content -->
+  <div class="container centered-container">
+    <div class="greeting" id="greeting">...</div>
+
+    <div class="language-selector">
+      <label for="language" style="margin-right: 0.5rem;">🌐</label>
+      <select id="language"></select>
+    </div>
+
+    <button id="start">...</button>
+  </div>
 
   <script src="index.js"></script>
 </body>

@@ -9,6 +9,7 @@ let currentLang = getCookie("lang") || "cat";
 
 const languageSelect = document.getElementById("language");
 const greetingEl = document.getElementById("greeting");
+const titleEl = document.getElementById("title");
 const startBtn = document.getElementById("start");
 
 // 🍪 Cookie functions (copied from Google Sheet.js)
@@ -55,6 +56,7 @@ async function loadLanguageTexts(lang) {
 function applyTexts() {
   greetingEl.textContent = currentTexts.greeting || "Welcome!";
   startBtn.textContent = currentTexts.start_button || "Start";
+  titleEl.textContent = currentTexts.greeting_title || "Eurovision";
 }
 
 // Language switch
@@ -66,7 +68,7 @@ languageSelect.addEventListener("change", (e) => {
 
 // Redirect button
 startBtn.addEventListener("click", () => {
-  window.location.href = "/googleSheets";
+  window.location.href = "GoogleSheet.html";
 });
 
 // Init
