@@ -22,7 +22,8 @@ function getCookie(name) {
 }
 
 //Get the data from github
-fetch(urlText+"_"+getCookie("lang")?getCookie("lang"):"cat"+".json")
+const lang = getCookie("lang") ? getCookie("lang") : "cat";
+fetch(`${urlText}_${lang}.json`)
   .then((res) => res.json())
   .then((data) => {
     TEXTS = data;

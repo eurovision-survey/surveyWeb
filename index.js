@@ -12,6 +12,12 @@ const languages = [
 
 let currentTexts = {};
 let currentLang = getCookie("lang") || "cat";
+if (!getCookie("lang")) {
+  currentLang = "cat";
+  setCookie("lang", currentLang, 7);
+  console.log("Cookie después de setear:", getCookie("lang")); // Aquí ya debería funcionar
+}
+
 
 const languageSelect = document.getElementById("language");
 const greetingEl = document.getElementById("greeting");
