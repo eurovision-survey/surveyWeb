@@ -95,9 +95,12 @@ form.addEventListener('submit', async e => {
 
   // Append the rest of the form data
   for (const [key, value] of new FormData(form)) {
-    let numValue = parseFloat(value, 10); 
-    console.log("key: "+key+" value: "+numValue);
-    formData.append(key, numValue);
+    if(key != "message"){
+        let numValue = parseFloat(value, 10); 
+        formData.append(key, numValue);}
+      else{
+        formData.append(key,value);
+      }
   }
 
   try {
