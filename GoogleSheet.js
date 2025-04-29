@@ -97,7 +97,7 @@ form.addEventListener('submit', async e => {
   for (const [key, value] of new FormData(form)) {
     if(key != "message"){
         let valueWithComma = value.replace(",", ".") 
-        formData.append(key, numValue);
+        formData.append(key, valueWithComma);
       }
     else{
       formData.append(key,value);
