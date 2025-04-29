@@ -95,8 +95,9 @@ form.addEventListener('submit', async e => {
 
   // Append the rest of the form data
   for (const [key, value] of new FormData(form)) {
-    let intValue = parseInt(value, 10); 
-    formData.append(key, intValue);
+    let numValue = parseFloat(value, 10); 
+    console.log("key: "+key+" value: "+numValue);
+    formData.append(key, numValue);
   }
 
   try {
