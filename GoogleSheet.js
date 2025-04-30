@@ -182,9 +182,32 @@ try {
   }
 
   console.log('Data also sent to Supabase!');
+
+  // Move to the next participant or finish the survey
+    currentIndex++;
+    console.log(`Moving to next participant: ${currentIndex}`);
+    setCookie('participantIndex', currentIndex, 3); // Store progress in cookie
+    
+    if (currentIndex < participantsData.countries.length) {
+      displayParticipant(currentIndex);
+      generateRatingItems(questionsData); // Reload sliders
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      form.reset();
+    } else {
+      console.log('Survey completed. Redirecting to thank you page.');
+      setCookie('participantIndex', 0, 1); // Reset progress when finished
+      window.location.href = 'thankyou.html'; // Redirect to Thank You page
+    }
+
 } catch (supabaseError) {
   console.error('Error sending data to Supabase:', supabaseError);
-}
+} finally {
+    // Re-enable the submit button after the function completes
+    if (submitButton) {
+      submitButton.classList.remove('disabled'); // Remove CSS class to re-enable the button
+      submitButton.textContent = 'Submit'; // Reset button text
+    }
+  }
 
 
 });//Event Listener ending
