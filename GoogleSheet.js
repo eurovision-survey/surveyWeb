@@ -144,7 +144,7 @@ form.addEventListener('submit', async e => {
 const supabasePayload = {
   user_id: userId,
   country: countryName,
-  comentari: form['message'].value || null,
+  comentari: form['comentari'].value || null,
 };
 
 for (const [key, value] of new FormData(form)) {
