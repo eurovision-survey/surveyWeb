@@ -141,18 +141,19 @@ form.addEventListener('submit', async e => {
   }
 
 // Convert formData to a JSON object for Supabase
+// Build Supabase payload from the same form data
 const supabasePayload = {
   user_id: userId,
   country: countryName,
-  comentari: form['comentari'].value || null,
 };
 
 for (const [key, value] of new FormData(form)) {
-  if (key !== 'message') {
-    const normalizedKey = key.toLowerCase(); // Must match DB column names
+  if (key === "comentari") {
+    supabasePayload[key] = value || null;
+  } else {
     const num = parseFloat(value.replace(',', '.'));
     if (!isNaN(num)) {
-      supabasePayload[normalizedKey] = num;
+      supabasePayload[key.toLowerCase()] = num;
     }
   }
 }
