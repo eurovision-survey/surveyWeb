@@ -3,6 +3,13 @@ const form = document.forms['contact-form'];
 const urlText = "https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/texts"
 let TEXTS = {}; // Objeto global
 
+const SUPABASE_URL = 'https://ybwyoenjvlgqyldbvnkt.supabase.co';
+const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlid3lvZW5qdmxncXlsZGJ2bmt0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MDYxNTAsImV4cCI6MjA1NTM4MjE1MH0.cMh4puR6-7e60eunFZNrxrramGf2r28AxF-3buq2UDA';
+//Change it to secret on the future for extra security
+
+const supabaseInsertURL = `${SUPABASE_URL}/rest/v1/resultats`;
+
+
 
 // Function to set a cookie
 function setCookie(name, value, days) {
@@ -132,6 +139,46 @@ form.addEventListener('submit', async e => {
       submitButton.textContent = 'Submit'; // Reset button text
     }
   }
+
+  //Send it to DDBB
+
+  // Convert formData to a JSON object for Supabase
+const supabasePayload = {
+  user_id: userId,
+  country: countryName,
+  comentari: form['message'].value,
+};
+
+// Convert rating fields
+for (const [key, value] of new FormData(form)) {
+  if (key !== 'message') {
+    // Normalize comma back to dot for Supabase real numbers
+    supabasePayload[key.toLowerCase()] = parseFloat(value.replace(',', '.'));
+  }
+}
+
+// Send to Supabase
+try {
+  const supabaseResponse = await fetch(supabaseInsertURL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_API_KEY,
+      'Authorization': `Bearer ${SUPABASE_API_KEY}`,
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify([supabasePayload]) // Send as array for bulk insert format
+  });
+
+  if (!supabaseResponse.ok) {
+    throw new Error(`Supabase error: ${supabaseResponse.statusText}`);
+  }
+
+  console.log('Data also sent to Supabase!');
+} catch (supabaseError) {
+  console.error('Error sending data to Supabase:', supabaseError);
+}
+
 });
 
 // Variables
