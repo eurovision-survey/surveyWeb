@@ -140,24 +140,25 @@ form.addEventListener('submit', async e => {
     }
   }
 
-  //Send it to DDBB
-
-  // Convert formData to a JSON object for Supabase
+// Convert formData to a JSON object for Supabase
 const supabasePayload = {
   user_id: userId,
   country: countryName,
-  comentari: form['message'].value,
+  comentari: form['message'].value || null,
 };
 
-// Convert rating fields
 for (const [key, value] of new FormData(form)) {
   if (key !== 'message') {
-    // Normalize comma back to dot for Supabase real numbers
-    supabasePayload[key.toLowerCase()] = parseFloat(value.replace(',', '.'));
+    const normalizedKey = key.toLowerCase(); // Must match DB column names
+    const num = parseFloat(value.replace(',', '.'));
+    if (!isNaN(num)) {
+      supabasePayload[normalizedKey] = num;
+    }
   }
 }
 
-// Send to Supabase
+console.log("Payload being sent to Supabase:", JSON.stringify([supabasePayload], null, 2));
+
 try {
   const supabaseResponse = await fetch(supabaseInsertURL, {
     method: 'POST',
@@ -167,11 +168,12 @@ try {
       'Authorization': `Bearer ${SUPABASE_API_KEY}`,
       'Prefer': 'return=minimal'
     },
-    body: JSON.stringify([supabasePayload]) // Send as array for bulk insert format
+    body: JSON.stringify([supabasePayload])
   });
 
   if (!supabaseResponse.ok) {
-    throw new Error(`Supabase error: ${supabaseResponse.statusText}`);
+    const errorText = await supabaseResponse.text();
+    throw new Error(`Supabase error: ${supabaseResponse.status} ${supabaseResponse.statusText}\n${errorText}`);
   }
 
   console.log('Data also sent to Supabase!');
@@ -179,7 +181,8 @@ try {
   console.error('Error sending data to Supabase:', supabaseError);
 }
 
-});
+
+});//Event Listener ending
 
 // Variables
 let participantsData = [];
