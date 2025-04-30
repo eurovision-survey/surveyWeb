@@ -110,7 +110,7 @@ form.addEventListener('submit', async e => {
       formData.append(key,value);
     }
   }
-
+/*
   try {
     console.log('Sending data to Google Sheets');
     await fetch(scriptURL, { method: 'POST', body: formData });
@@ -139,6 +139,7 @@ form.addEventListener('submit', async e => {
       submitButton.textContent = 'Submit'; // Reset button text
     }
   }
+*/ //Google Sheets form sending logic
 
 // Convert formData to a JSON object for Supabase
 // Build Supabase payload from the same form data
@@ -146,6 +147,9 @@ const supabasePayload = {
   user_id: userId,
   country: countryName,
 };
+
+console.log("Form: "+ JSON.stringify([form], null, 2));
+console.log("FormData: "+ JSON.stringify([formData], null, 2));
 
 for (const [key, value] of new FormData(form)) {
   if (key === "comentari") {
