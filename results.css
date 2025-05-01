@@ -1,0 +1,21 @@
+/* Reset & base */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,sans-serif;background:#f9f9f9;padding:10px;}
+h1{text-align:center;margin-bottom:20px;font-size:1.5rem;}
+.chart-container{background:#fff;margin-bottom:20px;padding:15px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.chart-container h2{font-size:1.1rem;margin-bottom:10px;text-align:center;}
+.flex-row{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;}
+canvas,svg{width:100%!important;height:auto!important;}
+#participantList{width:100%;border-collapse:collapse;}
+#participantList th,#participantList td{padding:8px;text-align:left;border-bottom:1px solid #ddd;font-size:0.9rem;}
+#participantList th{background:#f1f1f1;}
+
+/* Responsive */
+@media(min-width:600px){
+  .flex-row canvas{flex:1 1 45%;}
+  .chart-container{padding:20px;}
+  h1{font-size:1.8rem;}
+}
+@media(max-width:599px){
+  #participantList th,#participantList td{font-size:0.8rem;}
+}

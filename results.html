@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eurovision Voting Dashboard</title>
+  <link rel="stylesheet" href="results.css" />
+</head>
+<body>
+  <h1>Eurovision Voting Dashboard</h1>
+
+  <!-- Hero: Bar Race -->
+  <section class="chart-container">
+    <h2>Top 5 Overall Countries (Bar Race)</h2>
+    <canvas id="barRace"></canvas>
+  </section>
+
+  <!-- Participant List -->
+  <section class="chart-container">
+    <h2>All Participants (Overall Average)</h2>
+    <table id="participantList">
+      <thead><tr><th>Rank</th><th>Country</th><th>Avg Score</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- Radar Profiles -->
+  <section class="chart-container">
+    <h2>Country Profiles (Radar Charts)</h2>
+    <div id="radarContainer" class="flex-row"></div>
+  </section>
+
+  <!-- Bullet Charts -->
+  <section class="chart-container">
+    <h2>Composite Scores (Bullet Charts)</h2>
+    <div id="bulletContainer" class="flex-row"></div>
+  </section>
+
+  <!-- Heatmap -->
+  <section class="chart-container">
+    <h2>Category Heatmap</h2>
+    <svg id="heatmap" width="800" height="400"></svg>
+  </section>
+
+  <!-- Parallel Coordinates -->
+  <section class="chart-container">
+    <h2>Parallel Coordinates</h2>
+    <svg id="parallelCoords" width="800" height="400"></svg>
+  </section>
+
+  <!-- Time-Series Funnel -->
+  <section class="chart-container">
+    <h2>General Score Over Time (Averages)</h2>
+    <canvas id="timeSeries"></canvas>
+  </section>
+
+  <!-- Word Cloud -->
+  <section class="chart-container">
+    <h2>User Comments Word Cloud</h2>
+    <div id="wordCloud"></div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-cloud/build/d3.layout.cloud.js"></script>
+  <script src="results.js"></script>
+</body>
+</html>
