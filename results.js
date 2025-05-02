@@ -17,13 +17,31 @@ let xHeat, yHeat, colorScale, yScalesParallel, lineGenParallel;
 // ————————————————
 // 3) Fetch & process data
 // ————————————————
+
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? decodeURIComponent(match[2]) : null;
+}
+
+function getUserIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('user_id');
+}
+
 async function fetchResults() {
-  const { data, error } = await client
-    .from('resultats')
-    .select('*');
+  const userId = getUserIdFromUrl();
+  let query = client.from('resultats').select('*');
+
+  if (userId) {
+    query = query.eq('user_id', userId);
+  }
+
+  const { data, error } = await query;
   if (error) console.error(error);
   return data || [];
 }
+
+
 
 function processData(rows) {
   // overall averages per country
@@ -84,54 +102,155 @@ function initCharts({ overallList, series, matrix, countries, cats }) {
     }
   });
 
-  // Time series
-  const tsCtx = document.getElementById('timeSeries').getContext('2d');
-  timeSeriesChart = new Chart(tsCtx, {
-    type: 'line',
-    data: series,
-    options: {
-      animation: { duration: 800 },
-      scales: { y: { beginAtZero: true, max: 10 } },
-      elements: { point: { radius: 3 } }
-    }
-  });
+// Responsive heatmap with legend and labels
+const svg = d3.select('#heatmap')
+  .attr('viewBox', '0 0 600 400')
+  .attr('preserveAspectRatio', 'xMidYMid meet')
+  .classed('responsive-svg', true);
 
-  // Heatmap
-  const svg = d3.select('#heatmap');
-  xHeat = d3.scaleBand().domain(countries).range([50,450]).padding(0.05);
-  yHeat = d3.scaleBand().domain(cats).range([50,260]).padding(0.05);
-  colorScale = d3.scaleSequential(d3.interpolateViridis).domain([0,10]);
-  svg.selectAll('rect')
-    .data(matrix.flatMap((row,i)=>row.map((v,j)=>({cat:cats[i],country:countries[j],value:v}))))
-    .enter().append('rect')
-      .attr('x', d=>xHeat(d.country))
-      .attr('y', d=>yHeat(d.cat))
-      .attr('width', xHeat.bandwidth())
-      .attr('height', yHeat.bandwidth())
-      .style('fill', d=>colorScale(d.value));
+xHeat = d3.scaleBand().domain(countries).range([100, 550]).padding(0.05);
+yHeat = d3.scaleBand().domain(cats).range([50, 300]).padding(0.05);
+colorScale = d3.scaleSequential(d3.interpolatePlasma).domain([0, 10]);
 
-  // Parallel coords
-  cats.forEach(cat => {
-    yScalesParallel = yScalesParallel || {};
-    yScalesParallel[cat] = d3.scaleLinear()
-      .domain(d3.extent(rows, r=>r[cat]||0))
-      .range([260,50]);
-  });
-  const xPar = d3.scalePoint().domain(cats).range([50,450]);
-  lineGenParallel = d3.line()
-    .x(p=>xPar(p.dim))
-    .y(p=>yScalesParallel[p.dim](p.value));
-  const g = svg
-    .attr('width',800).attr('height',400)
-    .select(function(){ return this.ownerDocument.querySelector('#parallelCoords'); })
-    .append('g').attr('transform','translate(50,50)');
-  g.selectAll('path')
-    .data(rows)
-    .enter().append('path')
-      .attr('fill','none')
-      .attr('stroke','steelblue')
-      .attr('opacity',0.4)
-      .attr('d', d=> lineGenParallel(cats.map(dim=>({dim,value:d[dim]||0}))));
+const heatData = matrix.flatMap((row, i) =>
+  row.map((v, j) => ({ cat: cats[i], country: countries[j], value: v }))
+);
+
+// Draw heatmap cells
+svg.selectAll('rect.heatcell')
+  .data(heatData)
+  .enter().append('rect')
+    .attr('class', 'heatcell')
+    .attr('x', d => xHeat(d.country))
+    .attr('y', d => yHeat(d.cat))
+    .attr('width', xHeat.bandwidth())
+    .attr('height', yHeat.bandwidth())
+    .style('fill', d => colorScale(d.value));
+
+// X axis
+svg.append('g')
+  .attr('transform', `translate(0, ${yHeat.range()[1]})`)
+  .call(d3.axisBottom(xHeat))
+  .selectAll("text")
+    .attr("transform", "rotate(-45)")
+    .style("text-anchor", "end")
+    .style("font-size", "10px");
+
+// Y axis
+svg.append('g')
+  .attr('transform', `translate(${xHeat.range()[0]}, 0)`)
+  .call(d3.axisLeft(yHeat))
+  .selectAll("text")
+    .style("font-size", "10px");
+
+// Legend gradient
+const defs = svg.append("defs");
+const gradient = defs.append("linearGradient")
+  .attr("id", "heatmap-gradient")
+  .attr("x1", "0%").attr("x2", "100%")
+  .attr("y1", "0%").attr("y2", "0%");
+
+d3.range(0, 1.01, 0.01).forEach(t => {
+  gradient.append("stop")
+    .attr("offset", `${t * 100}%`)
+    .attr("stop-color", colorScale(t * 10));
+});
+
+// Legend (moved down)
+svg.append("rect")
+  .attr("x", 100)
+  .attr("y", 370) // ← was 320
+  .attr("width", 300)
+  .attr("height", 15)
+  .style("fill", "url(#heatmap-gradient)");
+
+svg.append("text")
+  .attr("x", 100)
+  .attr("y", 390) // ← was 340
+  .style("font-size", "10px")
+  .text("0");
+
+svg.append("text")
+  .attr("x", 400)
+  .attr("y", 390)
+  .attr("text-anchor", "end")
+  .style("font-size", "10px")
+  .text("10");
+
+svg.append("text")
+  .attr("x", 250)
+  .attr("y", 410) // ← was 360
+  .attr("text-anchor", "middle")
+  .style("font-size", "12px")
+  .text("Average Score");
+
+
+
+  // Comments
+// ————————————————
+// 3) Comments Carousel (with Supabase)
+// ————————————————
+document.addEventListener('DOMContentLoaded', async () => {
+  // 1) Load participants metadata for flags
+  const participantsUrl =
+    'https://raw.githubusercontent.com/eurovision-survey/surveyWeb/main/participants2024.json';
+  let participants = [];
+  try {
+    const resp = await fetch(participantsUrl);
+    participants = await resp.json();
+  } catch (err) {
+    console.error('Failed to load participants list:', err);
+  }
+
+  // 2) Fetch comments from Supabase
+  let { data: comments, error: commentsError } = await client
+    .from('comments')                // adjust to your comments table name
+    .select('text, country');        // select only required fields
+  if (commentsError) {
+    console.error('Error fetching comments:', commentsError);
+    return;
+  }
+
+  if (!comments || comments.length === 0) {
+    console.warn('No comments to display.');
+    return;
+  }
+
+  // Elements for carousel display
+  const flagImg     = document.getElementById('carouselFlag');
+  const countrySpan = document.getElementById('carouselCountry');
+  const textP       = document.getElementById('carouselText');
+  let lastIndex     = -1;
+
+  function showRandomComment() {
+    // pick a new random index, not the same as last time
+    let idx;
+    do {
+      idx = Math.floor(Math.random() * comments.length);
+    } while (idx === lastIndex && comments.length > 1);
+    lastIndex = idx;
+
+    const entry = comments[idx];
+    // find countryCode in participants list
+    const meta = participants.find(
+      p => p['item-countryName'] === entry.country
+    ) || {};
+    const code = meta['item-countryCode'] || entry.country;
+    const flagUrl =
+      `https://raw.githubusercontent.com/eurovision-survey/surveyWeb/main/flags/${code}.svg`;
+
+    // update DOM
+    flagImg.src         = flagUrl;
+    flagImg.alt         = `${entry.country} flag`;
+    countrySpan.textContent = entry.country;
+    textP.textContent   = `"${entry.text}"`;
+  }
+
+  // initial display and interval
+  showRandomComment();
+  setInterval(showRandomComment, 3000);
+});
+
 }
 
 function renderParticipantList(list) {
@@ -210,5 +329,25 @@ async function init() {
   renderParticipantList(processed.overallList);
   setupRealtime();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.getElementById('toggleResultsBtn');
+  const userId = 'gp0iaca8evr-ma5j2xwk';  // static user ID
+  const currentParams = new URLSearchParams(window.location.search);
+  const hasUserId = currentParams.has('user_id');
+
+  if (hasUserId) {
+    button.textContent = 'Go to global results';
+    button.onclick = () => {
+      window.open(`file:///C:/Users/falco/Documents/GitHub/surveyWeb/results.html`, '_blank');
+    };
+  } else {
+    button.textContent = 'Go to personal results';
+    button.onclick = () => {
+      window.open(`file:///C:/Users/falco/Documents/GitHub/surveyWeb/results.html?user_id=${userId}`, '_blank');
+    };
+  }
+});
+
 
 init();

@@ -24,17 +24,6 @@
     </table>
   </section>
 
-  <!-- Radar Profiles -->
-  <section class="chart-container">
-    <h2>Country Profiles (Radar Charts)</h2>
-    <div id="radarContainer" class="flex-row"></div>
-  </section>
-
-  <!-- Bullet Charts -->
-  <section class="chart-container">
-    <h2>Composite Scores (Bullet Charts)</h2>
-    <div id="bulletContainer" class="flex-row"></div>
-  </section>
 
   <!-- Heatmap -->
   <section class="chart-container">
@@ -42,28 +31,17 @@
     <svg id="heatmap" width="800" height="400"></svg>
   </section>
 
-  <!-- Parallel Coordinates -->
-  <section class="chart-container">
-    <h2>Parallel Coordinates</h2>
-    <svg id="parallelCoords" width="800" height="400"></svg>
-  </section>
-
-  <!-- Time-Series Funnel -->
-  <section class="chart-container">
-    <h2>General Score Over Time (Averages)</h2>
-    <canvas id="timeSeries"></canvas>
-  </section>
-
   <!-- Word Cloud -->
-  <section class="chart-container">
-    <h2>User Comments Word Cloud</h2>
-    <div id="wordCloud"></div>
-  </section>
+
+<div id="resultsButtons" style="text-align: center; margin: 3rem 0;">
+  <button id="toggleResultsBtn">Loading…</button>
+  <!--<button id="shareResultsBtn" style="margin-left: 1rem;">Share personal results</button>-->
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/d3-cloud/build/d3.layout.cloud.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="results.js"></script>
 </body>
 </html>

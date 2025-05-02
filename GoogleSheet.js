@@ -40,7 +40,7 @@ fetch(`${urlText}_${lang}.json`)
   .catch((err) => console.error("Error carregant texts:", err));
 
 function applyTexts() {
-  document.getElementById("form-version").textContent = TEXTS.form_version;
+  document.getElementById("form-version").textContent = "0.9.0";
   document.getElementById("comment").placeholder = TEXTS.comment_placeholder;
   document.getElementById("submit").value = TEXTS.submit_button;
   // puedes seguir con más traducciones si agregas más IDs o clases
@@ -196,7 +196,7 @@ try {
     } else {
       console.log('Survey completed. Redirecting to thank you page.');
       setCookie('participantIndex', 0, 1); // Reset progress when finished
-      window.location.href = 'thankyou.html'; // Redirect to Thank You page
+      window.location.href = 'results.html'; // Redirect to Thank You page
     }
 
 } catch (supabaseError) {

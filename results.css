@@ -19,3 +19,58 @@ canvas,svg{width:100%!important;height:auto!important;}
 @media(max-width:599px){
   #participantList th,#participantList td{font-size:0.8rem;}
 }
+
+.responsive-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 2) CSS */
+.carousel-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+.flag-icon {
+  width: 30px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.carousel-country {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.carousel-text {
+  font-style: italic;
+  margin-top: 8px;
+  min-height: 3em; /* reserve height so layout doesn’t jump */
+}
+#toggleResultsBtn {
+  display: block;
+  margin: 3rem auto;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: #1d4ed8; /* Blue-600 */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#toggleResultsBtn:hover {
+  background-color: #2563eb; /* Blue-500 */
+  transform: scale(1.03);
+}
+
+#toggleResultsBtn:active {
+  background-color: #1e40af; /* Blue-700 */
+  transform: scale(0.97);
+}
