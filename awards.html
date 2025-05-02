@@ -103,6 +103,27 @@
       color: #444;
       margin-top: .5rem;
     }
+    #header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 0.5rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  min-height: 15vh;
+  max-height: auto;
+  flex-wrap: wrap;
+}
+
+#awards-container {
+  margin-top: 10.5rem;
+}
+
 
     @media (max-width: 900px) {
       .winner-card img.flag {
@@ -121,7 +142,7 @@
   </style>
 </head>
 <body>
-  <h1>Eurovision Awards 2024</h1>
+  <div id="header"><h1>Eurovisió 2025 </h1><h1>&nbsp;Premis per categoria</h1></div>
   <div id="awards-container"></div>
 
   <script>
