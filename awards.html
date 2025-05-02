@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Awards Results</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <style>
+    /* Global reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #1d1d1f;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .category-container {
+      margin-bottom: 3rem;
+    }
+
+    .category-header {
+      font-size: 1.75rem;
+      font-weight: 600;
+      border-left: 4px solid #0070c9;
+      padding-left: 12px;
+      margin-bottom: 1rem;
+      color: #0070c9;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .card img.flag {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      background: #eee;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: .5rem;
+      font-weight: 600;
+    }
+
+    .card-content .score {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: .75rem;
+    }
+
+    .winner-card {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .winner-card img.flag {
+      width: auto;
+      max-width: 60%;
+      height: auto;
+      object-fit: contain;
+      margin-top: 1rem;
+    }
+    .winner-card .card-content {
+      padding: 1.5rem;
+    }
+    .winner-card .card-content h3 {
+      font-size: 1.5rem;
+      color: #0070c9;
+    }
+    .winner-card .comment {
+      font-style: italic;
+      color: #444;
+      margin-top: .5rem;
+    }
+
+    @media (max-width: 900px) {
+      .winner-card img.flag {
+        max-width: 80%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 20px; }
+      h1 { font-size: 2rem; }
+      .category-header { font-size: 1.4rem; }
+      /* Winner remains full width, next two side by side */
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .winner-card img.flag { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Eurovision Awards 2024</h1>
+  <div id="awards-container"></div>
+
+  <script>
+    const SUPABASE_URL     = 'https://ybwyoenjvlgqyldbvnkt.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlid3lvZW5qdmxncXlsZGJ2bmt0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MDYxNTAsImV4cCI6MjA1NTM4MjE1MH0.cMh4puR6-7e60eunFZNrxrramGf2r28AxF-3buq2UDA';
+    const client   = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const CATEGORIES = [
+      'originalitat','lletra','veus','ritme','vestuari',
+      'escenografia','interpretació','cultural','emocional','general'
+    ];
+
+    // Fetch participant metadata
+    async function fetchParticipants() {
+      const res = await fetch('https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/participants2024.json');
+      const json = await res.json();
+      return json.countries;
+    }
+
+    // Fetch all results rows
+    async function fetchResults() {
+      const { data, error } = await client.from('resultats').select('*');
+      if (error) { console.error(error); return []; }
+      return data;
+    }
+
+    // Calculate top 3 averages for a category
+    function calculateAverages(data, category) {
+      const byCountry = {};
+      data.forEach(r => {
+        if (r.country && r[category] != null) {
+          byCountry[r.country] = byCountry[r.country] || [];
+          byCountry[r.country].push(r[category]);
+        }
+      });
+      const avgs = Object.entries(byCountry).map(([country, scores]) => ({
+        country,
+        avg: (scores.reduce((a,b)=>a+b,0) / scores.length).toFixed(2)
+      }));
+      avgs.sort((a,b)=>b.avg - a.avg);
+      return avgs.slice(0,3);
+    }
+
+    // Pick a random comment for a country
+    function pickRandomComment(data, country) {
+      const comments = data
+        .filter(r => r.country === country && r.comentari)
+        .map(r => r.comentari);
+      if (!comments.length) return '';
+      return comments[Math.floor(Math.random() * comments.length)];
+    }
+
+    // Build and insert the cards
+    async function renderAwards() {
+      const participants = await fetchParticipants();
+      const results = await fetchResults();
+      const container = document.getElementById('awards-container');
+
+      CATEGORIES.forEach(cat => {
+        const top3 = calculateAverages(results, cat);
+        if (!top3.length) return;
+
+        // Category wrapper
+        const catDiv = document.createElement('div');
+        catDiv.className = 'category-container';
+        catDiv.innerHTML = `<div class="category-header">${cat.charAt(0).toUpperCase()+cat.slice(1)}</div>`;
+        const cardsDiv = document.createElement('div');
+        cardsDiv.className = 'cards';
+
+        top3.forEach((entry, idx) => {
+          // Find metadata for code
+          const meta = participants.find(p => p['item-countryName'] === entry.country) || {};
+          console.log(meta)
+          const code = meta['item-countryCode'] || entry.country;
+          const flagUrl = `https://raw.githubusercontent.com/eurovision-survey/surveyWeb/refs/heads/main/flags/${code}.svg`;
+
+          // Create card
+          const card = document.createElement('div');
+          card.className = 'card' + (idx === 0 ? ' winner-card' : '');
+
+          // Flag Image
+          const img = document.createElement('img');
+          img.className = 'flag';
+          img.src = flagUrl;
+          img.alt = entry.country;
+          card.appendChild(img);
+
+          // Content
+          const content = document.createElement('div');
+          content.className = 'card-content';
+          content.innerHTML = `
+            <h3>${idx === 0 ? '🥇 ' : (idx===1?'🥈 ':'🥉 ')}${entry.country}</h3>
+            <div class="score">Puntuació: ${entry.avg}</div>
+          `;
+
+          // Winner comment
+          if (idx === 0) {
+            const comment = pickRandomComment(results, entry.country);
+            const cEl = document.createElement('div');
+            cEl.className = 'comment';
+            cEl.textContent = comment;
+            content.appendChild(cEl);
+          }
+
+          card.appendChild(content);
+          cardsDiv.appendChild(card);
+        });
+
+        catDiv.appendChild(cardsDiv);
+        container.appendChild(catDiv);
+      });
+    }
+
+    renderAwards();
+  </script>
+</body>
+</html>
