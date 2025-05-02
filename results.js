@@ -20,6 +20,7 @@ let xHeat, yHeat, colorScale, yScalesParallel, lineGenParallel;
 
 function getCookie(name) {
   const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  console.log("Returning cooke: "+match);
   return match ? decodeURIComponent(match[2]) : null;
 }
 
@@ -332,9 +333,9 @@ async function init() {
 
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.getElementById('toggleResultsBtn');
-  const userId = 'gp0iaca8evr-ma5j2xwk';  // static user ID
   const currentParams = new URLSearchParams(window.location.search);
   const hasUserId = currentParams.has('user_id');
+  const userId = getCookie("userId");
 
   if (hasUserId) {
     button.textContent = 'Go to global results';
