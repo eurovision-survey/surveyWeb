@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eurovision Voting Dashboard</title>
+  <title>Resultats Eurovisió 2025</title>
   <link rel="stylesheet" href="results.css" />
 </head>
 <body>
-  <h1>Eurovision Voting Dashboard</h1>
+  <h1>Resultats Eurovisió 2025</h1>
 
   <!-- Hero: Bar Race -->
   <section class="chart-container">
-    <h2>Top 5 Overall Countries (Bar Race)</h2>
+    <h2>Top 5</h2>
     <canvas id="barRace"></canvas>
   </section>
 
   <!-- Participant List -->
   <section class="chart-container">
-    <h2>All Participants (Overall Average)</h2>
+    <h2>Tots els participants</h2>
     <table id="participantList">
-      <thead><tr><th>Rank</th><th>Country</th><th>Avg Score</th></tr></thead>
+      <thead><tr><th>Posició</th><th>País</th><th>Puntuació</th></tr></thead>
       <tbody></tbody>
     </table>
   </section>
@@ -27,14 +27,14 @@
 
   <!-- Heatmap -->
   <section class="chart-container">
-    <h2>Category Heatmap</h2>
+    <h2>Mapa de calor</h2>
     <svg id="heatmap" width="800" height="400"></svg>
   </section>
 
   <!-- Word Cloud -->
 
 <div id="resultsButtons" style="text-align: center; margin: 3rem 0;">
-  <button id="toggleResultsBtn">Loading…</button>
+  <button id="toggleResultsBtn">Carregant...</button>
   <!--<button id="shareResultsBtn" style="margin-left: 1rem;">Share personal results</button>-->
 </div>
 

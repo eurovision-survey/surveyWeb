@@ -338,12 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const userId = getCookie("userId");
 
   if (hasUserId) {
-    button.textContent = 'Go to global results';
+    button.textContent = 'Vés a resultats globals';
     button.onclick = () => {
       window.open(`https://eurovision-survey.github.io/surveyWeb/results.html`, '_blank');
     };
   } else {
-    button.textContent = 'Go to personal results';
+    button.textContent = 'Vés a resultats personals';
     button.onclick = () => {
       window.open(`https://eurovision-survey.github.io/surveyWeb/results.html?user_id=${userId}`, '_blank');
     };
