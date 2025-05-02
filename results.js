@@ -339,12 +339,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hasUserId) {
     button.textContent = 'Go to global results';
     button.onclick = () => {
-      window.open(`file:///C:/Users/falco/Documents/GitHub/surveyWeb/results.html`, '_blank');
+      window.open(`https://eurovision-survey.github.io/surveyWeb/results.html`, '_blank');
     };
   } else {
     button.textContent = 'Go to personal results';
     button.onclick = () => {
-      window.open(`file:///C:/Users/falco/Documents/GitHub/surveyWeb/results.html?user_id=${userId}`, '_blank');
+      window.open(`https://eurovision-survey.github.io/surveyWeb/results.html?user_id=${userId}`, '_blank');
     };
   }
 });
