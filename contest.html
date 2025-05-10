@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eurovisió 2025 — Estadístiques Generals</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <style>
+    /* Reset global */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
+    /* Header igual que awards */
+    #header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      padding: 0.5rem;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      min-height: 15vh;
+      max-height: auto;
+      flex-wrap: wrap;
+    }
+    #header h1 {
+      font-size: 2rem;
+      margin: 0 0.5rem;
+    }
+    #stats-container {
+      margin-top: 10.5rem;
+      padding: 40px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .stat-card .label {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: .5rem;
+    }
+    .stat-card .value {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #1d1d1f;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>Eurovisió 2025</h1>
+    <h1>Estadístiques Generals</h1>
+  </div>
+  <div id="stats-container">
+    <!-- Cards dinàmics aquí -->
+  </div>
+
+  <script>
+    const SUPABASE_URL     = 'https://ybwyoenjvlgqyldbvnkt.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlid3lvZW5qdmxncXlsZGJ2bmt0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MDYxNTAsImV4cCI6MjA1NTM4MjE1MH0.cMh4puR6-7e60eunFZNrxrramGf2r28AxF-3buq2UDA';
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function fetchStats() {
+      const { data, error } = await client.from('resultats').select('*');
+      if (error) { console.error(error); return; }
+
+      const users = data.map(r => r.user_id).filter(u => u != null);
+      const uniqueUsers = new Set(users);
+      const totalParticipants = uniqueUsers.size;
+
+      const counts = {};
+      users.forEach(u => { counts[u] = (counts[u] || 0) + 1; });
+      const completed = Object.values(counts).filter(c => c >= 25).length;
+
+      const categories = [
+        'originalitat','lletra','veus','ritme','vestuari',
+        'escenografia','interpretació','cultural','emocional','general'
+      ];
+      let sum = 0;
+      let count = 0;
+      data.forEach(r => {
+        categories.forEach(cat => {
+          if (r[cat] != null) { sum += r[cat]; count++; }
+        });
+      });
+      const meanScore = count > 0 ? (sum / count).toFixed(2) : '0';
+
+      const totalComments = data.filter(r => r.comentari && r.comentari.trim() !== '').length;
+
+      renderCards({ totalParticipants, completed, meanScore, totalComments });
+    }
+
+    function renderCards(stats) {
+      const container = document.getElementById('stats-container');
+      const items = [
+        { label: 'Participants Únics', value: stats.totalParticipants },
+        { label: 'Votants Complets (≥25)', value: stats.completed },
+        { label: 'Nota Mitjana', value: stats.meanScore },
+        { label: 'Comentaris Submetuts', value: stats.totalComments }
+      ];
+
+      items.forEach(stat => {
+        const card = document.createElement('div');
+        card.className = 'stat-card';
+        card.innerHTML = `
+          <div class="label">${stat.label}</div>
+          <div class="value">${stat.value}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    fetchStats();
+  </script>
+</body>
+</html>
