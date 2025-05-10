@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eurovisió 2025 — Dades Completes amb Filtres</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; color: #1d1d1f; margin: 0; padding: 0; }
+    header { background-color: #333; color: white; padding: 1rem; text-align: center; }
+    details { margin: 1rem 2rem; background: #fff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    summary { font-weight: bold; padding: 0.75rem 1rem; cursor: pointer; }
+    summary:hover { background: #f0f0f0; }
+    .section-content { padding: 1rem 2rem; }
+    .summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .card { background: #fff; border-radius: 8px; padding: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); text-align: center; }
+    .card .label { font-size: 0.9rem; color: #555; }
+    .card .value { font-size: 1.5rem; font-weight: bold; }
+    .controls { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .controls label { font-weight: bold; }
+    .controls select { padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+    .stat-item { background: #f0f0f0; border-radius: 8px; padding: 0.5rem; text-align: center; }
+    .chart-container { width: 100%; max-width: 800px; margin: 0 auto 2rem; }
+    .table-container { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 1200px; }
+    th, td { padding: 0.75rem; border: 1px solid #ccc; text-align: center; }
+    th { background-color: #eee; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Eurovisió 2025 — Dades Completes</h1>
+  </header>
+
+  <details open>
+    <summary>Resum Global</summary>
+    <div class="section-content summary-cards" id="global-summary"></div>
+  </details>
+
+  <details open>
+    <summary>Resum Estadístic per Categoria</summary>
+    <div class="section-content stats-grid" id="stats-grid"></div>
+  </details>
+
+  <details open>
+    <summary>Filtres</summary>
+    <div class="section-content controls">
+      <div>
+        <label for="filter-user">Usuari:</label>
+        <select id="filter-user"><option value="all">Tots</option></select>
+      </div>
+      <div>
+        <label for="filter-country">País:</label>
+        <select id="filter-country"><option value="all">Tots</option></select>
+      </div>
+    </div>
+  </details>
+
+  <details open>
+    <summary>Visualitzacions</summary>
+    <div class="section-content">
+      <div class="chart-container">
+        <canvas id="bar-chart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="radar-chart"></canvas>
+      </div>
+    </div>
+  </details>
+
+  <details open>
+    <summary>Taula de Dades</summary>
+    <div class="section-content table-container">
+      <table id="data-table">
+        <thead>
+          <tr id="table-headers"></tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </details>
+
+  <script>
+    const SUPABASE_URL = 'https://ybwyoenjvlgqyldbvnkt.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlid3lvZW5qdmxncXlsZGJ2bmt0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MDYxNTAsImV4cCI6MjA1NTM4MjE1MH0.cMh4puR6-7e60eunFZNrxrramGf2r28AxF-3buq2UDA';
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const categories = ['originalitat','lletra','veus','ritme','vestuari','escenografia','interpretació','cultural','emocional','general'];
+    let allData = [];
+
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      return parts.length === 2 ? parts.pop().split(';').shift() : null;
+    }
+
+    function computeMedian(arr) {
+      const sorted = arr.slice().sort((a,b)=>a-b);
+      const len = sorted.length;
+      if(!len) return 0;
+      const mid = Math.floor(len/2);
+      return len % 2 !== 0 ? sorted[mid] : (sorted[mid-1] + sorted[mid]) / 2;
+    }
+
+    async function fetchData() {
+      const { data, error } = await client.from('resultats').select('*');
+      if(error) { console.error(error); return; }
+      allData = data;
+      renderHeaders();
+      populateFilters(data);
+      applyFilters();
+    }
+
+    function renderHeaders() {
+      const thRow = document.getElementById('table-headers');
+      thRow.innerHTML = '';
+      const headers = ['Usuari','País', ...categories.map(c => c.charAt(0).toUpperCase() + c.slice(1)), 'Comentari'];
+      headers.forEach(text => {
+        const th = document.createElement('th');
+        th.textContent = text;
+        thRow.appendChild(th);
+      });
+    }
+
+    function populateFilters(data) {
+      const cookieUser = getCookie('userId');
+      const users = [...new Set(data.map(r => r.user_id).filter(u => u))];
+      const countries = [...new Set(data.map(r => r.country).filter(c => c))];
+      const userSelect = document.getElementById('filter-user');
+      const countrySelect = document.getElementById('filter-country');
+
+      users.forEach(u => {
+        const label = (cookieUser && u === cookieUser) ? `(Tú) ${u}` : u;
+        const option = document.createElement('option');
+        option.value = u;
+        option.textContent = label;
+        userSelect.appendChild(option);
+      });
+      countries.forEach(c => {
+        const option = document.createElement('option');
+        option.value = c;
+        option.textContent = c;
+        countrySelect.appendChild(option);
+      });
+
+      userSelect.onchange = applyFilters;
+      countrySelect.onchange = applyFilters;
+    }
+
+    function applyFilters() {
+      const userVal = document.getElementById('filter-user').value;
+      const countryVal = document.getElementById('filter-country').value;
+      const filtered = allData.filter(r =>
+        (userVal === 'all' || r.user_id === userVal) &&
+        (countryVal === 'all' || r.country === countryVal)
+      );
+      renderGlobalSummary(filtered);
+      renderStats(filtered);
+      renderCharts(filtered);
+      renderTable(filtered);
+    }
+
+    function renderGlobalSummary(data) {
+      const section = document.getElementById('global-summary'); section.innerHTML = '';
+      const users = data.map(r => r.user_id).filter(u => u);
+      const uniques = new Set(users);
+      const totalSubs = data.length;
+      const participants = uniques.size;
+      const completeSubs = Array.from(uniques).filter(u =>
+        users.filter(x => x === u).length >= categories.length
+      ).length;
+      const comments = data.filter(r => r.comentari && r.comentari.trim()).length;
+      const byCountry = {};
+      data.forEach(r => { if(r.country) byCountry[r.country] = (byCountry[r.country]||0) + 1; });
+
+      const items = [
+        { label: 'Submissions', value: totalSubs },
+        { label: 'Participants', value: participants },
+        { label: 'Complets', value: completeSubs },
+        { label: 'Comentaris', value: comments }
+      ];
+      items.forEach(it => {
+        const card = document.createElement('div'); card.className = 'card';
+        card.innerHTML = `<div class="label">${it.label}</div><div class="value">${it.value}</div>`;
+        section.appendChild(card);
+      });
+
+      const countryCard = document.createElement('div'); countryCard.className = 'card';
+      countryCard.innerHTML = `<div class="label">Per País</div><ul style="text-align:left;">${
+        Object.entries(byCountry).map(([c,n]) => `<li>${c}: ${n}</li>`).join('')
+      }</ul>`;
+      section.appendChild(countryCard);
+    }
+
+    function renderStats(data) {
+      const grid = document.getElementById('stats-grid'); grid.innerHTML = '';
+      categories.forEach(cat => {
+        const vals = data.map(r => r[cat]).filter(v => typeof v === 'number');
+        if (!vals.length) return;
+        const mean = vals.reduce((a,b) => a+b, 0) / vals.length;
+        const min = Math.min(...vals), max = Math.max(...vals);
+        const sd = Math.sqrt(vals.reduce((s,v) => s + Math.pow(v-mean,2), 0) / vals.length);
+        const median = computeMedian(vals);
+        const statItem = document.createElement('div'); statItem.className = 'stat-item';
+        statItem.innerHTML = `<strong>${cat}</strong><br>
+          Mitja: ${mean.toFixed(2)}<br>
+          Mediana: ${median.toFixed(2)}<br>
+          Min: ${min.toFixed(2)}<br>
+          Max: ${max.toFixed(2)}<br>
+          σ: ${sd.toFixed(2)}`;
+        grid.appendChild(statItem);
+      });
+    }
+
+    function renderCharts(data) {
+      const means = categories.map(cat => {
+        const vals = data.map(r => r[cat]).filter(v => typeof v === 'number');
+        return vals.length ? (vals.reduce((a,b) => a+b, 0) / vals.length).toFixed(2) : 0;
+      });
+      const barCtx = document.getElementById('bar-chart').getContext('2d');
+      new Chart(barCtx, { type:'bar', data:{ labels: categories, datasets:[{ label:'Mitja', data: means }] }, options:{ responsive:true } });
+
+      const sds = categories.map(cat => {
+        const vals = data.map(r => r[cat]).filter(v => typeof v === 'number');
+        const m = vals.reduce((a,b) => a+b, 0) / vals.length;
+        return vals.length ? Math.sqrt(vals.reduce((s,v) => s + Math.pow(v-m,2), 0) / vals.length).toFixed(2) : 0;
+      });
+      const radarCtx = document.getElementById('radar-chart').getContext('2d');
+      new Chart(radarCtx, { type:'radar', data:{ labels: categories, datasets:[{ label:'σ', data: sds }] }, options:{ responsive:true } });
+    }
+
+    function renderTable(data) {
+      const tbody = document.getElementById('table-body'); tbody.innerHTML = '';
+      data.forEach(r => {
+        const tr = document.createElement('tr');
+        const cells = [r.user_id || '', r.country || '']
+          .concat(categories.map(c => r[c] != null ? r[c].toFixed(2) : ''))
+          .concat([r.comentari ? r.comentari.replace(/\n/g,'<br>') : '']);
+        tr.innerHTML = cells.map(val => `<td>${val}</td>`).join('');
+        tbody.appendChild(tr);
+      });
+    }
+
+    fetchData();
+  </script>
+</body>
+</html>
