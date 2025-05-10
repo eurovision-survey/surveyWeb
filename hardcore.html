@@ -83,12 +83,14 @@
     </div>
   </details>
 
-  <script>
+<script>
     const SUPABASE_URL = 'https://ybwyoenjvlgqyldbvnkt.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlid3lvZW5qdmxncXlsZGJ2bmt0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MDYxNTAsImV4cCI6MjA1NTM4MjE1MH0.cMh4puR6-7e60eunFZNrxrramGf2r28AxF-3buq2UDA';
     const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     const categories = ['originalitat','lletra','veus','ritme','vestuari','escenografia','interpretació','cultural','emocional','general'];
     let allData = [];
+    let barChart = null;
+    let radarChart = null;
 
     function getCookie(name) {
       const value = `; ${document.cookie}`;
@@ -97,16 +99,16 @@
     }
 
     function computeMedian(arr) {
-      const sorted = arr.slice().sort((a,b)=>a-b);
+      const sorted = arr.slice().sort((a,b) => a - b);
       const len = sorted.length;
-      if(!len) return 0;
+      if (!len) return 0;
       const mid = Math.floor(len/2);
       return len % 2 !== 0 ? sorted[mid] : (sorted[mid-1] + sorted[mid]) / 2;
     }
 
     async function fetchData() {
       const { data, error } = await client.from('resultats').select('*');
-      if(error) { console.error(error); return; }
+      if (error) return console.error(error);
       allData = data;
       renderHeaders();
       populateFilters(data);
@@ -116,10 +118,9 @@
     function renderHeaders() {
       const thRow = document.getElementById('table-headers');
       thRow.innerHTML = '';
-      const headers = ['Usuari','País', ...categories.map(c => c.charAt(0).toUpperCase() + c.slice(1)), 'Comentari'];
+      const headers = ['Usuari','País', ...categories.map(c => c.charAt(0).toUpperCase()+c.slice(1)), 'Comentari'];
       headers.forEach(text => {
-        const th = document.createElement('th');
-        th.textContent = text;
+        const th = document.createElement('th'); th.textContent = text;
         thRow.appendChild(th);
       });
     }
@@ -128,33 +129,31 @@
       const cookieUser = getCookie('userId');
       const users = [...new Set(data.map(r => r.user_id).filter(u => u))];
       const countries = [...new Set(data.map(r => r.country).filter(c => c))];
-      const userSelect = document.getElementById('filter-user');
-      const countrySelect = document.getElementById('filter-country');
+      const userSel = document.getElementById('filter-user');
+      const countrySel = document.getElementById('filter-country');
 
       users.forEach(u => {
-        const label = (cookieUser && u === cookieUser) ? `(Tú) ${u}` : u;
         const option = document.createElement('option');
         option.value = u;
-        option.textContent = label;
-        userSelect.appendChild(option);
+        option.textContent = cookieUser===u ? `(Tú) ${u}` : u;
+        userSel.appendChild(option);
       });
       countries.forEach(c => {
         const option = document.createElement('option');
-        option.value = c;
-        option.textContent = c;
-        countrySelect.appendChild(option);
+        option.value = c; option.textContent = c;
+        countrySel.appendChild(option);
       });
 
-      userSelect.onchange = applyFilters;
-      countrySelect.onchange = applyFilters;
+      userSel.addEventListener('change', applyFilters);
+      countrySel.addEventListener('change', applyFilters);
     }
 
     function applyFilters() {
       const userVal = document.getElementById('filter-user').value;
       const countryVal = document.getElementById('filter-country').value;
       const filtered = allData.filter(r =>
-        (userVal === 'all' || r.user_id === userVal) &&
-        (countryVal === 'all' || r.country === countryVal)
+        (userVal==='all'||r.user_id===userVal) &&
+        (countryVal==='all'||r.country===countryVal)
       );
       renderGlobalSummary(filtered);
       renderStats(filtered);
@@ -163,83 +162,69 @@
     }
 
     function renderGlobalSummary(data) {
-      const section = document.getElementById('global-summary'); section.innerHTML = '';
-      const users = data.map(r => r.user_id).filter(u => u);
-      const uniques = new Set(users);
-      const totalSubs = data.length;
-      const participants = uniques.size;
-      const completeSubs = Array.from(uniques).filter(u =>
-        users.filter(x => x === u).length >= categories.length
-      ).length;
-      const comments = data.filter(r => r.comentari && r.comentari.trim()).length;
-      const byCountry = {};
-      data.forEach(r => { if(r.country) byCountry[r.country] = (byCountry[r.country]||0) + 1; });
-
+      const sec = document.getElementById('global-summary'); sec.innerHTML='';
+      const users = data.map(r=>r.user_id).filter(u=>u);
+      const unique = [...new Set(users)];
       const items = [
-        { label: 'Submissions', value: totalSubs },
-        { label: 'Participants', value: participants },
-        { label: 'Complets', value: completeSubs },
-        { label: 'Comentaris', value: comments }
+        {label:'Submissions',value:data.length},
+        {label:'Participants',value:unique.length},
+        {label:'Complets',value:unique.filter(u=>users.filter(x=>x===u).length>=categories.length).length},
+        {label:'Comentaris',value:data.filter(r=>r.comentari&&r.comentari.trim()).length}
       ];
-      items.forEach(it => {
-        const card = document.createElement('div'); card.className = 'card';
-        card.innerHTML = `<div class="label">${it.label}</div><div class="value">${it.value}</div>`;
-        section.appendChild(card);
+      items.forEach(it=>{
+        const d=document.createElement('div'); d.className='card';
+        d.innerHTML=`<div class="label">${it.label}</div><div class="value">${it.value}</div>`;
+        sec.appendChild(d);
       });
-
-      const countryCard = document.createElement('div'); countryCard.className = 'card';
-      countryCard.innerHTML = `<div class="label">Per País</div><ul style="text-align:left;">${
-        Object.entries(byCountry).map(([c,n]) => `<li>${c}: ${n}</li>`).join('')
-      }</ul>`;
-      section.appendChild(countryCard);
+      const byCountry={}; data.forEach(r=>{if(r.country)byCountry[r.country]=(byCountry[r.country]||0)+1;});
+      const d=document.createElement('div'); d.className='card';
+      d.innerHTML=`<div class="label">Per País</div><ul style="text-align:left;">${Object.entries(byCountry).map(([c,n])=>`<li>${c}: ${n}</li>`).join('')}</ul>`;
+      sec.appendChild(d);
     }
 
     function renderStats(data) {
-      const grid = document.getElementById('stats-grid'); grid.innerHTML = '';
-      categories.forEach(cat => {
-        const vals = data.map(r => r[cat]).filter(v => typeof v === 'number');
-        if (!vals.length) return;
-        const mean = vals.reduce((a,b) => a+b, 0) / vals.length;
-        const min = Math.min(...vals), max = Math.max(...vals);
-        const sd = Math.sqrt(vals.reduce((s,v) => s + Math.pow(v-mean,2), 0) / vals.length);
-        const median = computeMedian(vals);
-        const statItem = document.createElement('div'); statItem.className = 'stat-item';
-        statItem.innerHTML = `<strong>${cat}</strong><br>
-          Mitja: ${mean.toFixed(2)}<br>
-          Mediana: ${median.toFixed(2)}<br>
-          Min: ${min.toFixed(2)}<br>
-          Max: ${max.toFixed(2)}<br>
-          σ: ${sd.toFixed(2)}`;
-        grid.appendChild(statItem);
+      const grid=document.getElementById('stats-grid'); grid.innerHTML='';
+      categories.forEach(cat=>{
+        const vals=data.map(r=>r[cat]).filter(v=>typeof v==='number');
+        if(!vals.length) return;
+        const mean=vals.reduce((a,b)=>a+b)/vals.length;
+        const min=Math.min(...vals), max=Math.max(...vals);
+        const sd=Math.sqrt(vals.reduce((s,v)=>s+Math.pow(v-mean,2),0)/vals.length);
+        const med=computeMedian(vals);
+        const d=document.createElement('div'); d.className='stat-item';
+        d.innerHTML=`<strong>${cat}</strong><br>Mitja:${mean.toFixed(2)}<br>Mediana:${med.toFixed(2)}<br>Min:${min.toFixed(2)}<br>Max:${max.toFixed(2)}<br>σ:${sd.toFixed(2)}`;
+        grid.appendChild(d);
       });
     }
 
     function renderCharts(data) {
-      const means = categories.map(cat => {
-        const vals = data.map(r => r[cat]).filter(v => typeof v === 'number');
-        return vals.length ? (vals.reduce((a,b) => a+b, 0) / vals.length).toFixed(2) : 0;
+      const means=categories.map(cat=>{
+        const v=data.map(r=>r[cat]).filter(v=>typeof v==='number');
+        return v.length?(v.reduce((a,b)=>a+b)/v.length).toFixed(2):0;
       });
-      const barCtx = document.getElementById('bar-chart').getContext('2d');
-      new Chart(barCtx, { type:'bar', data:{ labels: categories, datasets:[{ label:'Mitja', data: means }] }, options:{ responsive:true } });
+      const barCtx=document.getElementById('bar-chart').getContext('2d');
+      if(barChart)barChart.destroy();
+      barChart=new Chart(barCtx,{type:'bar',data:{labels:categories,datasets:[{label:'Mitja',data:means}]},options:{responsive:true}});
 
-      const sds = categories.map(cat => {
-        const vals = data.map(r => r[cat]).filter(v => typeof v === 'number');
-        const m = vals.reduce((a,b) => a+b, 0) / vals.length;
-        return vals.length ? Math.sqrt(vals.reduce((s,v) => s + Math.pow(v-m,2), 0) / vals.length).toFixed(2) : 0;
+      const sds=categories.map(cat=>{
+        const v=data.map(r=>r[cat]).filter(v=>typeof v==='number');
+        const m=v.reduce((a,b)=>a+b)/v.length;
+        return v.length?Math.sqrt(v.reduce((s,v)=>s+Math.pow(v-m,2),0)/v.length).toFixed(2):0;
       });
-      const radarCtx = document.getElementById('radar-chart').getContext('2d');
-      new Chart(radarCtx, { type:'radar', data:{ labels: categories, datasets:[{ label:'σ', data: sds }] }, options:{ responsive:true } });
+      const radarCtx=document.getElementById('radar-chart').getContext('2d');
+      if(radarChart)radarChart.destroy();
+      radarChart=new Chart(radarCtx,{type:'radar',data:{labels:categories,datasets:[{label:'σ',data:sds}]},options:{responsive:true}});
     }
 
     function renderTable(data) {
-      const tbody = document.getElementById('table-body'); tbody.innerHTML = '';
-      data.forEach(r => {
-        const tr = document.createElement('tr');
-        const cells = [r.user_id || '', r.country || '']
-          .concat(categories.map(c => r[c] != null ? r[c].toFixed(2) : ''))
-          .concat([r.comentari ? r.comentari.replace(/\n/g,'<br>') : '']);
-        tr.innerHTML = cells.map(val => `<td>${val}</td>`).join('');
-        tbody.appendChild(tr);
+      const tb=document.getElementById('table-body'); tb.innerHTML='';
+      data.forEach(r=>{
+        const tr=document.createElement('tr');
+        const vals=[r.user_id||'',r.country||'']
+          .concat(categories.map(c=>r[c]!=null?r[c].toFixed(2):''))
+          .concat([r.comentari?r.comentari.replace(/\n/g,'<br>'): '']);
+        tr.innerHTML=vals.map(v=>`<td>${v}</td>`).join('');
+        tb.appendChild(tr);
       });
     }
 
