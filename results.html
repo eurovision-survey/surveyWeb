@@ -34,9 +34,31 @@
   <!-- Word Cloud -->
 
 <div id="resultsButtons" style="text-align: center; margin: 3rem 0;">
-  <button id="toggleResultsBtn">Carregant...</button>
-  <!--<button id="shareResultsBtn" style="margin-left: 1rem;">Share personal results</button>-->
+  <button id="toggleResultsBtn" style="padding: 0.75rem 1.5rem; font-size: 1rem; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Carregant...
+  </button>
+
+  <div style="display: flex; gap: 1rem; justify-content: center; width: 90%; max-width: 600px; margin: 2rem auto 0; flex-wrap: wrap;">
+    <a href="awards.html" style="flex: 1; min-width: 100px; text-decoration: none;">
+      <button style="width: 100%; padding: 0.75rem; font-size: 1rem; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Premis
+      </button>
+    </a>
+    <a href="hardcore.html" style="flex: 1; min-width: 100px; text-decoration: none;">
+      <button style="width: 100%; padding: 0.75rem; font-size: 1rem; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Dades
+      </button>
+    </a>
+    <a href="contest.html" style="flex: 1; min-width: 100px; text-decoration: none;">
+      <button style="width: 100%; padding: 0.75rem; font-size: 1rem; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Concurs
+      </button>
+    </a>
+  </div>
 </div>
+
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/d3-cloud/build/d3.layout.cloud.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

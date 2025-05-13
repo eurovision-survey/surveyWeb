@@ -116,10 +116,10 @@
     function renderCards(stats) {
       const container = document.getElementById('stats-container');
       const items = [
-        { label: 'Participants Únics', value: stats.totalParticipants },
-        { label: 'Votants Complets (≥25)', value: stats.completed },
+        { label: 'Votants', value: stats.totalParticipants },
+        { label: 'Votacions Completades (≥25)', value: stats.completed },
         { label: 'Nota Mitjana', value: stats.meanScore },
-        { label: 'Comentaris Submetuts', value: stats.totalComments }
+        { label: 'Comentaris Enviats', value: stats.totalComments }
       ];
 
       items.forEach(stat => {
@@ -135,5 +135,27 @@
 
     fetchStats();
   </script>
+
+<div id="resultsButtons" style="text-align: center; margin: 3rem 0;">
+  <div style="display: flex; gap: 1rem; justify-content: center; width: 90%; max-width: 600px; margin: 2rem auto 0; flex-wrap: wrap;">
+    <a href="results.html" style="flex: 1; min-width: 100px; text-decoration: none;">
+      <button style="width: 100%; padding: 0.75rem; font-size: 1rem; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Resultats
+      </button>
+    </a>
+    <a href="awards.html" style="flex: 1; min-width: 100px; text-decoration: none;">
+      <button style="width: 100%; padding: 0.75rem; font-size: 1rem; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Premis
+      </button>
+    </a>
+    <a href="hardcore.html" style="flex: 1; min-width: 100px; text-decoration: none;">
+      <button style="width: 100%; padding: 0.75rem; font-size: 1rem; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Dades
+      </button>
+    </a>
+  </div>
+</div>
+
+
 </body>
 </html>
