@@ -3,132 +3,158 @@
     {
       "item-countryName": "Noruega",
       "item-song": "Lighter",
-      "item-singer": "Kyle Alessandro"
+      "item-singer": "Kyle Alessandro",
+      "item-countryCode": "NOR"
     },
     {
       "item-countryName": "Luxemburg",
       "item-song": "La Poupée Monte Le Son",
-      "item-singer": "Laura Thorn"
+      "item-singer": "Laura Thorn",
+      "item-countryCode": "LUX"
     },
     {
       "item-countryName": "Estònia",
       "item-song": "Espresso Macchiato",
-      "item-singer": "Tommy Cash"
+      "item-singer": "Tommy Cash",
+      "item-countryCode": "EST"
     },
     {
       "item-countryName": "Israel",
       "item-song": "New Day Will Rise",
-      "item-singer": "Yuval Raphael"
+      "item-singer": "Yuval Raphael",
+      "item-countryCode": "ISR"
     },
     {
       "item-countryName": "Lituània",
       "item-song": "Tavo Akys",
-      "item-singer": "Katarsis"
+      "item-singer": "Katarsis",
+      "item-countryCode": "LTU"
     },
     {
       "item-countryName": "Espanya",
       "item-song": "Esa diva",
-      "item-singer": "Melody"
+      "item-singer": "Melody",
+      "item-countryCode": "ESP"
     },
     {
       "item-countryName": "Ucraïna",
       "item-song": "Bird of Pray",
-      "item-singer": "Ziferblat"
+      "item-singer": "Ziferblat",
+      "item-countryCode": "UKR"
     },
     {
       "item-countryName": "Regne Unit",
       "item-song": "What The Hell Just Happened?",
-      "item-singer": "Remember Monday"
+      "item-singer": "Remember Monday",
+      "item-countryCode": "GBR"
     },
     {
       "item-countryName": "Àustria",
       "item-song": "Wasted Love",
-      "item-singer": "JJ"
+      "item-singer": "JJ",
+      "item-countryCode": "AUT"
     },
     {
       "item-countryName": "Islàndia",
       "item-song": "ROA",
-      "item-singer": "VAEB"
+      "item-singer": "VAEB",
+      "item-countryCode": "ISL"
     },
     {
       "item-countryName": "Letònia",
       "item-song": "Bur Man Laimi",
-      "item-singer": "Tautumeitas"
+      "item-singer": "Tautumeitas",
+      "item-countryCode": "LVA"
     },
     {
       "item-countryName": "Països Baixos",
       "item-song": "C'est La Vie",
-      "item-singer": "Claude"
+      "item-singer": "Claude",
+      "item-countryCode": "NLD"
     },
     {
       "item-countryName": "Finlàndia",
       "item-song": "ICH KOMME",
-      "item-singer": "Erika Vikman"
+      "item-singer": "Erika Vikman",
+      "item-countryCode": "FIN"
     },
     {
       "item-countryName": "Itàlia",
       "item-song": "Volevo essere un duro",
-      "item-singer": "Lucio Corsi"
+      "item-singer": "Lucio Corsi",
+      "item-countryCode": "ITA"
     },
     {
       "item-countryName": "Polònia",
       "item-song": "Gaja",
-      "item-singer": "Justyna Steczkowska"
+      "item-singer": "Justyna Steczkowska",
+      "item-countryCode": "POL"
     },
     {
       "item-countryName": "Alemanya",
       "item-song": "Baller",
-      "item-singer": "Abor & Tynna"
+      "item-singer": "Abor & Tynna",
+      "item-countryCode": "DEU"
     },
     {
       "item-countryName": "Grècia",
       "item-song": "Asteromata",
-      "item-singer": "Klavia"
+      "item-singer": "Klavia",
+      "item-countryCode": "GRC"
     },
     {
       "item-countryName": "Armènia",
       "item-song": "Survivor",
-      "item-singer": "Parg"
+      "item-singer": "Parg",
+      "item-countryCode": "ARM"
     },
     {
       "item-countryName": "Suïssa",
       "item-song": "Voyage",
-      "item-singer": "Zoë Më"
+      "item-singer": "Zoë Më",
+      "item-countryCode": "CHE"
     },
     {
       "item-countryName": "Malta",
       "item-song": "SERVING",
-      "item-singer": "Miriana Conte"
+      "item-singer": "Miriana Conte",
+      "item-countryCode": "MLT"
     },
     {
       "item-countryName": "Portugal",
       "item-song": "Deslocado",
-      "item-singer": "NAPA"
+      "item-singer": "NAPA",
+      "item-countryCode": "PRT"
     },
     {
       "item-countryName": "Dinamarca",
       "item-song": "Hallucination",
-      "item-singer": "Sissal"
+      "item-singer": "Sissal",
+      "item-countryCode": "DNK"
     },
     {
       "item-countryName": "Suècia",
       "item-song": "Bara Bada Bastu",
-      "item-singer": "KAJ"
+      "item-singer": "KAJ",
+      "item-countryCode": "SWE"
     },
     {
       "item-countryName": "França",
       "item-song": "Maman",
-      "item-singer": "Louane"
+      "item-singer": "Louane",
+      "item-countryCode": "FRA"
     },
     {
       "item-countryName": "San Marino",
       "item-song": "Tutta L'Italia",
-      "item-singer": "Gabry Ponte"
+      "item-singer": "Gabry Ponte",
+      "item-countryCode": "SMR"
     },
     {
       "item-countryName": "Albània",
       "item-song": "Zjerm",
-      "item-singer": "Shkodra Elektronike"
+      "item-singer": "Shkodra Elektronike",
+      "item-countryCode": "ALB"
     }
   ]
 }
